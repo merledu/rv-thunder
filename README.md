@@ -33,5 +33,5 @@
  
   For basic understanding of Amaranth HDL use [Robert Baruch's introduction](https://github.com/RobertBaruch/nmigen-tutorial)
 
- ## Acknowledgements
+ ## Acknowledgement
  We want to express our gratitude to the RISC-V community for their valuable contributions to the open-source hardware ecosystem. Additionally, thanks to the Amaranth HDL developers for providing a platform for hardware design.
