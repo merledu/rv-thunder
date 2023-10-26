@@ -14,7 +14,7 @@
  * TBA
  ## Testing
 
- A testbench for RISC-V Thunder Core is available [here](https://github.com/merledu/rv-amaranth/tree/main/test).
+ A testbench for RISC-V Thunder Core is available [here](https://github.com/merledu/rv-thunder/tree/main/test).
 
  ## About Amaranth HDL
 
@@ -22,7 +22,7 @@
  
  ## Prerequisites
 
- Before working with this project, ensure you have the following prerequisites:
+ Before working on this project, ensure you have the following prerequisites:
  * Python's library [Amaranth HDL](https://amaranth-lang.org/docs/amaranth/latest/) 
  * [iVerilog](https://github.com/steveicarus/iverilog)
  * [GTKWave](https://gtkwave.sourceforge.net/) 

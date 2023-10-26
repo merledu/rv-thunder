@@ -42,7 +42,7 @@ class TopModule(Elaboratable):
             # Add more signal connections as needed
         ]
         with m.If (control_unit.ld_wd == 1):
-            m.d.comb += reg_file.wr_reg.eq(data_memory_unit.dat_w)
+            m.d.comb += reg_file.wr_reg.eq(data_memory_unit.dat_out)
         with m.Else ():
             m.d.comb += reg_file.wr_reg.eq(alu.out)
 

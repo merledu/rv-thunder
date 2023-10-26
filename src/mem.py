@@ -15,7 +15,7 @@ class instr_mem(Elaboratable):
     def elaborate(self, platform):
         m = Module()
         # Create a read port for the instruction memory
-        m.submodules.rdport = rdport = self.mem.read_port()
+        m.submodules.rdport = rdport = self.mem.read_port(domain="comb")
         m.d.comb += [
             rdport.addr.eq(self.adr),
             self.dat_r.eq(rdport.data)
@@ -27,7 +27,7 @@ class data_mem(Elaboratable):
     def __init__(self):
         self.adr = Signal(13)
         self.dat_in = Signal(32)
-        self.dat_w= Signal(32)
+        self.dat_out = Signal(32)
         self.we = Signal()
         # Create a memory with the specified depth (replace this with your actual data)
         self.memory = Memory(width=32, depth=8192)
@@ -35,12 +35,12 @@ class data_mem(Elaboratable):
     def elaborate(self, platform):
         m = Module()
         # Create a read and write port for the data memory
-        m.submodules.rdport = rdport = self.memory.read_port()
+        m.submodules.rdport = rdport = self.memory.read_port(domain="comb")
         m.submodules.wrport = wrport = self.memory.write_port()
         # Connect the address and data signals
         m.d.comb += [
             rdport.addr.eq(self.adr),
-            self.dat_w.eq(rdport.data),
+            self.dat_out.eq(rdport.data),
             wrport.addr.eq(self.adr),
             wrport.data.eq(self.dat_in),
             wrport.en.eq(self.we)  # Enable write operation
