@@ -1,6 +1,7 @@
 from amaranth import *
 
 class ALU(Elaboratable):
+
     def __init__(self):
 
         self.aluop = Signal(4)
@@ -45,5 +46,3 @@ class ALU(Elaboratable):
             m.d.comb += self.out.eq(Cat(self.inp1[-1], self.inp1[:-1]) >> self.inp2)
 
         return m
-    
-
