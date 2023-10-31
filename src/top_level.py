@@ -74,17 +74,36 @@ class TopModule(Elaboratable):
 
 #==========================< Update Pc and Branch select >========================
 
-        m.d.comb += [
-            fetch_unit.branch.eq(control_unit.br & branch_unit.br_out),
-            fetch_unit.branch_tar.eq(alu.out),
+        with m.If (control_unit.op == 0b1100011):
+            m.d.comb += [
+                fetch_unit.branch.eq(control_unit.br & branch_unit.br_out),     #branch 
+                fetch_unit.branch_tar.eq(alu.out),
+                ]
+        with m.Elif (control_unit.op == 0b1100111):
+            m.d.comb += [
+                fetch_unit.branch.eq(2),    #jalr signal 
+                fetch_unit.branch_tar.eq(alu.out),
+            ]
+
+        with m.Elif (control_unit.op == 0b1101111):
+            m.d.comb += [
+                fetch_unit.branch.eq(1),    #jal signal
+                fetch_unit.branch_tar.eq(alu.out),
             ]
 
 #==========================< load data from memory >========================
         with m.If (control_unit.ld_wd == 1):
-            m.d.comb += reg_file.wr_reg.eq(data_memory_unit.dat_w)
-           
+            m.d.comb += reg_file.wr_reg.eq(data_memory_unit.dat_in)
+        
+        with m.Elif (control_unit.ld_wd == 2):
+            m.d.comb += reg_file.wr_reg.eq(fetch_unit.pc + 4)
+
         with m.Else ():
             m.d.comb += reg_file.wr_reg.eq(alu.out)
+
+# #==========================< Jal & Jalr >========================
+#         with m.If (control_unit.jalr == 1):
+#             m.d.comb += reg_file.wr_reg.eq(fetch_unit.pc)
 
         # Return the top module
         return m
@@ -93,6 +112,71 @@ class TopModule(Elaboratable):
 dut = TopModule()
 def bench():
     yield
+    yield
+    yield
+    yield
+    yield
+
+    yield
+    yield
+    yield
+    yield
+    yield
+
+    yield
+    yield
+    yield
+    yield
+    yield
+
+    yield
+    yield
+    yield
+    yield
+    yield
+
+    yield
+    yield
+    yield
+    yield
+    yield
+
+    yield
+    yield
+    yield
+    yield
+    yield
+
+    yield
+    yield
+    yield
+    yield
+    yield
+
+    yield
+    yield
+    yield
+    yield
+    yield
+
+    yield
+    yield
+    yield
+    yield
+    yield
+
+    yield
+    yield
+    yield
+    yield
+    yield
+
+    yield
+    yield
+    yield
+    yield
+    yield
+
     yield
     yield
     yield

@@ -13,26 +13,35 @@ class control(Elaboratable):
         self.op = Signal(7) # Opcode
 
         self.we = Signal() # Register write enable (It will be 1 for R and I type and it is 0 for S type)
-        self.ld_wd = Signal() #Load
+        self.ld_wd = Signal(2) #Load
         self.aluop = Signal(4) #ALU Operation
         self.sw = Signal() # Store Word (It will be 1 only if store instruction occur )
-        self.ld = Signal()
+        self.ld = Signal(2)
         self.br = Signal()
 
         self.imm = Signal(32) #Immediate
 
         self.iimm = Signal(12) # I type immediate
+
         self.simm = Signal(12) # S-type full immediate
         self.simm1 = Signal(5) # Sub1 immediate of S type
         self.simm2 = Signal(7) # Sub2 immediate of S type
-        self.uimm = Signal(20)
+
+        self.uimm = Signal(20)  # U type immediate
 
         self.sbimm0 = Signal()
         self.sbimm1 = Signal(4)
         self.sbimm2 = Signal(6)
         self.sbimm3 = Signal()
         self.sbimm4 = Signal()
-        self.sbimm = Signal(13)
+        self.sbimm = Signal(13) # SB type immediate
+
+        self.ujimm0 = Signal()
+        self.ujimm1 = Signal(10)
+        self.ujimm2 = Signal()
+        self.ujimm3 = Signal(8)
+        self.ujimm4 = Signal()
+        self.ujimm = Signal(21) # UJ type immediate
 
         self.op_b_sel = Signal() # Operand B select bit for mux (Useful when there is an immediate)
         self.op_a_sel = Signal(2)
@@ -57,12 +66,21 @@ class control(Elaboratable):
             self.simm2.eq (self.instr[25:]), # simm2 is of 7 bits so (25 to 31)
             self.simm.eq (Cat(self.simm1, self.simm2)), # simm is of 12 bits , make simm by concatenating both simm1 and simm2
 
+#====================================Immediate for SB type Instruction===========================
             self.sbimm0.eq (0),
             self.sbimm1.eq (self.instr[8:]),
             self.sbimm2.eq (self.instr[25:]),
             self.sbimm3.eq (self.instr[7]),
             self.sbimm4.eq (self.instr[31]),
             self.sbimm.eq (Cat(self.sbimm0,self.sbimm1, self.sbimm2, self.sbimm3, self.sbimm4)),
+
+#====================================Immediate for UJ type Instruction===========================
+            self.ujimm0.eq (0),
+            self.ujimm1.eq (self.instr[21:]),
+            self.ujimm2.eq (self.instr[20]),
+            self.ujimm3.eq (self.instr[12:]),
+            self.ujimm4.eq (self.instr[31]),
+            self.ujimm.eq (Cat(self.ujimm0,self.ujimm1, self.ujimm2, self.ujimm3, self.ujimm4)),
 
             self.uimm.eq (self.instr[12:]),
 
@@ -72,7 +90,6 @@ class control(Elaboratable):
         m.d.comb += [
             self.we.eq(0),
             self.ld_wd.eq(0),
-            self.aluop.eq(0b0000),
             self.sw.eq(0),
             self.ld.eq(0),
             self.op_a_sel.eq(0),
@@ -172,10 +189,44 @@ class control(Elaboratable):
 
                 m.d.comb += [
                     self.br.eq(1),
+                    self.aluop.eq(0b0000),
                     self.op_a_sel.eq(2),
                     self.op_b_sel.eq(1),
                 ]
 
+#=====================================< jalr & jal >=====================================
+            with m.Case(0b1100111): # jalr
+                m.d.comb += self.imm[0:12].eq(self.iimm)# put 12 bit iimm in first 12 bits of imm
+                with m.If (self.imm[11] == 1):#check for sign extension, if it's 1 then convert (13 to 32) bits of imm to 1 otherwise 0
+                    m.d.comb += self.imm[12:32].eq(0b11111111111111111111)
+
+                with m.Else ():
+                    m.d.comb += self.imm[12:32].eq(0b00000000000000000000)
+
+                m.d.comb += [
+                    self.ld_wd.eq(2),
+                    self.ld.eq(2),
+                    self.op_a_sel.eq(0),
+                    self.op_b_sel.eq(1),
+                    self.aluop.eq(0b0000),
+                    self.we.eq(1),
+                ]
+
+            with m.Case(0b1101111): # jal
+                m.d.comb += self.imm[0:13].eq(self.ujimm)
+                with m.If (self.imm[12] == 1):
+                    m.d.comb += self.imm[13:32].eq(0b1111111111111111111)
+
+                with m.Else ():
+                    m.d.comb += self.imm[13:32].eq(0b0000000000000000000)
+
+                m.d.comb += [
+                    self.ld_wd.eq(2),
+                    self.ld.eq(2),
+                    self.op_a_sel.eq(2),
+                    self.op_b_sel.eq(1),
+                    self.aluop.eq(0b0000),
+                    self.we.eq(1),
+                ]
+
         return m
-
-
