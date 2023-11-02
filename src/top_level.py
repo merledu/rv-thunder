@@ -93,7 +93,7 @@ class TopModule(Elaboratable):
 
 #==========================< load data from memory >========================
         with m.If (control_unit.ld_wd == 1):
-            m.d.comb += reg_file.wr_reg.eq(data_memory_unit.dat_in)
+            m.d.comb += reg_file.wr_reg.eq(data_memory_unit.dat_out)
         
         with m.Elif (control_unit.ld_wd == 2):
             m.d.comb += reg_file.wr_reg.eq(fetch_unit.pc + 4)
