@@ -26,9 +26,9 @@ class instr_mem(Elaboratable):
 class data_mem(Elaboratable):
     def __init__(self):
         self.adr = Signal(13)
-        self.dat_in = Signal(32)
-        self.dat_out = Signal(32)
-        self.we = Signal()
+        self.dmem_din = Signal(32)
+        self.dmem_dout = Signal(32)
+        self.dmem_we = Signal()
         # Create a memory with the specified depth (replace this with your actual data)
         self.memory = Memory(width=32, depth=8192)
 
@@ -40,10 +40,10 @@ class data_mem(Elaboratable):
         # Connect the address and data signals
         m.d.comb += [
             rdport.addr.eq(self.adr),
-            self.dat_out.eq(rdport.data),
+            self.dmem_dout.eq(rdport.data),
             wrport.addr.eq(self.adr),
-            wrport.data.eq(self.dat_in),
-            wrport.en.eq(self.we)  # Enable write operation
+            wrport.data.eq(self.dmem_din),
+            wrport.en.eq(self.dmem_we)  # Enable write operation
         ]
 
         return m
