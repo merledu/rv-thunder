@@ -10,7 +10,7 @@ class FetchUnit(Elaboratable):
         m = Module()
         with m.If (self.branch):
             m.d.sync += self.pc.eq(self.branch_tar)
-        
+
         with m.Else():
             # Increment the program counter.
             m.d.sync += self.pc.eq(self.pc + 4)
