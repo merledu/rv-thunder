@@ -1,5 +1,5 @@
 #include<systemc.h>
-SC_MODULE(RegisterFile) {
+SC_MODULE(regfile) {
     sc_in_clk clk;
     sc_in<bool> regwrite;
     sc_in<sc_uint<5>>oprs1;
@@ -14,7 +14,7 @@ SC_MODULE(RegisterFile) {
 
     sc_int<32> regFile[32];
 
-    SC_CTOR(RegisterFile) {
+    SC_CTOR(regfile) {
         SC_THREAD(register_update);
         sensitive << writeData<<clk;
 

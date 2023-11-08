@@ -1,6 +1,6 @@
 #include<systemc.h>
 
-SC_MODULE(DATA_MEMORY) {
+SC_MODULE(dmem) {
 	sc_in<sc_int<32>> rs2in;
 	sc_in<sc_int<32>> index;
 	sc_in_clk clk;
@@ -13,7 +13,7 @@ SC_MODULE(DATA_MEMORY) {
 	sc_int<32> Ind;
 	
 
-	SC_CTOR(DATA_MEMORY) {
+	SC_CTOR(dmem) {
 		datamem = new sc_int<32>[memsize];
 
 		SC_THREAD(writemem);

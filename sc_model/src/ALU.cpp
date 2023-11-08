@@ -1,7 +1,7 @@
 #include<systemc.h>
 
-SC_MODULE(ALU) {
-	sc_in<sc_uint<4>> func4;
+SC_MODULE(alu) {
+	sc_in<sc_uint<4>> aluop;
 	sc_in<sc_int<32>> aluop1, aluop2;
 	sc_out<sc_int<32>> alu_out;
 
@@ -11,27 +11,27 @@ SC_MODULE(ALU) {
 	bool sign = 0;
 
 
-	SC_CTOR(ALU) {
+	SC_CTOR(alu) {
 		SC_METHOD(rtype);
 		sensitive << aluop1<<aluop2;
 
 	}
 	void rtype() {
 
-		if (func4.read() == 0b0000) {
+		if (aluop.read() == 0b0000) {
 			rd = aluop1.read() + aluop2.read();
 		
 		}
 
-		else if (func4.read() == 0b1000) {
+		else if (aluop.read() == 0b1000) {
 			rd = aluop1.read() - aluop2.read();
 		}
-		else if (func4.read() == 0b0001) {
+		else if (aluop.read() == 0b0001) {
 			rs2_uint = aluop2.read().range(4, 0).to_uint();
 
 			rd = aluop1.read() << rs2_uint;
 		}
-		else if (func4.read() == 0b0010) {
+		else if (aluop.read() == 0b0010) {
 			if (aluop1.read() < aluop2.read())
 			{
 				rd = 1;
@@ -40,7 +40,7 @@ SC_MODULE(ALU) {
 				rd = 0;
 			}
 		}
-		else if (func4.read() == 0b0011) {
+		else if (aluop.read() == 0b0011) {
 
 			rs1_uint = aluop1.read().to_uint();
 			rs2_uint = aluop2.read().to_uint();
@@ -53,16 +53,16 @@ SC_MODULE(ALU) {
 			}
 
 		}
-		else if (func4.read() == 0b0100) {
+		else if (aluop.read() == 0b0100) {
 			
 			rd = aluop1.read() ^ aluop2.read();
 		}
-		else if (func4.read() == 0b0101) {
+		else if (aluop.read() == 0b0101) {
 			rs2_uint = aluop2.read().range(4, 0).to_uint();
 
 			rd = aluop1.read() >> rs2_uint;
 		}
-		else if (func4.read() == 0b1101) {
+		else if (aluop.read() == 0b1101) {
 			rs2_uint = aluop2.read().range(4, 0).to_uint();
 			sc_int<32> rs1_int = aluop1.read();
 			for (int i = 0; i < rs2_uint; i++) {
@@ -77,18 +77,18 @@ SC_MODULE(ALU) {
 			rd = rs1_int;
 
 		}
-		else if (func4.read() == 0b0110) {
+		else if (aluop.read() == 0b0110) {
 
 			rd = aluop1.read() | aluop2.read();
 		}
-		else if (func4.read() == 0b0111) {
+		else if (aluop.read() == 0b0111) {
 
 			rd = aluop1.read() & aluop2.read();
 		}
-		else if (func4.read() == 0b1111) { // lui
+		else if (aluop.read() == 0b1111) { // lui
 			rd = aluop2.read();
 		}
-		else if (func4.read() == 0b1110) {
+		else if (aluop.read() == 0b1110) {
 			rd = aluop1.read();
 		}
 		

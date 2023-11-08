@@ -1,7 +1,7 @@
 #include <systemc.h>
 
 
-SC_MODULE(DECODE) {
+SC_MODULE(control) {
 	sc_in<sc_int<32>> instruction;
 	sc_out<sc_uint<2>> opasel;
 	sc_out<sc_uint<3>> func3;
@@ -18,7 +18,7 @@ SC_MODULE(DECODE) {
 	sc_uint<4> mask;
 	
 
-	SC_CTOR(DECODE) {
+	SC_CTOR(control) {
 		jalr = 0;
 		jal = 0;
 		branch = 0;

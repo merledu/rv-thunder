@@ -1,5 +1,5 @@
 #include<systemc.h>
-SC_MODULE(Mux) {
+SC_MODULE(mux) {
 
     sc_in<bool> selsig;
     sc_in<sc_int<32>> i1, i2;
@@ -7,12 +7,12 @@ SC_MODULE(Mux) {
     sc_int<32> in2;
       
 
-    SC_CTOR(Mux) {
-        SC_METHOD(mux);
+    SC_CTOR(mux) {
+        SC_METHOD(Mux);
         sensitive << selsig<<i1<<i2;
     }
 
-    void mux() { 
+    void Mux() { 
             
             if (selsig.read()==0) {
                 muxout.write(i1.read());

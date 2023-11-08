@@ -1,15 +1,13 @@
 #include<iostream>
 #include <systemc.h>
-#include <fstream>
-#include <sstream>
-#include<string>
+
 
 
 
 using namespace std;
 
 
-SC_MODULE(FETCH) {
+SC_MODULE(imem) {
     sc_in  <sc_int<32>> addresspc;
     sc_out<sc_int<32>> instruction;
     sc_int<32> readdata32_16;
@@ -23,7 +21,7 @@ SC_MODULE(FETCH) {
     int memsize = 8192;
 
 
-    SC_CTOR(FETCH) {
+    SC_CTOR(imem) {
 
         mem = new sc_int<32>[memsize];
 
@@ -50,8 +48,8 @@ SC_MODULE(FETCH) {
             instruction.write(mem[addresspc.read().range(31,2)]);
     }
 
-    // Destructor to free memory
-    ~FETCH() {
-        delete[] mem; // Free the dynamically allocated memory
+    
+    ~imem() {
+        delete[] mem; 
     }
 };
