@@ -1,0 +1,230 @@
+#include <systemc.h>
+
+#include "pc.cpp"
+#include "imem.cpp"
+#include"control.cpp"
+#include "regfile.cpp"
+#include "mux.cpp"
+#include "alu.cpp"
+#include "dmem.cpp"
+#include "mux2bit.cpp"
+#include "branch.cpp"
+
+
+SC_MODULE(rv_thunder) {
+	pc pc_inst;
+	imem fetch_inst;
+	control decode_inst;
+	regfile reg_inst;
+	mux mux_inst,mux_inst1, mux_inst2;
+	alu alu_inst;
+	dmem data_mem_inst;
+	
+	mux2bit mux2bit_inst;
+	branch branch_inst;
+
+
+	sc_signal <sc_int<32>>pcbranch32, jalpc;
+	sc_signal<sc_uint<2>> op_a_sel;
+	sc_signal<sc_int<32>>addr, in3, in4, op1;
+	sc_signal<sc_int<32>> instr_dat;
+	sc_signal<bool> itypesignal, rtypesignal, stypesignal;
+	sc_signal<bool>we, operandbselsig, extd_bitsig, wem, memreadsig, auipc, nextpcsel,wrt;
+	sc_signal<sc_int<32>> imm;
+	sc_signal<sc_uint<5>> rs1, rs2, rd;
+	sc_signal<sc_uint<4>>aluop;
+	sc_signal<sc_uint<3>>func_3;
+	sc_in_clk clk;
+
+	sc_signal<sc_int<32>> rf_out1, rf_out2, wb_data, aluout,write;
+	sc_signal < sc_int<32>>op2;
+	sc_signal<sc_int<32>> dmem_dout;
+	sc_signal<bool> pcwrite;
+	sc_signal<sc_uint<1>>  branchsel;
+	sc_signal<sc_uint<1>> branchsig,pc_up;
+	sc_signal <sc_uint<1>> AND;
+
+	sc_signal<sc_int<32>> branchopa, branchopb, jump,test;
+	sc_int<32> JAL;
+
+
+	SC_CTOR(rv_thunder) :pc_inst("pc_inst"), fetch_inst("fetch_inst"), decode_inst("DecodeRinstance"), reg_inst("reginst"), mux_inst("mux_inst"), alu_inst("alu_inst"), data_mem_inst("data_mem_inst"), mux_inst1("mux_inst1"), mux2bit_inst("mux2bit_inst"), branch_inst("branch_inst"), mux_inst2("mux_inst2") {
+
+		
+		pc_inst.clk(clk);
+		pc_inst.address(addr);
+		pc_inst.branchsel(branchsel);
+		pc_inst.branchsig(branchsig);
+		pc_inst.pcjal(jump);
+		pc_inst.pc_branch(aluout);
+		pc_inst.jump(pc_up);
+
+		fetch_inst.addresspc(addr);
+		fetch_inst.clk(clk);
+		fetch_inst.instruction(instr_dat);
+
+		
+		
+		decode_inst.instruction(instr_dat); //transfering fetched inst to decode
+		decode_inst.regwrite(we); //write data sig in control decode
+		decode_inst.operandbsel(operandbselsig);	//operandb sig in control decode
+		decode_inst.memread(memreadsig);
+		decode_inst.memwritesig(wem);
+		decode_inst.immediate32(imm);
+		decode_inst.oprs1(rs1);
+		decode_inst.oprs2(rs2);
+		decode_inst.oprd(rd);
+		decode_inst.alufunc(aluop);
+		decode_inst.opasel(op_a_sel);
+		decode_inst.branchsel(branchsig);
+		decode_inst.func3(func_3);
+		decode_inst.wrt(wrt);
+		decode_inst.jump(pc_up);
+		
+
+
+		reg_inst.oprs1(rs1);
+		reg_inst.oprs2(rs2);
+		reg_inst.oprd(rd);
+		reg_inst.readData1(rf_out1);
+		reg_inst.readData2(rf_out2);
+		reg_inst.writeData(wb_data);
+		reg_inst.regwrite(we);
+		reg_inst.clk(clk);
+
+
+		mux2bit_inst.in1(rf_out1);  //opa sel
+		mux2bit_inst.in2(addr);
+		mux2bit_inst.in3(in3);
+		mux2bit_inst.in4(in4);
+		mux2bit_inst.out(op1);
+		mux2bit_inst.insel(op_a_sel);
+
+
+		
+		mux_inst.i1(rf_out2); //opbsel
+		mux_inst.i2(imm);
+		mux_inst.selsig(operandbselsig);
+		mux_inst.muxout(op2);
+
+		alu_inst.aluop(aluop);
+		alu_inst.aluop1(op1);
+		alu_inst.aluop2(op2);
+		alu_inst.alu_out(aluout);
+		
+
+		data_mem_inst.index(aluout);
+		data_mem_inst.clk(clk);
+		data_mem_inst.rs2in(rf_out2);
+		data_mem_inst.dataout(dmem_dout);
+		data_mem_inst.memwrite(wem);
+		
+
+		mux_inst1.i1(aluout); //writeback sel
+		mux_inst1.i2(dmem_dout);
+		mux_inst1.selsig(memreadsig);
+		mux_inst1.muxout(write);
+
+		branch_inst.OPA(rf_out1);
+		branch_inst.OPB(rf_out2);
+		branch_inst.func3(func_3);
+		branch_inst.branch_out(branchsel);
+
+		mux_inst2.i1(write);
+		mux_inst2.i2(jump);
+		mux_inst2.selsig(wrt);
+		mux_inst2.muxout(wb_data);
+
+	}
+
+	
+};
+
+int sc_main(int argc, char* argv[]) {
+	sc_set_time_resolution(1, SC_SEC);
+	sc_clock clk("clk", 2, SC_SEC);
+
+	rv_thunder TOP("TOP");
+	TOP.clk(clk);
+
+	sc_trace_file* tf = sc_create_vcd_trace_file("decode");
+	sc_trace(tf, TOP.fetch_inst.clk, "clk");
+	sc_trace(tf, TOP.pc_inst.address, "pcvalue");
+	sc_trace(tf, TOP.pc_inst.pc_branch, "branchval_pc");
+	sc_trace(tf, TOP.pc_inst.pcbyte, "pcval");
+
+	sc_trace(tf, TOP.pc_inst.branchsel, "branchsel");
+	sc_trace(tf, TOP.pc_inst.branchsig, "branchsig");
+
+	sc_trace(tf, TOP.decode_inst.instruction, "instruction");
+	sc_trace(tf, TOP.decode_inst.itypesig, "itypesignal");
+	sc_trace(tf, TOP.decode_inst.rtypesig, "rtypesignal");
+	sc_trace(tf, TOP.decode_inst.stypesig, "stypesignal");
+	sc_trace(tf, TOP.decode_inst.operandbsel, "operandbselsig");
+	sc_trace(tf, TOP.decode_inst.utypesig, "utypesignal");
+	sc_trace(tf, TOP.decode_inst.regwrite, "wb_datatoregsig");
+	sc_trace(tf, TOP.decode_inst.memwritesig, "memwrite");
+	sc_trace(tf, TOP.decode_inst.opasel, "opasig");
+	sc_trace(tf, TOP.decode_inst.branchsel, "branchseldec");
+
+	sc_trace(tf, TOP.decode_inst.immediate32, "immfromimdgen");
+	sc_trace(tf, TOP.decode_inst.loadsig, "loadsig");
+	sc_trace(tf, TOP.decode_inst.alufunc, "alufunc");
+	sc_trace(tf, TOP.reg_inst.oprs1, "oprs1");
+	sc_trace(tf, TOP.reg_inst.oprs2, "oprs2");
+	sc_trace(tf, TOP.reg_inst.oprd, "oprd");
+	sc_trace(tf, TOP.mux_inst.muxout, "op2");
+    sc_trace(tf, TOP.mux_inst.i1, "input1");
+	sc_trace(tf, TOP.mux_inst.i2, "input2");
+	sc_trace(tf, TOP.reg_inst.readData2, "redport2reg");
+	sc_trace(tf, TOP.reg_inst.readData1, "readreg1");
+	sc_trace(tf, TOP.alu_inst.aluop1, "aluinput1");
+	sc_trace(tf, TOP.alu_inst.aluop2, "aluinput2");
+	sc_trace(tf, TOP.alu_inst.alu_out, "aluoutput");
+	sc_trace(tf, TOP.reg_inst.writeData, "datainreg");
+	sc_trace(tf, TOP.reg_inst.regFile, "registerfile");
+
+
+	sc_trace(tf, TOP.data_mem_inst.rs2in, "datamem_rs2");
+	sc_trace(tf, TOP.data_mem_inst.index, "datamem_index");
+	sc_trace(tf, TOP.data_mem_inst.datamem, "datamemory");
+
+	sc_trace(tf, TOP.data_mem_inst.dataout, "datamem_out");
+	sc_trace(tf, TOP.mux_inst1.i1, " writebackmuxi1");
+	sc_trace(tf, TOP.mux_inst1.i2, " writebackmuxi2");
+	sc_trace(tf, TOP.mux_inst1.muxout, " writebackmux_out");
+
+
+	sc_trace(tf, TOP.mux2bit_inst.in1, "2bitmuxin1");
+	sc_trace(tf, TOP.mux2bit_inst.in2, "2bitmuxin2");
+	sc_trace(tf, TOP.mux2bit_inst.in3, "2bitmuxin3");
+	sc_trace(tf, TOP.mux2bit_inst.in4, "2bitmuxin4");
+	sc_trace(tf, TOP.mux2bit_inst.insel, "2bitmuxinsel");
+	sc_trace(tf, TOP.mux2bit_inst.out, "2bitop2");
+
+	sc_trace(tf, TOP.branch_inst.OPA, "branchOPA");
+	sc_trace(tf, TOP.branch_inst.OPB, "branchOPB");
+	sc_trace(tf, TOP.branch_inst.func3, "branchfunc3");
+
+	sc_trace(tf, TOP.branch_inst.branch_out, "branchout");
+	sc_trace(tf, TOP.mux_inst2.i2, " muxinst2i2");
+	sc_trace(tf, TOP.mux_inst2.muxout, " writeback");
+	
+
+	sc_start(150, SC_SEC);
+
+
+
+	sc_close_vcd_trace_file(tf);
+	
+	for (int i = 0; i < 32; i++) {
+		cout << hex << "Register " << i << ": " << TOP.reg_inst.regFile[i] << endl;
+    }
+
+		for (int i = 0; i < 8190; i++) {
+			cout << "memory " << i << ": " << TOP.data_mem_inst.datamem[i] << endl;
+		} 
+
+
+	return 0;
+}
