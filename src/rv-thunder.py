@@ -185,3 +185,9 @@ sim.add_clock(1e-6)  #Add clock
 sim.add_sync_process(bench)
 with sim.write_vcd("sim.vcd"): # Generate Vcd, which is useful to see a result in GTKwave
     sim.run()
+
+from amaranth.back import verilog
+
+top = TopModule()
+with open("output/verilog/rv-thunder.v", "w") as f:
+    f.write(verilog.convert(top, ports=[]))
