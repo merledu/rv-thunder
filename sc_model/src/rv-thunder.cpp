@@ -25,11 +25,11 @@ SC_MODULE(rv_thunder) {
 
 
 	sc_signal <sc_int<32>>pcbranch32, jalpc;
-	sc_signal<sc_uint<2>> op_a_sel;
+	sc_signal<sc_uint<2>> op_a_sel,dmem_mask;
 	sc_signal<sc_int<32>>addr, in3, in4, op1;
 	sc_signal<sc_int<32>> instr_dat;
 	sc_signal<bool> itypesignal, rtypesignal, stypesignal;
-	sc_signal<bool>we, operandbselsig, extd_bitsig, wem, memreadsig, auipc, nextpcsel,wrt;
+	sc_signal<bool>we, extd_bitsig, auipc, nextpcsel;
 	sc_signal<sc_int<32>> imm;
 	sc_signal<sc_uint<5>> rs1, rs2, rd;
 	sc_signal<sc_uint<4>>aluop;
@@ -40,7 +40,7 @@ SC_MODULE(rv_thunder) {
 	sc_signal < sc_int<32>>op2;
 	sc_signal<sc_int<32>> dmem_dout;
 	sc_signal<bool> pcwrite;
-	sc_signal<sc_uint<1>>  branchsel;
+	sc_signal<sc_uint<1>>  branchsel,wem, operandbselsig,wrt,muxwrtsig,memreadsig;
 	sc_signal<sc_uint<1>> branchsig,pc_up;
 	sc_signal <sc_uint<1>> AND;
 
@@ -68,7 +68,7 @@ SC_MODULE(rv_thunder) {
 		decode_inst.instruction(instr_dat); //transfering fetched inst to decode
 		decode_inst.regwrite(we); //write data sig in control decode
 		decode_inst.operandbsel(operandbselsig);	//operandb sig in control decode
-		decode_inst.memread(memreadsig);
+		
 		decode_inst.memwritesig(wem);
 		decode_inst.immediate32(imm);
 		decode_inst.oprs1(rs1);
@@ -80,6 +80,9 @@ SC_MODULE(rv_thunder) {
 		decode_inst.func3(func_3);
 		decode_inst.wrt(wrt);
 		decode_inst.jump(pc_up);
+		decode_inst.dmem_sel(dmem_mask);
+		decode_inst.muxwrt(muxwrtsig);
+		decode_inst.readsig(memreadsig);
 		
 
 
@@ -118,11 +121,13 @@ SC_MODULE(rv_thunder) {
 		data_mem_inst.rs2in(rf_out2);
 		data_mem_inst.dataout(dmem_dout);
 		data_mem_inst.memwrite(wem);
+		data_mem_inst.mask(dmem_mask);
+		data_mem_inst.memread(memreadsig);
 		
 
-		mux_inst1.i1(aluout); //writeback sel
-		mux_inst1.i2(dmem_dout);
-		mux_inst1.selsig(memreadsig);
+		mux_inst1.i1(dmem_dout); //writeback sel
+		mux_inst1.i2(aluout);
+		mux_inst1.selsig(muxwrtsig);
 		mux_inst1.muxout(write);
 
 		branch_inst.OPA(rf_out1);
@@ -188,11 +193,14 @@ int sc_main(int argc, char* argv[]) {
 	sc_trace(tf, TOP.data_mem_inst.rs2in, "datamem_rs2");
 	sc_trace(tf, TOP.data_mem_inst.index, "datamem_index");
 	sc_trace(tf, TOP.data_mem_inst.datamem, "datamemory");
+    sc_trace(tf, TOP.data_mem_inst.dataout, "datamem_out");
+	sc_trace(tf, TOP.data_mem_inst.memwrite, "memwritesig");
+	sc_trace(tf, TOP.data_mem_inst.mask, "memmask");
 
-	sc_trace(tf, TOP.data_mem_inst.dataout, "datamem_out");
 	sc_trace(tf, TOP.mux_inst1.i1, " writebackmuxi1");
 	sc_trace(tf, TOP.mux_inst1.i2, " writebackmuxi2");
 	sc_trace(tf, TOP.mux_inst1.muxout, " writebackmux_out");
+	sc_trace(tf, TOP.mux_inst1.selsig, " writebackmux_out");
 
 
 	sc_trace(tf, TOP.mux2bit_inst.in1, "2bitmuxin1");
@@ -221,7 +229,7 @@ int sc_main(int argc, char* argv[]) {
 		cout << hex << "Register " << i << ": " << TOP.reg_inst.regFile[i] << endl;
     }
 
-		for (int i = 0; i < 8190; i++) {
+		for (int i = 0; i < 8000; i++) {
 			cout << "memory " << i << ": " << TOP.data_mem_inst.datamem[i] << endl;
 		} 
 
