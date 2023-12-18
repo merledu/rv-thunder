@@ -1,12 +1,6 @@
-#include<iostream>
-#include <systemc.h>
 
-
-
-
-using namespace std;
-
-
+#include<systemc.h>
+#include<fstream>
 SC_MODULE(imem) {
     sc_in  <sc_int<32>> addresspc;
     sc_out<sc_int<32>> instruction;
@@ -16,40 +10,38 @@ SC_MODULE(imem) {
     sc_in_clk clk;
     sc_int<32>* mem;
 
-    int i, j = 0;
-    int n;
+    
     int memsize = 8192;
 
+    
 
     SC_CTOR(imem) {
-
         mem = new sc_int<32>[memsize];
+        unsigned int mem_word;
+        FILE* fp;
+        errno_t err = fopen_s(&fp, "imem.txt", "r");
 
-        memoryinitialize();
+        if (err != 0) {
+            cout << "error opening file" << endl;
+        }
+        int size = 0;
+
+        while (fscanf_s(fp, "%x", &mem_word) != EOF) {
+            mem[size] = mem_word;
+            size++;
+        }
 
         SC_METHOD(checkins);
         sensitive << clk << addresspc;
 
-
     }
-
-    void memoryinitialize() {
-        cout << "enter number of instructions: " << endl;
-        cin >> n;
-        for (i = 0; i < n; i++) {
-            cout << "enter instruction " << i + 1 << " : " << endl;
-            cin >> readdata32_16;
-            mem[i] = readdata32_16;
-        }
-    }
-
-
     void checkins() {
-            instruction.write(mem[addresspc.read().range(31,2)]);
+        instruction.write(mem[addresspc.read().range(15, 2)]);
     }
 
-    
+
     ~imem() {
-        delete[] mem; 
+        delete[] mem;
     }
+
 };

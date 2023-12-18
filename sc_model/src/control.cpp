@@ -4,9 +4,10 @@
 SC_MODULE(control) {
 	sc_in<sc_int<32>> instruction;
 	sc_out<sc_uint<2>> opasel;
+	sc_out<sc_uint<2>>dmem_sel;
 	sc_out<sc_uint<3>> func3;
-	sc_out<bool> operandbsel, regwrite, memwritesig, memread,wrt;
-	sc_out<sc_uint<1>> branchsel,jump;
+	sc_out<bool>  regwrite;
+	sc_out<sc_uint<1>> branchsel,jump,memwritesig, operandbsel,wrt,muxwrt,readsig;
 	sc_out<sc_uint<5>> oprs1, oprs2, oprd;
 	sc_out < sc_uint<4>>alufunc;
 	sc_out <sc_int<32>>immediate32;
@@ -114,20 +115,22 @@ SC_MODULE(control) {
 			if (itypesig == true || rtypesig == true || loadsig == true || utypesig == true||utypesigaui==true||jal==true||jalr==true) {
 				oprd.write(instruction.read().range(11, 7).to_uint());
 				regwrite.write(true);
+				
 			}
 			else {
 				regwrite.write(false);
+				
 			}
 
 			if (itypesig == true || stypesig == true || loadsig == true || utypesig == true || utypesigaui == true || branch == true || jal == true||jalr==true) {
 
-				operandbsel = true;
+				operandbsel = 0b1;
 				extdbit = true;
 					
 			}
 			else {
 				
-				operandbsel = false;
+				operandbsel = 0b0;
 				extdbit = false;
 			}
 			
@@ -144,21 +147,31 @@ SC_MODULE(control) {
 				alufunc.write(alufunc1);
 				opasel.write(0b00);
 				wrt.write(0b0);
+				muxwrt.write(0b1);
 				
 				
 			}
 			
 			if (stypesig == true) {
-				memwritesig.write(true);
+				memwritesig.write(0b1);
 
 				alufunc.write(0);
 				oprs1.write(instruction.read().range(19, 15).to_uint());
 				opasel.write(0b0000);
+				if (instruction.read().range(14, 12) == 0b000) { // sb
+					dmem_sel.write(0b01);
+				}
+				else if (instruction.read().range(14, 12) == 0b001) { //sh
+					dmem_sel.write(0b10);
+				}
+				else if (instruction.read().range(14, 12) == 0b010) { //sw
+					dmem_sel.write(0b11); 
+				} 
 
 				
 			}
 			else {
-				memwritesig.write(false);
+				memwritesig.write(0b0);
 			}
 			if (rtypesig == true) {
 
@@ -167,24 +180,39 @@ SC_MODULE(control) {
 				alufunc.write(alufunc1);
 				opasel.write(0b00);
 				wrt.write(0b0);
+				muxwrt.write(0b1);
 				
 				
 				
 			}	
 			if (loadsig == true) {
-				memread.write(true);
+				
 				alufunc.write(0);
 				opasel.write(0b00);
+				muxwrt.write(0b0);
+				readsig.write(0b1);
+				if (instruction.read().range(14, 12) == 0b000) { // lb
+					dmem_sel.write(0b01);
+				}
+				else if (instruction.read().range(14, 12) == 0b001) { //lh
+					dmem_sel.write(0b10);
+				}
+				else if (instruction.read().range(14, 12) == 0b010) { //lw
+					dmem_sel.write(0b11);
+				}
+				
 				
 				
 			}
 			else {
-				memread.write(false);
+				readsig.write(0b0);
 			}
+			
 			if (utypesig == true) {
 				alufunc.write(0b1111);
 				opasel.write(0b01);
 				wrt.write(0b0);
+				muxwrt.write(0b1);
 			}
 			if (utypesigaui == true||branch==true) {
 				alufunc.write(0b0000);
@@ -201,7 +229,7 @@ SC_MODULE(control) {
 			}
 			if (jal == true) {
 
-				
+				muxwrt.write(0b1);
 				opasel.write(0b01);
 				alufunc.write(0b0000);
 				
@@ -214,6 +242,7 @@ SC_MODULE(control) {
 				
 			}
 			if (jalr == true) {
+				muxwrt.write(0b1);
 				alufunc.write(0b0000);
 				opasel.write(0b00);
 			}
@@ -234,10 +263,10 @@ SC_MODULE(control) {
 			}
 			//================================
 			 if (jal == true||jalr==true) {
-				 wrt.write(true);
+				 wrt.write(0b1);
 			 }
 			 else {
-				 wrt.write(false);
+				 wrt.write(0b0);
 			 }
 			
 		
