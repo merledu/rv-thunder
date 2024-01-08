@@ -20,11 +20,7 @@ SC_MODULE(regfile) {
 
         SC_METHOD(read_ports);
         sensitive << oprs1<<oprs2;
-
-        
-        
-
-     
+    
 
     }
     void read_ports() {
@@ -53,7 +49,7 @@ SC_MODULE(regfile) {
                     regFile[0] = 0;
 
                 }
-                cout << writeData.read() << "at time : " << sc_time_stamp() << endl;
+                
             }
        }
     }
