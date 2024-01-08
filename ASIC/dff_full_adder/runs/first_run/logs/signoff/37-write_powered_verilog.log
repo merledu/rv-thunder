@@ -1,0 +1,36 @@
+OpenROAD 75f2f325b7a42e56a92404f33af8e96530d9b202 
+This program is licensed under the BSD-3 license. See the LICENSE file for details.
+Components of this program may be licensed under more restrictive licenses which must be honored.
+[INFO ODB-0222] Reading LEF file: /openlane/designs/dff_full_adder/runs/first_run/tmp/merged.nom.lef
+[INFO ODB-0223]     Created 13 technology layers
+[INFO ODB-0224]     Created 25 technology vias
+[INFO ODB-0225]     Created 441 library cells
+[INFO ODB-0226] Finished LEF file:  /openlane/designs/dff_full_adder/runs/first_run/tmp/merged.nom.lef
+[INFO ODB-0127] Reading DEF file: /openlane/designs/dff_full_adder/runs/first_run/tmp/signoff/36-dff_full_adder.p.def
+[INFO ODB-0128] Design: dff_full_adder
+[INFO ODB-0130]     Created 10 pins.
+[INFO ODB-0131]     Created 12846 components and 47756 component-terminals.
+[INFO ODB-0132]     Created 2 special nets and 47718 connections.
+[INFO ODB-0133]     Created 18 nets and 38 connections.
+[INFO ODB-0134] Finished DEF file: /openlane/designs/dff_full_adder/runs/first_run/tmp/signoff/36-dff_full_adder.p.def
+define_corners Typical
+read_liberty -corner Typical /home/mmuddassir/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+Using 1e-12 for capacitance...
+Using 1e+03 for resistance...
+Using 1e-09 for time...
+Using 1e+00 for voltage...
+Using 1e-03 for current...
+Using 1e-09 for power...
+Using 1e-06 for distance...
+Reading design constraints file at '/openlane/scripts/base.sdc'…
+[INFO]: Setting output delay to: 2.0
+[INFO]: Setting input delay to: 2.0
+[WARNING STA-0337] port '__VIRTUAL_CLK__' not found.
+[INFO]: Setting load to: 0.033442
+[INFO]: Setting clock uncertainty to: 0.25
+[INFO]: Setting clock transition to: 0.15
+[WARNING STA-0559] transition time can not be specified for virtual clocks.
+[INFO]: Setting timing derate to: 5.0 %
+[WARNING] Did not save OpenROAD database!
+Writing netlist to '/openlane/designs/dff_full_adder/runs/first_run/tmp/signoff/36-dff_full_adder.nl.v'…
+Writing powered netlist to '/openlane/designs/dff_full_adder/runs/first_run/tmp/signoff/36-dff_full_adder.pnl.v'…

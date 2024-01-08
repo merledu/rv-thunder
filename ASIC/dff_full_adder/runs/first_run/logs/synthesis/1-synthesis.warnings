@@ -1,0 +1,7 @@
+ABC: Warning: Detected 2 multi-output gates (for example, "sky130_fd_sc_hd__fa_1").
+Warning: Wire dff_full_adder.\sum is used but has no driver.
+Warning: Wire dff_full_adder.\e is used but has no driver.
+Warning: Wire dff_full_adder.\d is used but has no driver.
+Warning: Wire dff_full_adder.\cout is used but has no driver.
+Warning: Wire dff_full_adder.\c is used but has no driver.
+Warnings: 5 unique messages, 5 total

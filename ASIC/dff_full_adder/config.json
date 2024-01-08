@@ -1,0 +1,8 @@
+{
+    "DESIGN_NAME": "dff_full_adder",
+    "VERILOG_FILES": "dir::src/*.v",
+    "FP_CORE_UTIL": 0.05,
+    "FP_ASPECT_RATIO": 0.5,
+    "FP_CTS": 0,
+    "FP_PDN_MULTILAYER": true
+}

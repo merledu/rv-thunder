@@ -1,0 +1,33 @@
+digraph "dff_full_adder" {
+label="dff_full_adder";
+rankdir="LR";
+remincross=true;
+n1 [ shape=octagon, label="a", color="black", fontcolor="black" ];
+n2 [ shape=octagon, label="b", color="black", fontcolor="black" ];
+n3 [ shape=octagon, label="c", color="black", fontcolor="black" ];
+n4 [ shape=octagon, label="cin", color="black", fontcolor="black" ];
+n5 [ shape=octagon, label="cout", color="black", fontcolor="black" ];
+n6 [ shape=octagon, label="d", color="black", fontcolor="black" ];
+n7 [ shape=octagon, label="e", color="black", fontcolor="black" ];
+n8 [ shape=octagon, label="sum", color="black", fontcolor="black" ];
+c12 [ shape=record, label="{{<p9> A|<p10> B}|$89\n$_XOR_|{<p11> Y}}",  ];
+c13 [ shape=record, label="{{<p9> A|<p10> B}|$90\n$_XOR_|{<p11> Y}}",  ];
+c14 [ shape=record, label="{{<p9> A|<p10> B}|$91\n$_AND_|{<p11> Y}}",  ];
+c15 [ shape=record, label="{{<p9> A|<p10> B}|$92\n$_AND_|{<p11> Y}}",  ];
+c16 [ shape=record, label="{{<p9> A|<p10> B}|$93\n$_OR_|{<p11> Y}}",  ];
+n1:e -> c12:p10:w [color="black", fontcolor="black", label=""];
+n1:e -> c14:p10:w [color="black", fontcolor="black", label=""];
+n2:e -> c12:p9:w [color="black", fontcolor="black", label=""];
+n2:e -> c14:p9:w [color="black", fontcolor="black", label=""];
+c12:p11:e -> n3:w [color="black", fontcolor="black", label=""];
+n3:e -> c13:p9:w [color="black", fontcolor="black", label=""];
+n3:e -> c15:p9:w [color="black", fontcolor="black", label=""];
+n4:e -> c13:p10:w [color="black", fontcolor="black", label=""];
+n4:e -> c15:p10:w [color="black", fontcolor="black", label=""];
+c16:p11:e -> n5:w [color="black", fontcolor="black", label=""];
+c14:p11:e -> n6:w [color="black", fontcolor="black", label=""];
+n6:e -> c16:p10:w [color="black", fontcolor="black", label=""];
+c15:p11:e -> n7:w [color="black", fontcolor="black", label=""];
+n7:e -> c16:p9:w [color="black", fontcolor="black", label=""];
+c13:p11:e -> n8:w [color="black", fontcolor="black", label=""];
+}

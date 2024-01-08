@@ -1,0 +1,65 @@
+OpenROAD 75f2f325b7a42e56a92404f33af8e96530d9b202 
+This program is licensed under the BSD-3 license. See the LICENSE file for details.
+Components of this program may be licensed under more restrictive licenses which must be honored.
+[INFO]: Reading ODB at '/openlane/designs/dff_full_adder/runs/first_run/tmp/placement/9-io.odb'…
+define_corners Typical
+read_liberty -corner Typical /home/mmuddassir/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+Using 1e-12 for capacitance...
+Using 1e+03 for resistance...
+Using 1e-09 for time...
+Using 1e+00 for voltage...
+Using 1e-03 for current...
+Using 1e-09 for power...
+Using 1e-06 for distance...
+Reading design constraints file at '/openlane/scripts/base.sdc'…
+[INFO]: Setting output delay to: 2.0
+[INFO]: Setting input delay to: 2.0
+[WARNING STA-0337] port '__VIRTUAL_CLK__' not found.
+[INFO]: Setting load to: 0.033442
+[INFO]: Setting clock uncertainty to: 0.25
+[INFO]: Setting clock transition to: 0.15
+[WARNING STA-0559] transition time can not be specified for virtual clocks.
+[INFO]: Setting timing derate to: 5.0 %
+[INFO]: Setting RC values...
+[INFO]: Setting signal min routing layer to: met1 and clock min routing layer to met1. 
+[INFO]: Setting signal max routing layer to: met5 and clock max routing layer to met5. 
+[WARNING GPL-0150] -skip_io will disable timing driven mode.
+[WARNING GPL-0151] -skip_io will disable routability driven mode.
+[INFO GPL-0002] DBU: 1000
+[INFO GPL-0003] SiteSize: 460 2720
+[INFO GPL-0004] CoreAreaLxLy: 5520 10880
+[INFO GPL-0005] CoreAreaUxUy: 510600 261120
+[INFO GPL-0006] NumInstances: 2024
+[INFO GPL-0007] NumPlaceInstances: 7
+[INFO GPL-0008] NumFixedInstances: 2017
+[INFO GPL-0009] NumDummyInstances: 0
+[INFO GPL-0010] NumNets: 10
+[INFO GPL-0011] NumPins: 20
+[INFO GPL-0012] DieAreaLxLy: 0 0
+[INFO GPL-0013] DieAreaUxUy: 516255 274370
+[INFO GPL-0014] CoreAreaLxLy: 5520 10880
+[INFO GPL-0015] CoreAreaUxUy: 510600 261120
+[INFO GPL-0016] CoreArea: 126391219200
+[INFO GPL-0017] NonPlaceInstsArea: 2984112000
+[INFO GPL-0018] PlaceInstsArea: 63811200
+[INFO GPL-0019] Util(%): 0.05
+[INFO GPL-0020] StdInstsArea: 63811200
+[INFO GPL-0021] MacroInstsArea: 0
+[INFO GPL-0031] FillerInit: NumGCells: 1564
+[INFO GPL-0032] FillerInit: NumGNets: 10
+[INFO GPL-0033] FillerInit: NumGPins: 20
+[INFO GPL-0023] TargetDensity: 0.10
+[INFO GPL-0024] AveragePlaceInstArea: 9115885
+[INFO GPL-0025] IdealBinArea: 90705320
+[INFO GPL-0026] IdealBinCnt: 1393
+[INFO GPL-0027] TotalBinArea: 126391219200
+[INFO GPL-0028] BinCnt: 32 16
+[INFO GPL-0029] BinSize: 15784 15640
+[INFO GPL-0030] NumBins: 512
+[NesterovSolve] Iter: 1 overflow: 0 HPWL: 8342
+[NesterovSolve] Finished with Overflow: 0.000000
+Setting global connections for newly added cells…
+Writing OpenROAD database to '/openlane/designs/dff_full_adder/runs/first_run/tmp/placement/10-global.odb'…
+Writing netlist to '/openlane/designs/dff_full_adder/runs/first_run/tmp/placement/10-global.nl.v'…
+Writing powered netlist to '/openlane/designs/dff_full_adder/runs/first_run/tmp/placement/10-global.pnl.v'…
+Writing layout to '/openlane/designs/dff_full_adder/runs/first_run/tmp/placement/10-global.def'…

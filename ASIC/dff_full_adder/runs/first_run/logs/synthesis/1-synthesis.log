@@ -1,0 +1,749 @@
+
+ /----------------------------------------------------------------------------\
+ |                                                                            |
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |                                                                            |
+ |  Copyright (C) 2012 - 2020  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |                                                                            |
+ |  Permission to use, copy, modify, and/or distribute this software for any  |
+ |  purpose with or without fee is hereby granted, provided that the above    |
+ |  copyright notice and this permission notice appear in all copies.         |
+ |                                                                            |
+ |  THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES  |
+ |  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF          |
+ |  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR   |
+ |  ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES    |
+ |  WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN     |
+ |  ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF   |
+ |  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.            |
+ |                                                                            |
+ \----------------------------------------------------------------------------/
+
+ Yosys 0.34 (git sha1 4a1b5599258, gcc 8.3.1 -fPIC -Os)
+
+[TCL: yosys -import] Command name collision: found pre-existing command `cd' -> skip.
+[TCL: yosys -import] Command name collision: found pre-existing command `eval' -> skip.
+[TCL: yosys -import] Command name collision: found pre-existing command `exec' -> skip.
+[TCL: yosys -import] Command name collision: found pre-existing command `read' -> skip.
+[TCL: yosys -import] Command name collision: found pre-existing command `trace' -> skip.
+
+1. Executing Verilog-2005 frontend: /openlane/designs/dff_full_adder/src/dff_full_adder.v
+Parsing SystemVerilog input from `/openlane/designs/dff_full_adder/src/dff_full_adder.v' to AST representation.
+Generating RTLIL representation for module `\dff_full_adder'.
+Successfully finished Verilog frontend.
+
+2. Generating Graphviz representation of design.
+Writing dot description to `/openlane/designs/dff_full_adder/runs/first_run/tmp/synthesis/hierarchy.dot'.
+Dumping module dff_full_adder to page 1.
+
+3. Executing HIERARCHY pass (managing design hierarchy).
+
+3.1. Analyzing design hierarchy..
+Top module:  \dff_full_adder
+
+3.2. Analyzing design hierarchy..
+Top module:  \dff_full_adder
+Removed 0 unused modules.
+Renaming module dff_full_adder to dff_full_adder.
+
+4. Executing TRIBUF pass.
+
+5. Executing HIERARCHY pass (managing design hierarchy).
+
+5.1. Analyzing design hierarchy..
+Top module:  \dff_full_adder
+
+5.2. Analyzing design hierarchy..
+Top module:  \dff_full_adder
+Removed 0 unused modules.
+
+6. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+7. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Removed a total of 0 dead cases.
+
+8. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 0 redundant assignments.
+Promoted 0 assignments to connections.
+
+9. Executing PROC_INIT pass (extract init attributes).
+
+10. Executing PROC_ARST pass (detect async resets in processes).
+
+11. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+
+12. Executing PROC_MUX pass (convert decision trees to multiplexers).
+
+13. Executing PROC_DLATCH pass (convert process syncs to latches).
+
+14. Executing PROC_DFF pass (convert process syncs to FFs).
+
+15. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+16. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+17. Executing CHECK pass (checking for obvious problems).
+Checking module dff_full_adder...
+Found and reported 0 problems.
+
+18. Executing OPT_EXPR pass (perform const folding).
+Optimizing module dff_full_adder.
+
+19. Executing FLATTEN pass (flatten design).
+
+20. Executing OPT_EXPR pass (perform const folding).
+Optimizing module dff_full_adder.
+
+21. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \dff_full_adder..
+Removed 0 unused cells and 5 unused wires.
+<suppressed ~1 debug messages>
+
+22. Executing OPT pass (performing simple optimizations).
+
+22.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module dff_full_adder.
+
+22.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\dff_full_adder'.
+Removed a total of 0 cells.
+
+22.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \dff_full_adder..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+22.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \dff_full_adder.
+Performed a total of 0 changes.
+
+22.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\dff_full_adder'.
+Removed a total of 0 cells.
+
+22.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+22.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \dff_full_adder..
+
+22.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module dff_full_adder.
+
+22.9. Finished OPT passes. (There is nothing left to do.)
+
+23. Executing FSM pass (extract and optimize FSM).
+
+23.1. Executing FSM_DETECT pass (finding FSMs in design).
+
+23.2. Executing FSM_EXTRACT pass (extracting FSM from design).
+
+23.3. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+23.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \dff_full_adder..
+
+23.5. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+23.6. Executing FSM_RECODE pass (re-assigning FSM state encoding).
+
+23.7. Executing FSM_INFO pass (dumping all available information on FSM cells).
+
+23.8. Executing FSM_MAP pass (mapping FSMs to basic logic).
+
+24. Executing OPT pass (performing simple optimizations).
+
+24.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module dff_full_adder.
+
+24.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\dff_full_adder'.
+Removed a total of 0 cells.
+
+24.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \dff_full_adder..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+24.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \dff_full_adder.
+Performed a total of 0 changes.
+
+24.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\dff_full_adder'.
+Removed a total of 0 cells.
+
+24.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+24.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \dff_full_adder..
+
+24.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module dff_full_adder.
+
+24.9. Finished OPT passes. (There is nothing left to do.)
+
+25. Executing WREDUCE pass (reducing word size of cells).
+
+26. Executing PEEPOPT pass (run peephole optimizers).
+
+27. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \dff_full_adder..
+
+28. Executing ALUMACC pass (create $alu and $macc cells).
+Extracting $alu and $macc cells in module dff_full_adder:
+  created 0 $alu and 0 $macc cells.
+
+29. Executing SHARE pass (SAT-based resource sharing).
+
+30. Executing OPT pass (performing simple optimizations).
+
+30.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module dff_full_adder.
+
+30.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\dff_full_adder'.
+Removed a total of 0 cells.
+
+30.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \dff_full_adder..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+30.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \dff_full_adder.
+Performed a total of 0 changes.
+
+30.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\dff_full_adder'.
+Removed a total of 0 cells.
+
+30.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+30.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \dff_full_adder..
+
+30.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module dff_full_adder.
+
+30.9. Finished OPT passes. (There is nothing left to do.)
+
+31. Executing MEMORY pass.
+
+31.1. Executing OPT_MEM pass (optimize memories).
+Performed a total of 0 transformations.
+
+31.2. Executing OPT_MEM_PRIORITY pass (removing unnecessary memory write priority relations).
+Performed a total of 0 transformations.
+
+31.3. Executing OPT_MEM_FEEDBACK pass (finding memory read-to-write feedback paths).
+
+31.4. Executing MEMORY_BMUX2ROM pass (converting muxes to ROMs).
+
+31.5. Executing MEMORY_DFF pass (merging $dff cells to $memrd).
+
+31.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \dff_full_adder..
+
+31.7. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+
+31.8. Executing OPT_MEM_WIDEN pass (optimize memories where all ports are wide).
+Performed a total of 0 transformations.
+
+31.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \dff_full_adder..
+
+31.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+32. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \dff_full_adder..
+
+33. Executing OPT pass (performing simple optimizations).
+
+33.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module dff_full_adder.
+
+33.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\dff_full_adder'.
+Removed a total of 0 cells.
+
+33.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+33.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \dff_full_adder..
+
+33.5. Finished fast OPT passes.
+
+34. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+
+35. Executing OPT pass (performing simple optimizations).
+
+35.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module dff_full_adder.
+
+35.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\dff_full_adder'.
+Removed a total of 0 cells.
+
+35.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \dff_full_adder..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+35.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \dff_full_adder.
+Performed a total of 0 changes.
+
+35.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\dff_full_adder'.
+Removed a total of 0 cells.
+
+35.6. Executing OPT_SHARE pass.
+
+35.7. Executing OPT_DFF pass (perform DFF optimizations).
+
+35.8. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \dff_full_adder..
+
+35.9. Executing OPT_EXPR pass (perform const folding).
+Optimizing module dff_full_adder.
+
+35.10. Finished OPT passes. (There is nothing left to do.)
+
+36. Executing TECHMAP pass (map to technology primitives).
+
+36.1. Executing Verilog-2005 frontend: /build/bin/../share/yosys/techmap.v
+Parsing Verilog input from `/build/bin/../share/yosys/techmap.v' to AST representation.
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `\$__div_mod_u'.
+Generating RTLIL representation for module `\$__div_mod_trunc'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `\$__div_mod_floor'.
+Generating RTLIL representation for module `\_90_divfloor'.
+Generating RTLIL representation for module `\_90_modfloor'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_pmux'.
+Generating RTLIL representation for module `\_90_demux'.
+Generating RTLIL representation for module `\_90_lut'.
+Successfully finished Verilog frontend.
+
+36.2. Continuing TECHMAP pass.
+Using extmapper simplemap for cells of type $xor.
+Using extmapper simplemap for cells of type $and.
+Using extmapper simplemap for cells of type $or.
+No more expansions possible.
+<suppressed ~78 debug messages>
+
+37. Executing OPT pass (performing simple optimizations).
+
+37.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module dff_full_adder.
+
+37.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\dff_full_adder'.
+Removed a total of 0 cells.
+
+37.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+37.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \dff_full_adder..
+
+37.5. Finished fast OPT passes.
+
+38. Executing ABC pass (technology mapping using ABC).
+
+38.1. Extracting gate netlist of module `\dff_full_adder' to `<abc-temp-dir>/input.blif'..
+Extracted 5 gates and 8 wires to a netlist network with 3 inputs and 5 outputs.
+
+38.1.1. Executing ABC.
+Running ABC command: "<yosys-exe-dir>/yosys-abc" -s -f <abc-temp-dir>/abc.script 2>&1
+ABC: ABC command line: "source <abc-temp-dir>/abc.script".
+ABC: 
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: Entered genlib library with 13 gates from file "<abc-temp-dir>/stdcells.genlib".
+ABC: + strash 
+ABC: + dretime 
+ABC: + map 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+38.1.2. Re-integrating ABC results.
+ABC RESULTS:               XOR cells:        2
+ABC RESULTS:               AND cells:        2
+ABC RESULTS:                OR cells:        1
+ABC RESULTS:        internal signals:        0
+ABC RESULTS:           input signals:        3
+ABC RESULTS:          output signals:        5
+Removing temp directory.
+
+39. Executing OPT pass (performing simple optimizations).
+
+39.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module dff_full_adder.
+
+39.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\dff_full_adder'.
+Removed a total of 0 cells.
+
+39.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+39.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \dff_full_adder..
+Removed 0 unused cells and 8 unused wires.
+<suppressed ~1 debug messages>
+
+39.5. Finished fast OPT passes.
+
+40. Executing HIERARCHY pass (managing design hierarchy).
+
+40.1. Analyzing design hierarchy..
+Top module:  \dff_full_adder
+
+40.2. Analyzing design hierarchy..
+Top module:  \dff_full_adder
+Removed 0 unused modules.
+
+41. Printing statistics.
+
+=== dff_full_adder ===
+
+   Number of wires:                  8
+   Number of wire bits:              8
+   Number of public wires:           8
+   Number of public wire bits:       8
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                  5
+     $_AND_                          2
+     $_OR_                           1
+     $_XOR_                          2
+
+42. Executing CHECK pass (checking for obvious problems).
+Checking module dff_full_adder...
+Found and reported 0 problems.
+
+43. Generating Graphviz representation of design.
+Writing dot description to `/openlane/designs/dff_full_adder/runs/first_run/tmp/synthesis/post_techmap.dot'.
+Dumping module dff_full_adder to page 1.
+
+44. Executing SHARE pass (SAT-based resource sharing).
+
+45. Executing OPT pass (performing simple optimizations).
+
+45.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module dff_full_adder.
+
+45.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\dff_full_adder'.
+Removed a total of 0 cells.
+
+45.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \dff_full_adder..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+45.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \dff_full_adder.
+Performed a total of 0 changes.
+
+45.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\dff_full_adder'.
+Removed a total of 0 cells.
+
+45.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+45.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \dff_full_adder..
+
+45.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module dff_full_adder.
+
+45.9. Finished OPT passes. (There is nothing left to do.)
+
+46. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \dff_full_adder..
+
+47. Printing statistics.
+
+=== dff_full_adder ===
+
+   Number of wires:                  8
+   Number of wire bits:              8
+   Number of public wires:           8
+   Number of public wire bits:       8
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                  5
+     $_AND_                          2
+     $_OR_                           1
+     $_XOR_                          2
+
+mapping tbuf
+
+48. Executing TECHMAP pass (map to technology primitives).
+
+48.1. Executing Verilog-2005 frontend: /home/mmuddassir/.volare/sky130A/libs.tech/openlane/sky130_fd_sc_hd/tribuff_map.v
+Parsing Verilog input from `/home/mmuddassir/.volare/sky130A/libs.tech/openlane/sky130_fd_sc_hd/tribuff_map.v' to AST representation.
+Generating RTLIL representation for module `\$_TBUF_'.
+Successfully finished Verilog frontend.
+
+48.2. Continuing TECHMAP pass.
+No more expansions possible.
+<suppressed ~3 debug messages>
+
+49. Executing SIMPLEMAP pass (map simple cells to gate primitives).
+
+50. Executing TECHMAP pass (map to technology primitives).
+
+50.1. Executing Verilog-2005 frontend: /home/mmuddassir/.volare/sky130A/libs.tech/openlane/sky130_fd_sc_hd/latch_map.v
+Parsing Verilog input from `/home/mmuddassir/.volare/sky130A/libs.tech/openlane/sky130_fd_sc_hd/latch_map.v' to AST representation.
+Generating RTLIL representation for module `\$_DLATCH_P_'.
+Generating RTLIL representation for module `\$_DLATCH_N_'.
+Successfully finished Verilog frontend.
+
+50.2. Continuing TECHMAP pass.
+No more expansions possible.
+<suppressed ~4 debug messages>
+
+51. Executing SIMPLEMAP pass (map simple cells to gate primitives).
+
+52. Executing DFFLIBMAP pass (mapping DFF cells to sequential cells from liberty file).
+  cell sky130_fd_sc_hd__dfxtp_2 (noninv, pins=3, area=21.27) is a direct match for cell type $_DFF_P_.
+  cell sky130_fd_sc_hd__dfrtp_2 (noninv, pins=4, area=26.28) is a direct match for cell type $_DFF_PN0_.
+  cell sky130_fd_sc_hd__dfstp_2 (noninv, pins=4, area=26.28) is a direct match for cell type $_DFF_PN1_.
+  cell sky130_fd_sc_hd__dfbbn_2 (noninv, pins=6, area=35.03) is a direct match for cell type $_DFFSR_NNN_.
+  final dff cell mappings:
+    unmapped dff cell: $_DFF_N_
+    \sky130_fd_sc_hd__dfxtp_2 _DFF_P_ (.CLK( C), .D( D), .Q( Q));
+    unmapped dff cell: $_DFF_NN0_
+    unmapped dff cell: $_DFF_NN1_
+    unmapped dff cell: $_DFF_NP0_
+    unmapped dff cell: $_DFF_NP1_
+    \sky130_fd_sc_hd__dfrtp_2 _DFF_PN0_ (.CLK( C), .D( D), .Q( Q), .RESET_B( R));
+    \sky130_fd_sc_hd__dfstp_2 _DFF_PN1_ (.CLK( C), .D( D), .Q( Q), .SET_B( R));
+    unmapped dff cell: $_DFF_PP0_
+    unmapped dff cell: $_DFF_PP1_
+    \sky130_fd_sc_hd__dfbbn_2 _DFFSR_NNN_ (.CLK_N( C), .D( D), .Q( Q), .Q_N(~Q), .RESET_B( R), .SET_B( S));
+    unmapped dff cell: $_DFFSR_NNP_
+    unmapped dff cell: $_DFFSR_NPN_
+    unmapped dff cell: $_DFFSR_NPP_
+    unmapped dff cell: $_DFFSR_PNN_
+    unmapped dff cell: $_DFFSR_PNP_
+    unmapped dff cell: $_DFFSR_PPN_
+    unmapped dff cell: $_DFFSR_PPP_
+
+52.1. Executing DFFLEGALIZE pass (convert FFs to types supported by the target).
+Mapping DFF cells in module `\dff_full_adder':
+
+53. Printing statistics.
+
+=== dff_full_adder ===
+
+   Number of wires:                  8
+   Number of wire bits:              8
+   Number of public wires:           8
+   Number of public wire bits:       8
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                  5
+     $_AND_                          2
+     $_OR_                           1
+     $_XOR_                          2
+
+[INFO]: USING STRATEGY AREA 0
+
+54. Executing ABC pass (technology mapping using ABC).
+
+54.1. Extracting gate netlist of module `\dff_full_adder' to `/tmp/yosys-abc-tKE5QF/input.blif'..
+Extracted 5 gates and 8 wires to a netlist network with 3 inputs and 5 outputs.
+
+54.1.1. Executing ABC.
+Running ABC command: "/build/bin/yosys-abc" -s -f /tmp/yosys-abc-tKE5QF/abc.script 2>&1
+ABC: ABC command line: "source /tmp/yosys-abc-tKE5QF/abc.script".
+ABC: 
+ABC: + read_blif /tmp/yosys-abc-tKE5QF/input.blif 
+ABC: + read_lib -w /openlane/designs/dff_full_adder/runs/first_run/tmp/synthesis/trimmed.lib 
+ABC: Parsing finished successfully.  Parsing time =     0.15 sec
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfbbn_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfrbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfrtp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfrtp_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfsbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfstp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfstp_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfxbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfxtp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfxtp_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxtn_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxtn_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxtn_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxtp_1".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__ebufn_2".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__ebufn_4".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__ebufn_8".
+ABC: Library "sky130A_merged" from "/openlane/designs/dff_full_adder/runs/first_run/tmp/synthesis/trimmed.lib" has 175 cells (17 skipped: 14 seq; 3 tri-state; 0 no func; 0 dont_use).  Time =     0.21 sec
+ABC: Memory =    9.54 MB. Time =     0.21 sec
+ABC: Warning: Detected 2 multi-output gates (for example, "sky130_fd_sc_hd__fa_1").
+ABC: + read_constr -v /openlane/designs/dff_full_adder/runs/first_run/tmp/synthesis/synthesis.sdc 
+ABC: Setting driving cell to be "sky130_fd_sc_hd__inv_2".
+ABC: Setting output load to be 33.442001.
+ABC: + read_constr /openlane/designs/dff_full_adder/runs/first_run/tmp/synthesis/synthesis.sdc 
+ABC: + fx 
+ABC: + mfs 
+ABC: + strash 
+ABC: + drf -l 
+ABC: + balance 
+ABC: + drw -l 
+ABC: + drf -l 
+ABC: + balance 
+ABC: + drw -l 
+ABC: + drw -l -z 
+ABC: + balance 
+ABC: + drf -l -z 
+ABC: + drw -l -z 
+ABC: + balance 
+ABC: + retime -D -D 10000.0 -M 5 
+ABC: + scleanup 
+ABC: Error: The network is combinational.
+ABC: + fraig_store 
+ABC: + balance 
+ABC: + fraig_store 
+ABC: + balance 
+ABC: + drw -l 
+ABC: + drf -l 
+ABC: + balance 
+ABC: + drw -l 
+ABC: + drw -l -z 
+ABC: + balance 
+ABC: + drf -l -z 
+ABC: + drw -l -z 
+ABC: + balance 
+ABC: + fraig_store 
+ABC: + balance 
+ABC: + drw -l 
+ABC: + drf -l 
+ABC: + balance 
+ABC: + drw -l 
+ABC: + drw -l -z 
+ABC: + balance 
+ABC: + drf -l -z 
+ABC: + drw -l -z 
+ABC: + balance 
+ABC: + fraig_store 
+ABC: + balance 
+ABC: + drw -l 
+ABC: + drf -l 
+ABC: + balance 
+ABC: + drw -l 
+ABC: + drw -l -z 
+ABC: + balance 
+ABC: + drf -l -z 
+ABC: + drw -l -z 
+ABC: + balance 
+ABC: + fraig_store 
+ABC: + fraig_restore 
+ABC: + amap -m -Q 0.1 -F 20 -A 20 -C 5000 
+ABC: + retime -D -D 10000.0 
+ABC: + &get -n 
+ABC: + &st 
+ABC: + &dch 
+ABC: + &nf 
+ABC: + &put 
+ABC: + buffer -N 10 -S 750.0 
+ABC: + upsize -D 10000.0 
+ABC: Current delay (1096.45 ps) does not exceed the target delay (10000.00 ps). Upsizing is not performed.
+ABC: + dnsize -D 10000.0 
+ABC: + stime -p 
+ABC: WireLoad = "none"  Gates =      7 ( 28.6 %)   Cap = 21.9 ff (  7.1 %)   Area =       63.81 ( 71.4 %)   Delay =  1074.07 ps  ( 57.1 %)               
+ABC: Path  0 --       1 : 0    2 pi                      A =   0.00  Df =  36.7  -20.6 ps  S =  56.5 ps  Cin =  0.0 ff  Cout =  10.9 ff  Cmax =   0.0 ff  G =    0  
+ABC: Path  1 --       9 : 2    4 sky130_fd_sc_hd__xor2_2 A =  16.27  Df = 520.8 -255.4 ps  S = 566.0 ps  Cin =  8.6 ff  Cout =  45.9 ff  Cmax = 130.0 ff  G =  529  
+ABC: Path  2 --      13 : 2    1 sky130_fd_sc_hd__and2_2 A =   7.51  Df = 751.1 -234.5 ps  S =  43.7 ps  Cin =  1.5 ff  Cout =   2.2 ff  Cmax = 303.0 ff  G =  143  
+ABC: Path  3 --      14 : 1    1 sky130_fd_sc_hd__buf_1  A =   3.75  Df =1074.1 -343.4 ps  S = 396.8 ps  Cin =  2.1 ff  Cout =  33.4 ff  Cmax = 130.0 ff  G = 1590  
+ABC: Start-point = pi0 (\b).  End-point = po3 (\e).
+ABC: + print_stats -m 
+ABC: netlist                       : i/o =    3/    5  lat =    0  nd =     7  edge =     13  area =63.82  delay = 3.00  lev = 3
+ABC: + write_blif /tmp/yosys-abc-tKE5QF/output.blif 
+
+54.1.2. Re-integrating ABC results.
+ABC RESULTS:   sky130_fd_sc_hd__xor2_2 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__and2_2 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__buf_1 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__a21o_2 cells:        1
+ABC RESULTS:        internal signals:        0
+ABC RESULTS:           input signals:        3
+ABC RESULTS:          output signals:        5
+Removing temp directory.
+
+55. Executing SETUNDEF pass (replace undef values with defined constants).
+
+56. Executing HILOMAP pass (mapping to constant drivers).
+
+57. Executing SPLITNETS pass (splitting up multi-bit signals).
+
+58. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \dff_full_adder..
+Removed 0 unused cells and 8 unused wires.
+<suppressed ~1 debug messages>
+
+59. Executing INSBUF pass (insert buffer cells for connected wires).
+
+60. Executing CHECK pass (checking for obvious problems).
+Checking module dff_full_adder...
+Warning: Wire dff_full_adder.\sum is used but has no driver.
+Warning: Wire dff_full_adder.\e is used but has no driver.
+Warning: Wire dff_full_adder.\d is used but has no driver.
+Warning: Wire dff_full_adder.\cout is used but has no driver.
+Warning: Wire dff_full_adder.\c is used but has no driver.
+Found and reported 5 problems.
+
+61. Printing statistics.
+
+=== dff_full_adder ===
+
+   Number of wires:                 10
+   Number of wire bits:             10
+   Number of public wires:           8
+   Number of public wire bits:       8
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                  7
+     sky130_fd_sc_hd__a21o_2         1
+     sky130_fd_sc_hd__and2_2         2
+     sky130_fd_sc_hd__buf_1          2
+     sky130_fd_sc_hd__xor2_2         2
+
+   Chip area for module '\dff_full_adder': 63.811200
+
+62. Executing Verilog backend.
+Dumping module `\dff_full_adder'.
+
+63. Executing JSON backend.
+
+Warnings: 5 unique messages, 5 total
+End of script. Logfile hash: d3f3296005, CPU: user 0.59s system 0.04s, MEM: 28.34 MB peak
+Yosys 0.34 (git sha1 4a1b5599258, gcc 8.3.1 -fPIC -Os)
+Time spent: 48% 2x abc (0 sec), 21% 4x stat (0 sec), ...

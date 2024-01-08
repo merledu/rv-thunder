@@ -1,0 +1,6 @@
+<< properties >>
+string FIXED_BBOX 0 0 103251 54874
+string GDS_END 1537044
+string GDS_FILE /openlane/designs/dff_full_adder/runs/first_run/results/signoff/dff_full_adder.magic.gds
+string GDS_START 84536
+<< end >>
