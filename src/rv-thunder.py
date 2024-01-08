@@ -8,6 +8,7 @@ from regfile import *
 from alu import *
 from mem import *
 from branch import *
+from csr import *
 
 # Create a top-level module that connects the modules
 class TopModule(Elaboratable):
@@ -15,6 +16,7 @@ class TopModule(Elaboratable):
         m = Module()
 
         # Instantiate each module
+        csr_unit = csr()
         fetch_unit = FetchUnit()
         control_unit = control()
         reg_file = regfile()
@@ -31,7 +33,7 @@ class TopModule(Elaboratable):
         m.submodules.branch_unit = branch_unit
         m.submodules.inst_memory_unit = inst_memory_unit
         m.submodules.data_memory_unit = data_memory_unit
-
+        m.submodules.csr_unit = csr_unit
 #===========================< Instruction memory connection >===========================
         m.d.comb += [
             inst_memory_unit.adr.eq(fetch_unit.pc[2:15]),
@@ -51,11 +53,17 @@ class TopModule(Elaboratable):
 
             data_memory_unit.adr.eq(alu.alu_out[2:15]),
             data_memory_unit.dmem_we.eq(control_unit.dmem_we),
+#====================== csr connections ===================================            
+            control_unit.i1.eq(alu.inp1),
+            csr_unit.csr_sig.eq(control_unit.csr_sig),
+            csr_unit.func3.eq(control_unit.funct3),
+            csr_unit.rd_in.eq(control_unit.rd),
+            csr_unit.rs1_data.eq(reg_file.rf_out1),
+            csr_unit.rs1_in.eq(control_unit.rs1),
+            control_unit.i2.eq(csr_unit.csr_out),
+            reg_file.wb_data.eq(control_unit.muxout),
+            
         ]
-#==========================< Store into memory >========================
-        with m.If(control_unit.dmem_we == 1):
-            m.d.comb += data_memory_unit.dmem_din.eq(reg_file.rf_out2)
-
 #==========================< Operand b select >========================
         with m.If (control_unit.op_b_sel == 1):
             m.d.comb += alu.inp2.eq(control_unit.imm)
@@ -92,15 +100,53 @@ class TopModule(Elaboratable):
             ]
 
 #==========================< load data from memory Or store address of next_pc/ jal/ jalr in regfile >========================
-        with m.If (control_unit.ld_wd == 1):
-            m.d.comb += reg_file.wb_data.eq(data_memory_unit.dmem_dout)
-        
+        with m.If(control_unit.ld_wd == 1):
+            
+            with m.If(control_unit.mem_mask == 0b11):  
+                with m.If(control_unit.funct3==0b010): #lw
+                    m.d.comb += reg_file.wb_data.eq(data_memory_unit.dmem_dout) 
+            with m.If(control_unit.mem_mask == 0b11):  
+                with m.If(control_unit.funct3==0b110): #lwu
+                    m.d.comb += reg_file.wb_data.eq(data_memory_unit.dmem_dout)
+            with m.If(control_unit.mem_mask == 0b10):
+                with m.If(control_unit.funct3==0b001): #lh
+                    m.d.comb += reg_file.wb_data.eq(data_memory_unit.dmem_dout[0:16])
+                    with m.If(data_memory_unit.dmem_dout[16] == 1):
+                        m.d.comb += reg_file.wb_data[16:32].eq(0b1111111111111111)
+                    with m.Else():
+                        m.d.comb += reg_file.wb_data[16:32].eq(0b0000000000000000)
+            with m.If(control_unit.mem_mask == 0b10):
+                with m.If(control_unit.funct3==0b101): #lhu
+                    m.d.comb += reg_file.wb_data.eq(data_memory_unit.dmem_dout[0:16])
+            with m.If(control_unit.mem_mask == 0b01):
+                with m.If(control_unit.funct3==0b000): #lb
+                    m.d.comb += reg_file.wb_data.eq(data_memory_unit.dmem_dout[0:8])
+                    with m.If(data_memory_unit.dmem_dout[8] == 1):
+                        m.d.comb += reg_file.wb_data[8:32].eq(0b111111111111111111111111)
+                    with m.Else():
+                        m.d.comb += reg_file.wb_data[8:32].eq(0b000000000000000000000000)
+            with m.If(control_unit.mem_mask == 0b01):
+                with m.If(control_unit.funct3==0b100): #lbu
+                    m.d.comb += reg_file.wb_data.eq(data_memory_unit.dmem_dout[0:8])
+
         with m.Else ():
-            with m.If (control_unit.ld_adr == 1):
+            with m.If (control_unit.ld_adr == 0b1):
                 m.d.comb += reg_file.wb_data.eq(fetch_unit.pc + 4)
 
             with m.Else ():
                 m.d.comb += reg_file.wb_data.eq(alu.alu_out)
+
+#==================store====================================
+        with m.If(control_unit.dmem_we == 1):
+            with m.If(control_unit.mem_mask == 0b11):
+                m.d.comb += data_memory_unit.dmem_din.eq(reg_file.rf_out2)
+            with m.Elif(control_unit.mem_mask == 0b10):
+                m.d.comb += data_memory_unit.dmem_din.eq(reg_file.rf_out2[0:16])
+            with m.Elif(control_unit.mem_mask == 0b01):
+                m.d.comb += data_memory_unit.dmem_din.eq(reg_file.rf_out2[0:8])
+#==============csr============================
+        with m.If(control_unit.csr_sig == 1):
+            m.d.comb += csr_unit.csr_val.eq(control_unit.csr_offset)
 
         return m
 

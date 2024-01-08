@@ -6,7 +6,7 @@ class instr_mem(Elaboratable):
         self.adr = Signal(13)  # 10-bit address for 8192 (2^13) instructions
         self.dat_r = Signal(32)  # 32-bit RISC-V instruction output
         # Make a .txt file and put Hexa decimal values in it 
-        with open('src/memory.txt', 'r') as file: # this is the format for open file  
+        with open('memory.txt', 'r') as file: # this is the format for open file  
             mem_init_file = file.readlines()
             toint = [int(value, 16) for value in mem_init_file] # Add this line to make it int otherwise it shows an error 
         # Define the instruction memory content (replace this with your actual instructions)
@@ -37,13 +37,15 @@ class data_mem(Elaboratable):
         # Create a read and write port for the data memory
         m.submodules.rdport = rdport = self.memory.read_port(domain="comb")
         m.submodules.wrport = wrport = self.memory.write_port()
-        # Connect the address and data signals
+        # Connect the address and data signal
+        
         m.d.comb += [
             rdport.addr.eq(self.adr),
             self.dmem_dout.eq(rdport.data),
             wrport.addr.eq(self.adr),
             wrport.data.eq(self.dmem_din),
             wrport.en.eq(self.dmem_we)  # Enable write operation
+            
         ]
 
         return m
