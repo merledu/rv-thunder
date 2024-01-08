@@ -6,7 +6,7 @@ Follow the instructions in the markdown file to run the ASIC flow in your machin
 [OpenLane](https://github.com/The-OpenROAD-Project/OpenLane/blob/master/README.md)
 
 ## Asic Flow Commands
-Run the following commands in your command-line prompt:
+After Installation, run the following commands in your command-line prompt:
 
 ```sh
 cd openlane
