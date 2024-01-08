@@ -29,7 +29,7 @@ vi config.json
 ```sh
 cd src
 ```
-Create a file and name your file 
+Create a file and name your `file.v`
 ```sh
 touch file.v
 ```
