@@ -1,7 +1,7 @@
 # How to setup OpanLane Setup for ASIC
 
 ## Installation
-Follow the instruction on the below markdown file to acces the ASIC files in your macine
+Follow the instruction on the below markdown file to acces the ASIC files in your machine
 [OpenLane](https://github.com/The-OpenROAD-Project/OpenLane/blob/master/README.md)
 
 ## Asic Flow Commands
@@ -18,9 +18,9 @@ Name your Folder in `your_folder_name`
 
 ```sh
 cd designs
-cd dff_ram_4x72
+cd your_folder_name
 ```
-Set the Config file according to your design
+Set the config file according to your design
 ```sh
 vi config.json	
 ```
@@ -69,4 +69,11 @@ run_magic
 ```
 ```sh
 run_rc
+```
+## For GUI
+
+```sh
+cd OpenLane
+make mount
+python3 gui.py --viewer openroad designs/your_folder_name/runs/tag_name/
 ```
