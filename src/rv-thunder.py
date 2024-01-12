@@ -60,9 +60,9 @@ class TopModule(Elaboratable):
             csr_unit.rd_in.eq(control_unit.rd),
             csr_unit.rs1_data.eq(reg_file.rf_out1),
             csr_unit.rs1_in.eq(control_unit.rs1),
-            control_unit.i2.eq(csr_unit.csr_out),
+            control_unit.i2.eq(csr_unit.csr_reg),
             reg_file.wb_data.eq(control_unit.muxout),
-            
+            csr_unit.pc.eq(fetch_unit.pc),
         ]
 #==========================< Operand b select >========================
         with m.If (control_unit.op_b_sel == 1):
