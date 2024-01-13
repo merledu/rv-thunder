@@ -39,7 +39,7 @@ SC_MODULE(rv_thunder) {
 	sc_signal<sc_uint<12>>csr_val;
 	sc_in_clk clk;
 
-	sc_signal<sc_int<32>> rf_out1, rf_out2, wb_data, aluout,write,csr_reg;
+	sc_signal<sc_int<32>> rf_out1, rf_out2, wb_data, aluout,write,csr_out;
 	sc_signal < sc_int<32>>op2;
 	sc_signal<sc_int<32>> dmem_dout;
 	sc_signal<bool> pcwrite,csr_en;
@@ -152,12 +152,12 @@ SC_MODULE(rv_thunder) {
 		csr_inst.rd_in(rd);
 		csr_inst.rs1_data(rf_out1);
 		csr_inst.csr_val(csr_val);
-		csr_inst.csr_reg(csr_reg);
+		csr_inst.csr_out(csr_out);
 		csr_inst.rs1_in(rs1);
 		
 
 		mux_inst3.i1(mux3in);
-		mux_inst3.i2(csr_reg);
+		mux_inst3.i2(csr_out);
 		mux_inst3.selsig(mux3sel);
 		mux_inst3.muxout(wb_data);
 
@@ -248,7 +248,7 @@ int sc_main(int argc, char* argv[]) {
 
 	sc_trace(tf, TOP.csr_inst.csr_value, " csr_value");
 	sc_trace(tf, TOP.csr_inst.csr_val, " csr_val");
-	sc_trace(tf, TOP.csr_inst.csr_reg, " csr_reg");
+	sc_trace(tf, TOP.csr_inst.csr_out, " csr_out");
 	sc_trace(tf, TOP.csr_inst.rd_in, " csr_rd");
 	sc_trace(tf, TOP.csr_inst.func3, " csr_func3");
 	
