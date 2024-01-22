@@ -8,7 +8,7 @@ SC_MODULE(control) {
 	sc_out<sc_uint<2>>dmem_sel;
 	sc_out<sc_uint<3>> func3;
 	sc_out<bool>  regwrite,csr_sig;
-	sc_out<sc_uint<1>> branchsel,jump,memwritesig, operandbsel,wrt,muxwrt,readsig,mux3sel;
+	sc_out<sc_uint<1>> branchsel,jump,memwritesig, operandbsel,wrt,muxwrt,readsig,mux3sel,ill_ins;
 	sc_out<sc_uint<5>> oprs1, oprs2, oprd;
 	sc_out < sc_uint<4>>alufunc;
 	sc_out <sc_int<32>>immediate32;
@@ -111,6 +111,12 @@ SC_MODULE(control) {
 			}
 			else {
 				csr = false;
+			}
+			if (instruction.read().range(6, 0) != 0b0110011 || instruction.read().range(6, 0) != 0b0010011 || instruction.read().range(6, 0) != 0b0100011 || instruction.read().range(6, 0) != 0b0000011 || instruction.read().range(6, 0) != 0b0110111 || instruction.read().range(6, 0) != 0b0010111 || instruction.read().range(6, 0) != 0b1100011 || instruction.read().range(6, 0) != 0b1101111 || instruction.read().range(6, 0) != 0b1100111 || instruction.read().range(6, 0) != 0b1110011) {
+				ill_ins.write(0b1);
+			}
+			else {
+				ill_ins.write(0b0);
 			}
 
 		
@@ -376,6 +382,7 @@ SC_MODULE(control) {
 				
 				
 			}
+			
 	}
 };
 
