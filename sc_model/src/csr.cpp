@@ -125,6 +125,7 @@ SC_MODULE(CSR) {
 		else if (csr_val.read() == 0x341) {
 			mepc_reg = csr_reg;
 		}
+		
 		if (ill_instr.read() == 0b1) {
 			mepc_reg = pc.read();
 			mtval_reg = instr.read();

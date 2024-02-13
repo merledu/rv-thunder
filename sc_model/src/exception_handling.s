@@ -1,3 +1,16 @@
+.global _start
+
+.section .text
+_start:
+#assuming mpp bits of mstatus are 0
+ la x10,main
+ csrrw x9,0x305,x10 #  mtvec register 
+ mret #jumping to user mode
+ 
+ main:
+ csrrw x11,0x340,sp #mscratch register saving stack of user
+ 
+
  addi sp, sp, -128
   sw x1, 0(sp)
   sw x2, 4(sp)
@@ -42,11 +55,11 @@ interrupts:
 exceptions:  
 addi x5,x0,2# illegal instruction
 csrrw  x6,0x342,x6 #mcause reg
+
 csrrw x7,0x305,x7 #mtvec register 
-auipc x8,ill_ins 
-auipc x9,ins_add_misal
-srli x8,x8,10 #shifting 10 bits beacuse of first two bits of mtvec,else shift 12
-srli x9,x9,10 #shifting 10 bits beacuse of first two bits of mtvec,else shift 12
+la x8,ill_ins 
+la x9,ins_add_misal
+
 beq x7,x8,ill_ins
 beq x7,x9,ins_add_misal
 
@@ -91,5 +104,4 @@ lw x1, 0(sp)
   lw x31, 120(sp)
   
   addi sp,sp,128
-  csrrw x0,0x302,x0 #mret
-
+mret
