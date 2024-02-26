@@ -1,12 +1,11 @@
-# How to set OpanLane Setup for ASIC
+# How to setup OpanLane Setup for ASIC
 
 ## Installation
-Follow the instructions in the markdown file to run the ASIC flow in your machine
-
+Follow the instruction on the below markdown file to acces the ASIC files in your machine
 [OpenLane](https://github.com/The-OpenROAD-Project/OpenLane/blob/master/README.md)
 
 ## Asic Flow Commands
-After Installation, run the following commands in your command-line prompt:
+Run the following commands in your command-line prompt:
 
 ```sh
 cd openlane
@@ -29,7 +28,7 @@ vi config.json
 ```sh
 cd src
 ```
-Create a file and name your `file.v`
+Create a file and name your file 
 ```sh
 touch file.v
 ```
@@ -37,7 +36,7 @@ touch file.v
 ```sh
 ./flow.tcl -design your_file_name -tag tag_name
 ```
-If the above command is not working use the below command. Give the path.
+If above command is not working use the below command. Give the path.
 ```sh
 /openlane/flow.tcl -design your_file_name -tag tag_name
 ```
