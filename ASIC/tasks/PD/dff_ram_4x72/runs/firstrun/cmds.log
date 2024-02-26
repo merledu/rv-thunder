@@ -1,0 +1,22 @@
+Mon Feb 26 16:38:59 UTC 2024 - Executing "{openroad -exit -no_init -python /openlane/scripts/odbpy/lefutil.py get_metal_layers -o /openlane/designs/dff_ram_4x72/runs/firstrun/tmp/layers.list /home/mmuddassir/.volare/sky130A/libs.ref/sky130_fd_sc_hd/techlef/sky130_fd_sc_hd__nom.tlef}"
+
+Mon Feb 26 16:39:01 UTC 2024 - Executing "{/openlane/scripts/mergeLef.py -o /openlane/designs/dff_ram_4x72/runs/firstrun/tmp/merged.nom.lef -i /home/mmuddassir/.volare/sky130A/libs.ref/sky130_fd_sc_hd/techlef/sky130_fd_sc_hd__nom.tlef {/home/mmuddassir/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lef/sky130_ef_sc_hd.lef /home/mmuddassir/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lef/sky130_fd_sc_hd.lef} |& tee /dev/null}"
+
+Mon Feb 26 16:39:01 UTC 2024 - Executing "{/openlane/scripts/mergeLef.py -o /openlane/designs/dff_ram_4x72/runs/firstrun/tmp/merged.min.lef -i /home/mmuddassir/.volare/sky130A/libs.ref/sky130_fd_sc_hd/techlef/sky130_fd_sc_hd__min.tlef {/home/mmuddassir/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lef/sky130_ef_sc_hd.lef /home/mmuddassir/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lef/sky130_fd_sc_hd.lef} |& tee /dev/null}"
+
+Mon Feb 26 16:39:01 UTC 2024 - Executing "{/openlane/scripts/mergeLef.py -o /openlane/designs/dff_ram_4x72/runs/firstrun/tmp/merged.max.lef -i /home/mmuddassir/.volare/sky130A/libs.ref/sky130_fd_sc_hd/techlef/sky130_fd_sc_hd__max.tlef {/home/mmuddassir/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lef/sky130_ef_sc_hd.lef /home/mmuddassir/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lef/sky130_fd_sc_hd.lef} |& tee /dev/null}"
+
+Mon Feb 26 16:39:01 UTC 2024 - Executing "{python3 /openlane/scripts/mergeLib.py --output /openlane/designs/dff_ram_4x72/runs/firstrun/tmp/synthesis/merged.lib --name sky130A_merged /home/mmuddassir/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib}"
+
+Mon Feb 26 16:39:02 UTC 2024 - Executing "{python3 /openlane/scripts/libtrim.py --cell-file /openlane/designs/dff_ram_4x72/runs/firstrun/tmp/synthesis/trimmed.lib.exclude.list --output /openlane/designs/dff_ram_4x72/runs/firstrun/tmp/synthesis/trimmed.lib /openlane/designs/dff_ram_4x72/runs/firstrun/tmp/synthesis/merged.lib}"
+
+Mon Feb 26 16:39:03 UTC 2024 - Executing "{python3 /openlane/scripts/libtrim.py --cell-file /openlane/designs/dff_ram_4x72/runs/firstrun/tmp/cts/cts.lib.exclude.list --output /openlane/designs/dff_ram_4x72/runs/firstrun/tmp/cts/cts.lib /home/mmuddassir/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib}"
+
+Mon Feb 26 16:39:04 UTC 2024 - Executing "{python3 /openlane/scripts/libtrim.py --cell-file /openlane/designs/dff_ram_4x72/runs/firstrun/tmp/cts/cts-fastest.lib.exclude.list --output /openlane/designs/dff_ram_4x72/runs/firstrun/tmp/cts/cts-fastest.lib /home/mmuddassir/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_n40C_1v95.lib}"
+
+Mon Feb 26 16:39:06 UTC 2024 - Executing "{python3 /openlane/scripts/libtrim.py --cell-file /openlane/designs/dff_ram_4x72/runs/firstrun/tmp/cts/cts-slowest.lib.exclude.list --output /openlane/designs/dff_ram_4x72/runs/firstrun/tmp/cts/cts-slowest.lib /home/mmuddassir/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_100C_1v60.lib}"
+
+Mon Feb 26 16:39:07 UTC 2024 - Executing "{python3 /openlane/scripts/new_tracks.py -i /home/mmuddassir/.volare/sky130A/libs.tech/openlane/sky130_fd_sc_hd/tracks.info -o /openlane/designs/dff_ram_4x72/runs/firstrun/tmp/routing/config.tracks}"
+
+Mon Feb 26 16:39:07 UTC 2024 - Executing "{echo {OpenLane a005df1fe0dd480097ff0bcd994f7286e820a405} > /openlane/designs/dff_ram_4x72/runs/firstrun/OPENLANE_VERSION}"
+

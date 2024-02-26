@@ -1,0 +1,1 @@
+lvs {/openlane/designs/dff_full_adder/runs/first_run/results/signoff/dff_full_adder.spice dff_full_adder} {/openlane/designs/dff_full_adder/runs/first_run/tmp/signoff/36-dff_full_adder.pnl.v dff_full_adder} /home/mmuddassir/.volare/sky130A/libs.tech/netgen/sky130A_setup.tcl /openlane/designs/dff_full_adder/runs/first_run/logs/signoff/39-dff_full_adder.lef.lvs.log -json

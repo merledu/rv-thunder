@@ -1,0 +1,30 @@
+
+62. Printing statistics.
+
+=== dff_ram_8x72 ===
+
+   Number of wires:               2669
+   Number of wire bits:           2813
+   Number of public wires:         725
+   Number of public wire bits:     869
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               2736
+     sky130_fd_sc_hd__and2b_2        1
+     sky130_fd_sc_hd__and3_2         1
+     sky130_fd_sc_hd__and3b_2        2
+     sky130_fd_sc_hd__buf_1        925
+     sky130_fd_sc_hd__dfxtp_2      720
+     sky130_fd_sc_hd__mux2_2       936
+     sky130_fd_sc_hd__mux4_2       144
+     sky130_fd_sc_hd__nand2_2        1
+     sky130_fd_sc_hd__nor2_2         1
+     sky130_fd_sc_hd__nor2b_2        1
+     sky130_fd_sc_hd__nor3_2         1
+     sky130_fd_sc_hd__nor3b_2        1
+     sky130_fd_sc_hd__or2b_2         1
+     sky130_fd_sc_hd__or3b_2         1
+
+   Chip area for module '\dff_ram_8x72': 32667.580800
+

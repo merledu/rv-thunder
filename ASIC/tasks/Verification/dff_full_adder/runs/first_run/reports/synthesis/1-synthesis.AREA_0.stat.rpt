@@ -1,0 +1,20 @@
+
+61. Printing statistics.
+
+=== dff_full_adder ===
+
+   Number of wires:                 10
+   Number of wire bits:             10
+   Number of public wires:           8
+   Number of public wire bits:       8
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                  7
+     sky130_fd_sc_hd__a21o_2         1
+     sky130_fd_sc_hd__and2_2         2
+     sky130_fd_sc_hd__buf_1          2
+     sky130_fd_sc_hd__xor2_2         2
+
+   Chip area for module '\dff_full_adder': 63.811200
+

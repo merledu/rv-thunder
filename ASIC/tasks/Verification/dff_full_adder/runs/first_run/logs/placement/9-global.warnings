@@ -1,0 +1,4 @@
+[WARNING STA-0337] port '__VIRTUAL_CLK__' not found.
+[WARNING STA-0559] transition time can not be specified for virtual clocks.
+[WARNING GPL-0150] -skip_io will disable timing driven mode.
+[WARNING GPL-0151] -skip_io will disable routability driven mode.

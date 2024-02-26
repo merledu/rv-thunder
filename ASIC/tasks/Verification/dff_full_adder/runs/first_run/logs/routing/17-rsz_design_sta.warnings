@@ -1,0 +1,5 @@
+[WARNING STA-0337] port '__VIRTUAL_CLK__' not found.
+[WARNING STA-0559] transition time can not be specified for virtual clocks.
+[WARNING GRT-0026] Missing route to pin _8_/A.
+[WARNING GRT-0026] Missing route to pin output7/X.
+[WARNING] Did not save OpenROAD database!

@@ -1,0 +1,21 @@
+OpenROAD 75f2f325b7a42e56a92404f33af8e96530d9b202 
+This program is licensed under the BSD-3 license. See the LICENSE file for details.
+Components of this program may be licensed under more restrictive licenses which must be honored.
+[INFO ODB-0222] Reading LEF file: /openlane/designs/dff_full_adder/runs/first_run/tmp/merged.nom.lef
+[INFO ODB-0223]     Created 13 technology layers
+[INFO ODB-0224]     Created 25 technology vias
+[INFO ODB-0225]     Created 441 library cells
+[INFO ODB-0226] Finished LEF file:  /openlane/designs/dff_full_adder/runs/first_run/tmp/merged.nom.lef
+[INFO ODB-0127] Reading DEF file: /openlane/designs/dff_full_adder/runs/first_run/results/routing/dff_full_adder.def
+[INFO ODB-0128] Design: dff_full_adder
+[INFO ODB-0130]     Created 10 pins.
+[INFO ODB-0131]     Created 12846 components and 47756 component-terminals.
+[INFO ODB-0132]     Created 2 special nets and 47718 connections.
+[INFO ODB-0133]     Created 18 nets and 38 connections.
+[INFO ODB-0134] Finished DEF file: /openlane/designs/dff_full_adder/runs/first_run/results/routing/dff_full_adder.def
+Top-level design name: dff_full_adder
+Found default power net 'VPWR'
+Found default ground net 'VGND'
+Found 1 power ports.
+Found 1 ground ports.
+Modified power connections of 12846/12846 cells.

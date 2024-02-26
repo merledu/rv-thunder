@@ -1,0 +1,24 @@
+
+61. Printing statistics.
+
+=== dff_ram_4x72 ===
+
+   Number of wires:               1224
+   Number of wire bits:           1367
+   Number of public wires:         294
+   Number of public wire bits:     437
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               1290
+     sky130_fd_sc_hd__and3b_2        1
+     sky130_fd_sc_hd__buf_1        421
+     sky130_fd_sc_hd__dfxtp_2      360
+     sky130_fd_sc_hd__mux2_2       432
+     sky130_fd_sc_hd__mux4_2        72
+     sky130_fd_sc_hd__nor2b_2        1
+     sky130_fd_sc_hd__nor3_2         1
+     sky130_fd_sc_hd__nor3b_2        2
+
+   Chip area for module '\dff_ram_4x72': 15777.632000
+

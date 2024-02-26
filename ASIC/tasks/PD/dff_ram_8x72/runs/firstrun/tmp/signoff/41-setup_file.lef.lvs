@@ -1,0 +1,1 @@
+lvs {/openlane/designs/dff_ram_8x72/runs/firstrun/results/signoff/dff_ram_8x72.spice dff_ram_8x72} {/openlane/designs/dff_ram_8x72/runs/firstrun/tmp/signoff/38-dff_ram_8x72.pnl.v dff_ram_8x72} /home/mmuddassir/.volare/sky130A/libs.tech/netgen/sky130A_setup.tcl /openlane/designs/dff_ram_8x72/runs/firstrun/logs/signoff/41-dff_ram_8x72.lef.lvs.log -json

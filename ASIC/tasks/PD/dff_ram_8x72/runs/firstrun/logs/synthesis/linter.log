@@ -1,0 +1,6 @@
+%Warning-EOFNEWLINE: /openlane/designs/dff_ram_8x72/src/dff_ram_8x72.v:49:10: Missing newline at end of file (POSIX 3.206).
+                                                                            : ... Suggest add newline.
+   49 | endmodule
+      |          ^
+                     ... For warning description see https://verilator.org/warn/EOFNEWLINE?v=5.018
+                     ... Use "/* verilator lint_off EOFNEWLINE */" and lint_on around source to disable this message.

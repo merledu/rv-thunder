@@ -1,0 +1,10 @@
+{
+    "DESIGN_NAME": "dff_ram_8x72",
+    "VERILOG_FILES": "dir::src/*.v",
+    "CLOCK_PORT": "clk",
+    "CLOCK_PERIOD": 10.0,
+    "FP_SIZZING": "absolute",
+    "DIE_AREA": "0 0 100 100",
+    "DESIGN_IS_CORE": true,
+    "FP_PDN_MULTILAYER": true
+}

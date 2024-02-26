@@ -1,0 +1,21 @@
+
+54. Printing statistics.
+
+=== dff_ram_8x72 ===
+
+   Number of wires:               1327
+   Number of wire bits:           2181
+   Number of public wires:          15
+   Number of public wire bits:     869
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               2104
+     $_ANDNOT_                       7
+     $_AND_                          4
+     $_MUX_                       1368
+     $_NAND_                         1
+     $_ORNOT_                        3
+     $_OR_                           1
+     sky130_fd_sc_hd__dfxtp_2      720
+

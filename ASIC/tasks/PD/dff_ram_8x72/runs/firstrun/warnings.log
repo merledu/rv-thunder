@@ -1,0 +1,6 @@
+[WARNING]: The variable name DESIGN_IS_CORE was renamed to FP_PDN_MULTILAYER. Update your configuration file.
+[WARNING]: PNR_SDC_FILE is not set. It is recommended to write a custom SDC file for the design. Defaulting to BASE_SDC_FILE
+[WARNING]: SIGNOFF_SDC_FILE is not set. It is recommended to write a custom SDC file for the design. Defaulting to BASE_SDC_FILE
+[WARNING]: 1 warnings found by linter
+[WARNING]: VSRC_LOC_FILES was not given a value, which may make the results of IR drop analysis inaccurate. If you are not integrating a top-level chip for manufacture, you may ignore this warning, otherwise, see the documentation for VSRC_LOC_FILES.
+[WARNING]: There are max fanout violations in the design at the Typical corner. Please refer to '../runs/firstrun/reports/signoff/33-sta-rcx_nom/multi_corner_sta.checks.rpt'.
