@@ -1,12 +1,12 @@
 #include<systemc.h>
 
 SC_MODULE(pc) {
-	sc_in < sc_uint<1>> branchsel,jump;
-	sc_in < sc_uint<1>> branchsig;
-	sc_in_clk clk;
 	
-	sc_in<sc_int<32>> pc_branch;
+	sc_in < sc_uint<1>> branchsig,csr_pcsel,branchsel, jump;
+	sc_in_clk clk;
+	sc_in<sc_int<32>> pc_branch,csr_in;
 	sc_out <sc_int<32>> address,pcjal;
+
 	sc_uint<1> AND;
 	sc_uint<32>* Pc;
 	sc_uint<32>* ptr;
@@ -36,6 +36,9 @@ SC_MODULE(pc) {
 			else if (AND == 0b1) {
 				pcbranch = pc_branch.read().to_uint();
 				Pc[i] = Pc[i] + pcbranch;
+			}
+			else if (csr_pcsel.read() == 0b1) {
+				Pc[i] = csr_in.read();
 			}
 			else {
 				if (ptr == &Pc[0]) {

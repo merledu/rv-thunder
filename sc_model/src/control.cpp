@@ -4,14 +4,16 @@
 SC_MODULE(control) {
 	sc_in<sc_int<32>> instruction;
 	sc_out<sc_uint<2>> opasel;
+	sc_out<sc_uint<12>>csr_offset;
 	sc_out<sc_uint<2>>dmem_sel;
 	sc_out<sc_uint<3>> func3;
-	sc_out<bool>  regwrite;
-	sc_out<sc_uint<1>> branchsel,jump,memwritesig, operandbsel,wrt,muxwrt,readsig;
+	sc_out<bool>  regwrite,csr_sig,trig;
+	sc_out<sc_uint<1>> branchsel,jump,memwritesig, operandbsel,wrt,muxwrt,readsig,mux3sel,ill_ins;
 	sc_out<sc_uint<5>> oprs1, oprs2, oprd;
 	sc_out < sc_uint<4>>alufunc;
 	sc_out <sc_int<32>>immediate32;
-	bool itypesig, rtypesig, stypesig,extdbit,loadsig,utypesig,utypesigaui,branch,jal,jalr;
+	bool itypesig, rtypesig, stypesig,extdbit,loadsig,utypesig,utypesigaui,branch,jal,jalr,csr,trigger;
+	
 	sc_uint<4> alufunc1;
 	
 
@@ -30,6 +32,8 @@ SC_MODULE(control) {
 		stypesig = 0;
 		extdbit = 0;
 		loadsig = 0;
+		csr = 0;
+		
 		SC_METHOD(dec);
 		sensitive << instruction;
 		
@@ -103,24 +107,38 @@ SC_MODULE(control) {
 			else {
 				jalr = false;
 			}
+			if (instruction.read().range(6, 0) == 0b1110011) {
+				csr = true;
+			}
+			else {
+				csr = false;
+			}
+			if (rtypesig==false && itypesig==false && stypesig==false && loadsig==false && utypesig==false && utypesigaui==false && branch==false && jal==false && jalr==false && csr==false) {
+				ill_ins.write(0b1);
+			}
+			else {
+				ill_ins.write(0b0);
+			}
+			
+			trig.write(!trig.read());
 		
 			
 			//============================================ control signals======================
-			if (itypesig == true || rtypesig == true||loadsig==true||branch==true||jalr==true) {
+			if (itypesig == true || rtypesig == true||loadsig==true||branch==true||jalr==true||csr==true||branch==false||jal==false||jalr==false) {
 				oprs1.write(instruction.read().range(19, 15).to_uint());	
 				
 			}
 			
 
-			if (itypesig == true || rtypesig == true || loadsig == true || utypesig == true||utypesigaui==true||jal==true||jalr==true) {
+			if (itypesig == true || rtypesig == true || loadsig == true || utypesig == true||utypesigaui==true||jal==true||jalr==true||csr==true) {
 				oprd.write(instruction.read().range(11, 7).to_uint());
-				regwrite.write(true);
+				regwrite.write(true);	
 				
 			}
 			else {
 				regwrite.write(false);
-				
 			}
+			
 
 			if (itypesig == true || stypesig == true || loadsig == true || utypesig == true || utypesigaui == true || branch == true || jal == true||jalr==true) {
 
@@ -150,7 +168,9 @@ SC_MODULE(control) {
 				muxwrt.write(0b1);
 				
 				
+				
 			}
+			
 			
 			if (stypesig == true) {
 				memwritesig.write(0b1);
@@ -182,15 +202,20 @@ SC_MODULE(control) {
 				wrt.write(0b0);
 				muxwrt.write(0b1);
 				
+
+
+			}
+			
+		
 				
-				
-			}	
+			
 			if (loadsig == true) {
 				
 				alufunc.write(0);
 				opasel.write(0b00);
 				muxwrt.write(0b0);
 				readsig.write(0b1);
+				
 				if (instruction.read().range(14, 12) == 0b000) { // lb
 					dmem_sel.write(0b01);
 				}
@@ -206,6 +231,7 @@ SC_MODULE(control) {
 			}
 			else {
 				readsig.write(0b0);
+				
 			}
 			
 			if (utypesig == true) {
@@ -213,13 +239,17 @@ SC_MODULE(control) {
 				opasel.write(0b01);
 				wrt.write(0b0);
 				muxwrt.write(0b1);
+				
 			}
+			
+			
+			
 			if (utypesigaui == true||branch==true) {
 				alufunc.write(0b0000);
 				opasel.write(0b01);
 				
 			}
-			if (branch == true) {
+			if (branch == true||csr==true) {
 				
 				func3.write(instruction.read().range(14, 12).to_uint());				
 				
@@ -248,17 +278,21 @@ SC_MODULE(control) {
 			}
 			if (branch == true) {
 				branchsel.write(0b1);
+				
 			}
 			else {
 				branchsel.write(0b0);
+				
 			}
 
 			 if (jal == true||jalr==true) {
 				jump.write(0b1);
 				
+				
 			 }
 			else {
 				 jump.write(0b0);
+				
 				
 			}
 			//================================
@@ -267,6 +301,25 @@ SC_MODULE(control) {
 			 }
 			 else {
 				 wrt.write(0b0);
+			 }
+			 if (csr == true) {
+				 csr_sig.write(true);
+				 csr_offset.write(instruction.read().range(31, 20).to_uint());
+				 
+				 mux3sel.write(0b1);
+				 if (instruction.read().range(11, 7) != 0) {  //checking rd
+					 regwrite.write(true);
+				 }
+				 else {
+					 regwrite.write(false);
+				 }
+
+			 }
+			 else {
+				 mux3sel.write(0b0);
+				 csr_sig.write(false);
+				 
+			
 			 }
 			
 		
@@ -331,6 +384,7 @@ SC_MODULE(control) {
 				
 				
 			}
+			
 	}
 };
 

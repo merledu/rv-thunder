@@ -95,6 +95,9 @@ SC_MODULE(alu) {
 		
 		alu_out.write(rd);
 
+		
+		
+
 
 	}
 };
