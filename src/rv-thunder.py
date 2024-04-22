@@ -1,111 +1,97 @@
+from Top import *
+from data_mem import *
+from mmio import *
 from amaranth import *
-from amaranth.sim import Simulator
+from inst_mem import *
+from amaranth.sim import *
+import time
 
-# Import the defined modules
-from fetch import *
-from control import *
-from regfile import *
-from alu import *
-from mem import *
-from branch import *
+class rv_thunder(Elaboratable):
+    def __init__(self):
+        self.address = Signal(32)
+        self.readsig = Signal ()
+        self.d_wem = Signal(1)
+        self.dec_addout = Signal(32)
+        self.d_memmask = Signal(2)
+        self.wrt_sel = Signal(1)
+        self.dmem_en = Signal(1)
+        self.time_en = Signal(1)
+        self.timecmp_en = Signal(1)
+        self.data_time = Signal(32)
+        self.dout = Signal(32)
+        self.data = Signal(32)
+        self.dataout = Signal(32)
+        self.mtime = Signal(64)
+        self.mtimecmp = Signal(64)
+        self.clkcount = Signal(64)
+        
 
-# Create a top-level module that connects the modules
-class TopModule(Elaboratable):
     def elaborate(self, platform):
         m = Module()
-
-        # Instantiate each module
-        fetch_unit = FetchUnit()
-        control_unit = control()
-        reg_file = regfile()
-        branch_unit = branch()
-        alu = ALU()
-        inst_memory_unit = instr_mem()
         data_memory_unit = data_mem()
-
-        # Connect modules together
-        m.submodules.fetch_unit = fetch_unit
-        m.submodules.control_unit = control_unit
-        m.submodules.reg_file = reg_file
-        m.submodules.alu = alu
-        m.submodules.branch_unit = branch_unit
+        top_unit = TopModule()
+        mmio_unit = mmio()
+        inst_memory_unit = instr_mem()
         m.submodules.inst_memory_unit = inst_memory_unit
         m.submodules.data_memory_unit = data_memory_unit
+        m.submodules.top_unit = top_unit
+        m.submodules.mmio_unit = mmio_unit
 
-#===========================< Instruction memory connection >===========================
         m.d.comb += [
-            inst_memory_unit.adr.eq(fetch_unit.pc[2:15]),
-            control_unit.instr_dat.eq(inst_memory_unit.dat_r),  
-            alu.aluop.eq(control_unit.aluop),
-#===========================< Registers Connections >===========================
-            reg_file.rs1.eq(control_unit.rs1),
-            reg_file.rs2.eq(control_unit.rs2),
-            reg_file.rd.eq(control_unit.rd),
+            self.d_memmask.eq(top_unit.data_mem_mask),
+            self.address.eq(top_unit.data_mem_adr),
+            self.d_wem.eq(top_unit.data_mem_we),
+            self.data.eq(top_unit.data_mem_in),
+            self.dataout.eq(data_memory_unit.dmem_dout),
+            self.dec_addout.eq(mmio_unit.add_out),
+            self.time_en.eq(mmio_unit.time_en),
+            self.timecmp_en.eq(mmio_unit.timecmp_en),
+            self.dmem_en.eq(mmio_unit.dmem_en),
+            self.dout.eq(top_unit.writedata),
+            self.readsig.eq(top_unit.readsig),
+            top_unit.data_mem_out.eq(data_memory_unit.dmem_dout),
+            inst_memory_unit.adr.eq(top_unit.inst_mem_adr),
+            top_unit.inst_inval_add.eq(inst_memory_unit.inval_add),
+            top_unit.inst_dat_r.eq(inst_memory_unit.dat_r),
+            data_memory_unit.adr.eq(self.dec_addout),
+            data_memory_unit.dmem_din.eq(top_unit.data_mem_in),
+            data_memory_unit.dmem_we.eq(top_unit.data_mem_we),
+            top_unit.data_mem_invadd.eq(data_memory_unit.inv_add),
+            mmio_unit.address.eq(top_unit.data_mem_adr),
+            mmio_unit.wrt.eq(top_unit.data_mem_we),
+            mmio_unit.rd.eq(top_unit.readsig),
 
-            reg_file.we.eq(control_unit.we),
-            # alu.inp1.eq(reg_file.rf_out1),
-
-            branch_unit.op1.eq(reg_file.rf_out1),
-            branch_unit.op2.eq(reg_file.rf_out2),
-            branch_unit.func3.eq(control_unit.funct3),
-
-            data_memory_unit.adr.eq(alu.alu_out[2:15]),
-            data_memory_unit.dmem_we.eq(control_unit.dmem_we),
         ]
-#==========================< Store into memory >========================
-        with m.If(control_unit.dmem_we == 1):
-            m.d.comb += data_memory_unit.dmem_din.eq(reg_file.rf_out2)
+        m.d.sync += [
+            self.clkcount.eq(self.clkcount + 2)]
+#================ mtime ================================
+        with m.If(self.time_en == 0b1):
+            m.d.sync += self.mtime.eq(self.clkcount // 10)# +((self.clkcount % 10)>=5))
+            
+        with m.If(self.d_wem == 0b1):
+            with m.If(self.timecmp_en ==0b1):
+                m.d.sync += self.mtimecmp.eq(self.data)  #########
 
-#==========================< Operand b select >========================
-        with m.If (control_unit.op_b_sel == 1):
-            m.d.comb += alu.inp2.eq(control_unit.imm)
-        with m.Else ():
-            m.d.comb += alu.inp2.eq(reg_file.rf_out2)
+        with m.If(self.time_en == 0b1): 
+            m.d.sync += self.wrt_sel.eq(0b0)
+            m.d.comb += self.data_time.eq(self.mtime)
 
-#==========================< Operand a select >========================
-        with m.If (control_unit.op_a_sel == 0):
-            m.d.comb += alu.inp1.eq(reg_file.rf_out1)
-        with m.Elif (control_unit.op_a_sel == 1):
-            m.d.comb += alu.inp1.eq(fetch_unit.pc[0:12])
-        with m.Elif (control_unit.op_a_sel == 2):
-            m.d.comb += alu.inp1.eq(fetch_unit.pc)
-        with m.Else ():
-            m.d.comb += alu.inp1.eq(0x00000000)
-
-#==========================< Update Pc and Branch select >========================
-
-        with m.If (control_unit.op == 0b1100011):
-            m.d.comb += [
-                fetch_unit.branch.eq(control_unit.br & branch_unit.br_out),     #branch 
-                fetch_unit.branch_tar.eq(alu.alu_out),
-                ]
-        with m.Elif (control_unit.op == 0b1100111):
-            m.d.comb += [
-                fetch_unit.branch.eq(1),    #jalr signal 
-                fetch_unit.branch_tar.eq(alu.alu_out),
-            ]
-
-        with m.Elif (control_unit.op == 0b1101111):
-            m.d.comb += [
-                fetch_unit.branch.eq(1),    #jal signal
-                fetch_unit.branch_tar.eq(alu.alu_out),
-            ]
-
-#==========================< load data from memory Or store address of next_pc/ jal/ jalr in regfile >========================
-        with m.If (control_unit.ld_wd == 1):
-            m.d.comb += reg_file.wb_data.eq(data_memory_unit.dmem_dout)
+        with m.Elif(self.timecmp_en == 0b1):
+            m.d.sync += self.wrt_sel.eq(0b0)
+            m.d.comb += self.data_time.eq(self.mtimecmp)
         
-        with m.Else ():
-            with m.If (control_unit.ld_adr == 1):
-                m.d.comb += reg_file.wb_data.eq(fetch_unit.pc + 4)
-
-            with m.Else ():
-                m.d.comb += reg_file.wb_data.eq(alu.alu_out)
-
+        with m.Elif(self.dmem_en == 0b1): 
+            m.d.sync += self.wrt_sel.eq(0b1)
+        
+        with m.If(self.wrt_sel == 0b0):
+            m.d.comb += self.dataout.eq(self.data_time)
+        
+        with m.Elif(self.wrt_sel == 0b1):
+            m.d.comb += self.dataout.eq(self.dout)
+		
         return m
-
-# Simulate the top module
-dut = TopModule()
+    
+dut = rv_thunder()
 def bench():
     yield
     yield
@@ -118,13 +104,8 @@ def bench():
     yield
     yield
     yield
-
     yield
     yield
-    yield
-    yield
-    yield
-
     yield
     yield
     yield
@@ -136,58 +117,26 @@ def bench():
     yield
     yield
     yield
+    yield
+    yield
+    yield
+    yield
+    yield
+    yield
+    yield
+ 
+    
 
-    yield
-    yield
-    yield
-    yield
-    yield
-
-    yield
-    yield
-    yield
-    yield
-    yield
-
-    yield
-    yield
-    yield
-    yield
-    yield
-
-    yield
-    yield
-    yield
-    yield
-    yield
-
-    yield
-    yield
-    yield
-    yield
-    yield
-
-    yield
-    yield
-    yield
-    yield
-    yield
-
-    yield
-    yield
-    yield
-    yield
-    yield
-# We can provide initial values for signals above
+    
 
 sim = Simulator(dut)
-sim.add_clock(1e-6)  #Add clock
+sim.add_clock(1)  #Add clock
 sim.add_sync_process(bench)
-with sim.write_vcd("sim.vcd"): # Generate Vcd, which is useful to see a result in GTKwave
+with sim.write_vcd("simm.vcd"): # Generate Vcd, which is useful to see a result in GTKwave
     sim.run()
-
+    
 from amaranth.back import verilog
 
-top = TopModule()
-with open("output/verilog/rv-thunder.v", "w") as f:
-    f.write(verilog.convert(top, ports=[]))
+top = rv_thunder()
+with open("rv_thunder.v", "w") as f:
+     f.write(verilog.convert(top, ports=[top.address, top.readsig, top.d_wem, top.dec_addout, top.d_memmask, top.wrt_sel, top.dmem_en, top.time_en, top.timecmp_en, top.data_time, top.dout, top.data, top.dataout, top.mtime, top.mtimecmp, top.clkcount]))
