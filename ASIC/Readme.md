@@ -11,6 +11,11 @@ Run the following commands in your command-line prompt:
 cd openlane
 make mount
 ```
+```sh
+riscv32-unknown-elf-gcc -march=rv32im_zicsr -mabi=ilp32 -o fib fib.s -nostartfiles -Tlink.ld
+spike --isa=rv32im -d fib
+```
+
 Name your Folder in `your_folder_name`
 ```sh
 ./flow.tcl -design your_folder_name -add_to_designs -init_design_config
