@@ -6,11 +6,12 @@ class control(Elaboratable):
 
         self.instr_dat = Signal(32)  # Input Instruction
         self.funct3 = Signal(3)  # Function 3
-        self.funct7 = Signal()  # Function 7
+        self.funct7 = Signal()  # Function 7 funct7
         self.rs1 = Signal(5)  # Source Register 1
         self.rs2 = Signal(5)  # Source Register 2
         self.rd = Signal(5)  # Destination Register
-        self.op = Signal(7)  # Opcode
+        self.op = Signal(7)
+        self.mtype = Signal()  # Opcode
 
         self.we = Signal()  # Register write enable (It will be 1 for R and I type and it is 0 for S type)
         self.mem_mask = Signal(2)  # for memory masking (used in both load and store)
@@ -65,7 +66,7 @@ class control(Elaboratable):
             self.funct3.eq(self.instr_dat[12:]),  # funct3 is of 3 bits so (12 to 14)
             self.rs1.eq(self.instr_dat[15:]),  # rs1 is of 5 bits so (15 to 19)
             self.rs2.eq(self.instr_dat[20:]),  # rs2 is of 5 bits so (20 to 24)
-            self.funct7.eq(self.instr_dat[30]),  # funct3 is of 1 bit (30th bit)
+            
 
             # ====================================Immediate for I type Instruction===========================
             self.iimm.eq(self.instr_dat[20:]),  # iimm is of 12 bits so (20 to 31)
@@ -117,6 +118,13 @@ class control(Elaboratable):
                 self.ld_wd.eq(1), 
                 self.readsig.eq(0),
             ]
+            with m.If(self.instr_dat[30]==1):# funct7 is of 1 bit (30th bit)
+                m.d.comb += self.funct7.eq(self.instr_dat[30])
+            with m.Elif(self.instr_dat[25] == 1): #checking 25-bit of Funct7 if M-extension is enabled
+                m.d.comb += self.mtype.eq(1)
+        with m.Else():
+            m.d.comb += self.funct7.eq(0)
+
 
         # ====================================< I-Type 13 >=====================================
         with m.If(self.op == 0b0010011):  # opcode of I-Type

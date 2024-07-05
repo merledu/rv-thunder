@@ -2,61 +2,87 @@
 
 (* top =  1  *)
 (* generator = "Amaranth" *)
-module top(readsig, d_wem, dec_addout, d_memmask, wrt_sel, dmem_en, time_en, timecmp_en, data_time, dout, data, dataout, mtime, mtimecmp, clkcount, clk, rst, address);
+module top(btn, clk, rst, uar_tx);
   reg \$auto$verilog_backend.cc:2083:dump_module$1  = 0;
-  (* src = "/home/ali/rv-thunder/src/rv-thunder.py:86" *)
-  wire \$1 ;
-  (* src = "/home/ali/rv-thunder/src/rv-thunder.py:69" *)
-  wire [63:0] \$10 ;
-  (* src = "/home/ali/rv-thunder/src/rv-thunder.py:69" *)
-  wire [63:0] \$12 ;
-  (* src = "/home/ali/amaranth/amaranth/back/rtlil.py:570" *)
-  wire \$13 ;
-  (* src = "/home/ali/rv-thunder/src/rv-thunder.py:71" *)
-  wire \$16 ;
-  (* src = "/home/ali/rv-thunder/src/rv-thunder.py:72" *)
-  wire \$18 ;
+  (* src = "/home/ali/rv-thunder/src/rv-thunder.py:87" *)
+  wire [64:0] \$1 ;
+  (* src = "/home/ali/rv-thunder/src/rv-thunder.py:93" *)
+  wire \$10 ;
+  (* src = "/home/ali/rv-thunder/src/rv-thunder.py:94" *)
+  wire \$12 ;
+  (* src = "/home/ali/rv-thunder/src/rv-thunder.py:97" *)
+  wire \$14 ;
   (* src = "/home/ali/rv-thunder/src/rv-thunder.py:22" *)
-  wire [63:0] \$20 ;
-  (* src = "/home/ali/rv-thunder/src/rv-thunder.py:75" *)
+  wire [63:0] \$16 ;
+  (* src = "/home/ali/rv-thunder/src/rv-thunder.py:93" *)
+  wire \$18 ;
+  (* src = "/home/ali/rv-thunder/src/rv-thunder.py:87" *)
+  wire [64:0] \$2 ;
+  (* src = "/home/ali/rv-thunder/src/rv-thunder.py:94" *)
+  wire \$20 ;
+  (* src = "/home/ali/rv-thunder/src/rv-thunder.py:97" *)
   wire \$22 ;
-  (* src = "/home/ali/rv-thunder/src/rv-thunder.py:79" *)
+  (* src = "/home/ali/rv-thunder/src/rv-thunder.py:93" *)
   wire \$24 ;
-  (* src = "/home/ali/rv-thunder/src/rv-thunder.py:83" *)
+  (* src = "/home/ali/rv-thunder/src/rv-thunder.py:103" *)
   wire \$26 ;
-  (* src = "/home/ali/rv-thunder/src/rv-thunder.py:75" *)
+  (* src = "/home/ali/rv-thunder/src/rv-thunder.py:93" *)
   wire \$28 ;
-  (* src = "/home/ali/rv-thunder/src/rv-thunder.py:89" *)
-  wire \$3 ;
-  (* src = "/home/ali/rv-thunder/src/rv-thunder.py:79" *)
+  (* src = "/home/ali/rv-thunder/src/rv-thunder.py:106" *)
   wire \$30 ;
-  (* src = "/home/ali/rv-thunder/src/rv-thunder.py:83" *)
+  (* src = "/home/ali/rv-thunder/src/rv-thunder.py:109" *)
   wire \$32 ;
-  (* src = "/home/ali/rv-thunder/src/rv-thunder.py:66" *)
-  wire [64:0] \$5 ;
-  (* src = "/home/ali/rv-thunder/src/rv-thunder.py:66" *)
-  wire [64:0] \$6 ;
-  (* src = "/home/ali/rv-thunder/src/rv-thunder.py:68" *)
-  wire \$8 ;
+  (* src = "/home/ali/rv-thunder/src/rv-thunder.py:110" *)
+  wire \$34 ;
+  (* src = "/home/ali/rv-thunder/src/rv-thunder.py:114" *)
+  wire \$36 ;
+  (* src = "/home/ali/rv-thunder/src/rv-thunder.py:118" *)
+  wire \$38 ;
+  (* src = "/home/ali/rv-thunder/src/rv-thunder.py:90" *)
+  wire [63:0] \$4 ;
+  (* src = "/home/ali/rv-thunder/src/rv-thunder.py:121" *)
+  wire \$40 ;
+  (* src = "/home/ali/rv-thunder/src/rv-thunder.py:109" *)
+  wire \$42 ;
+  (* src = "/home/ali/rv-thunder/src/rv-thunder.py:110" *)
+  wire \$44 ;
+  (* src = "/home/ali/rv-thunder/src/rv-thunder.py:114" *)
+  wire \$46 ;
+  (* src = "/home/ali/rv-thunder/src/rv-thunder.py:118" *)
+  wire \$48 ;
+  (* src = "/home/ali/rv-thunder/src/rv-thunder.py:121" *)
+  wire \$50 ;
+  (* src = "/home/ali/rv-thunder/src/rv-thunder.py:109" *)
+  wire \$52 ;
+  (* src = "/home/ali/rv-thunder/src/rv-thunder.py:124" *)
+  wire \$54 ;
+  (* src = "/home/ali/rv-thunder/src/rv-thunder.py:127" *)
+  wire \$56 ;
+  (* src = "/home/ali/rv-thunder/src/rv-thunder.py:130" *)
+  wire \$58 ;
+  (* src = "/home/ali/rv-thunder/src/rv-thunder.py:90" *)
+  wire [63:0] \$6 ;
+  (* src = "/home/ali/rv-thunder/src/rv-thunder.py:27" *)
+  wire [31:0] \$60 ;
+  (* src = "/home/ali/amaranth/amaranth/back/rtlil.py:570" *)
+  wire \$7 ;
   (* src = "/home/ali/rv-thunder/src/rv-thunder.py:11" *)
-  output [31:0] address;
   wire [31:0] address;
+  (* src = "/home/ali/rv-thunder/src/rv-thunder.py:33" *)
+  input btn;
+  wire btn;
   (* src = "/home/ali/amaranth/amaranth/hdl/ir.py:508" *)
   input clk;
   wire clk;
   (* src = "/home/ali/rv-thunder/src/rv-thunder.py:26" *)
-  output [63:0] clkcount;
   reg [63:0] clkcount = 64'h0000000000000000;
   (* src = "/home/ali/rv-thunder/src/rv-thunder.py:26" *)
   reg [63:0] \clkcount$next ;
   (* src = "/home/ali/rv-thunder/src/rv-thunder.py:15" *)
-  output [1:0] d_memmask;
   wire [1:0] d_memmask;
   (* src = "/home/ali/rv-thunder/src/rv-thunder.py:13" *)
-  output d_wem;
   wire d_wem;
   (* src = "/home/ali/rv-thunder/src/rv-thunder.py:22" *)
-  output [31:0] data;
   wire [31:0] data;
   (* src = "/home/ali/rv-thunder/src/data_mem.py:5" *)
   wire [31:0] data_memory_unit_adr;
@@ -69,19 +95,14 @@ module top(readsig, d_wem, dec_addout, d_memmask, wrt_sel, dmem_en, time_en, tim
   (* src = "/home/ali/rv-thunder/src/data_mem.py:9" *)
   wire data_memory_unit_inv_add;
   (* src = "/home/ali/rv-thunder/src/rv-thunder.py:20" *)
-  output [31:0] data_time;
   reg [31:0] data_time;
   (* src = "/home/ali/rv-thunder/src/rv-thunder.py:23" *)
-  output [31:0] dataout;
   reg [31:0] dataout;
   (* src = "/home/ali/rv-thunder/src/rv-thunder.py:14" *)
-  output [31:0] dec_addout;
   wire [31:0] dec_addout;
   (* src = "/home/ali/rv-thunder/src/rv-thunder.py:17" *)
-  output dmem_en;
   wire dmem_en;
   (* src = "/home/ali/rv-thunder/src/rv-thunder.py:21" *)
-  output [31:0] dout;
   wire [31:0] dout;
   (* src = "/home/ali/rv-thunder/src/inst_mem.py:6" *)
   wire [12:0] inst_memory_unit_adr;
@@ -101,29 +122,34 @@ module top(readsig, d_wem, dec_addout, d_memmask, wrt_sel, dmem_en, time_en, tim
   wire mmio_unit_time_en;
   (* src = "/home/ali/rv-thunder/src/mmio.py:10" *)
   wire mmio_unit_timecmp_en;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:14" *)
+  wire mmio_unit_u_ready;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:13" *)
+  wire mmio_unit_uart_en;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:15" *)
+  wire mmio_unit_uart_ready_en;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:16" *)
+  wire mmio_unit_uart_ready_wrt;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:17" *)
+  wire mmio_unit_uart_tx_valid;
   (* src = "/home/ali/rv-thunder/src/mmio.py:7" *)
   wire mmio_unit_wrt;
   (* src = "/home/ali/rv-thunder/src/rv-thunder.py:24" *)
-  output [63:0] mtime;
   reg [63:0] mtime = 64'h0000000000000000;
   (* src = "/home/ali/rv-thunder/src/rv-thunder.py:24" *)
   reg [63:0] \mtime$next ;
   (* src = "/home/ali/rv-thunder/src/rv-thunder.py:25" *)
-  output [63:0] mtimecmp;
   reg [63:0] mtimecmp = 64'h0000000000000000;
   (* src = "/home/ali/rv-thunder/src/rv-thunder.py:25" *)
   reg [63:0] \mtimecmp$next ;
   (* src = "/home/ali/rv-thunder/src/rv-thunder.py:12" *)
-  output readsig;
   wire readsig;
   (* src = "/home/ali/amaranth/amaranth/hdl/ir.py:508" *)
   input rst;
   wire rst;
   (* src = "/home/ali/rv-thunder/src/rv-thunder.py:18" *)
-  output time_en;
   wire time_en;
   (* src = "/home/ali/rv-thunder/src/rv-thunder.py:19" *)
-  output timecmp_en;
   wire timecmp_en;
   (* src = "/home/ali/rv-thunder/src/Top.py:18" *)
   wire [31:0] top_unit_data_mem_adr;
@@ -137,24 +163,56 @@ module top(readsig, d_wem, dec_addout, d_memmask, wrt_sel, dmem_en, time_en, tim
   wire [31:0] top_unit_data_mem_out;
   (* src = "/home/ali/rv-thunder/src/Top.py:19" *)
   wire top_unit_data_mem_we;
-  (* src = "/home/ali/rv-thunder/src/Top.py:27" *)
-  wire [31:0] top_unit_inst_dat_r;
+  (* src = "/home/ali/rv-thunder/src/Top.py:29" *)
+  wire [31:0] top_unit_dmem_data;
   (* src = "/home/ali/rv-thunder/src/Top.py:28" *)
-  wire top_unit_inst_inval_add;
+  wire top_unit_dmem_en;
   (* src = "/home/ali/rv-thunder/src/Top.py:26" *)
+  wire [31:0] top_unit_inst_dat_r;
+  (* src = "/home/ali/rv-thunder/src/Top.py:27" *)
+  wire top_unit_inst_inval_add;
+  (* src = "/home/ali/rv-thunder/src/Top.py:25" *)
   wire [12:0] top_unit_inst_mem_adr;
   (* src = "/home/ali/rv-thunder/src/Top.py:24" *)
   wire top_unit_readsig;
-  (* src = "/home/ali/rv-thunder/src/Top.py:25" *)
-  wire [31:0] top_unit_writedata;
+  (* src = "/home/ali/rv-thunder/src/rv-thunder.py:31" *)
+  reg tx_valid = 1'h0;
+  (* src = "/home/ali/rv-thunder/src/rv-thunder.py:31" *)
+  reg \tx_valid$next ;
+  (* src = "/home/ali/rv-thunder/src/rv-thunder.py:32" *)
+  output uar_tx;
+  wire uar_tx;
+  (* src = "/home/ali/rv-thunder/src/rv-thunder.py:28" *)
+  reg [7:0] uart_data = 8'h00;
+  (* src = "/home/ali/rv-thunder/src/rv-thunder.py:28" *)
+  reg [7:0] \uart_data$next ;
+  (* src = "/home/ali/rv-thunder/src/rv-thunder.py:29" *)
+  reg [7:0] uart_data_tx = 8'h00;
+  (* src = "/home/ali/rv-thunder/src/rv-thunder.py:29" *)
+  reg [7:0] \uart_data_tx$next ;
+  (* src = "/home/ali/rv-thunder/src/rv-thunder.py:30" *)
+  wire uart_en;
+  (* src = "/home/ali/rv-thunder/src/rv-thunder.py:27" *)
+  wire uart_ready;
+  (* src = "/home/ali/rv-thunder/src/uart_tx.py:10" *)
+  wire uart_tx_unit_btn1;
+  (* src = "/home/ali/rv-thunder/src/uart_tx.py:9" *)
+  wire uart_tx_unit_ready;
+  (* src = "/home/ali/rv-thunder/src/uart_tx.py:7" *)
+  wire [7:0] uart_tx_unit_tx_data_in;
+  (* src = "/home/ali/rv-thunder/src/uart_tx.py:6" *)
+  wire uart_tx_unit_uart_tx;
+  (* src = "/home/ali/rv-thunder/src/uart_tx.py:8" *)
+  wire uart_tx_unit_valid;
   (* src = "/home/ali/rv-thunder/src/rv-thunder.py:16" *)
-  output wrt_sel;
-  reg wrt_sel = 1'h0;
-  (* src = "/home/ali/rv-thunder/src/rv-thunder.py:16" *)
-  reg \wrt_sel$next ;
-  assign \$10  = clkcount / (* src = "/home/ali/rv-thunder/src/rv-thunder.py:69" *) 4'ha;
-  assign \$1  = ~ (* src = "/home/ali/rv-thunder/src/rv-thunder.py:86" *) wrt_sel;
-  assign \$20  = + (* src = "/home/ali/rv-thunder/src/rv-thunder.py:22" *) data;
+  reg [1:0] wrt_sel;
+  assign \$16  = + (* src = "/home/ali/rv-thunder/src/rv-thunder.py:22" *) data;
+  assign \$2  = clkcount + (* src = "/home/ali/rv-thunder/src/rv-thunder.py:87" *) 2'h2;
+  assign \$4  = clkcount / (* src = "/home/ali/rv-thunder/src/rv-thunder.py:90" *) 4'ha;
+  assign \$54  = ! (* src = "/home/ali/rv-thunder/src/rv-thunder.py:124" *) wrt_sel;
+  assign \$56  = wrt_sel == (* src = "/home/ali/rv-thunder/src/rv-thunder.py:127" *) 1'h1;
+  assign \$58  = wrt_sel == (* src = "/home/ali/rv-thunder/src/rv-thunder.py:130" *) 2'h2;
+  assign \$60  = + (* src = "/home/ali/rv-thunder/src/rv-thunder.py:27" *) uart_ready;
   always @(posedge clk)
     clkcount <= \clkcount$next ;
   always @(posedge clk)
@@ -162,8 +220,11 @@ module top(readsig, d_wem, dec_addout, d_memmask, wrt_sel, dmem_en, time_en, tim
   always @(posedge clk)
     mtimecmp <= \mtimecmp$next ;
   always @(posedge clk)
-    wrt_sel <= \wrt_sel$next ;
-  assign \$6  = clkcount + (* src = "/home/ali/rv-thunder/src/rv-thunder.py:66" *) 2'h2;
+    uart_data <= \uart_data$next ;
+  always @(posedge clk)
+    uart_data_tx <= \uart_data_tx$next ;
+  always @(posedge clk)
+    tx_valid <= \tx_valid$next ;
   \top.data_memory_unit  data_memory_unit (
     .adr(data_memory_unit_adr),
     .clk(clk),
@@ -180,10 +241,17 @@ module top(readsig, d_wem, dec_addout, d_memmask, wrt_sel, dmem_en, time_en, tim
   \top.mmio_unit  mmio_unit (
     .add_out(mmio_unit_add_out),
     .address(mmio_unit_address),
+    .clk(clk),
     .dmem_en(mmio_unit_dmem_en),
     .rd(mmio_unit_rd),
+    .rst(rst),
     .time_en(mmio_unit_time_en),
     .timecmp_en(mmio_unit_timecmp_en),
+    .u_ready(mmio_unit_u_ready),
+    .uart_en(mmio_unit_uart_en),
+    .uart_ready_en(mmio_unit_uart_ready_en),
+    .uart_ready_wrt(mmio_unit_uart_ready_wrt),
+    .uart_tx_valid(mmio_unit_uart_tx_valid),
     .wrt(mmio_unit_wrt)
   );
   \top.top_unit  top_unit (
@@ -194,16 +262,26 @@ module top(readsig, d_wem, dec_addout, d_memmask, wrt_sel, dmem_en, time_en, tim
     .data_mem_mask(top_unit_data_mem_mask),
     .data_mem_out(top_unit_data_mem_out),
     .data_mem_we(top_unit_data_mem_we),
+    .dmem_data(top_unit_dmem_data),
+    .dmem_en(top_unit_dmem_en),
     .inst_dat_r(top_unit_inst_dat_r),
     .inst_inval_add(top_unit_inst_inval_add),
     .inst_mem_adr(top_unit_inst_mem_adr),
     .readsig(top_unit_readsig),
+    .rst(rst)
+  );
+  \top.uart_tx_unit  uart_tx_unit (
+    .btn1(uart_tx_unit_btn1),
+    .clk(clk),
+    .ready(uart_tx_unit_ready),
     .rst(rst),
-    .writedata(top_unit_writedata)
+    .tx_data_in(uart_tx_unit_tx_data_in),
+    .uart_tx(uart_tx_unit_uart_tx),
+    .valid(uart_tx_unit_valid)
   );
   always @* begin
     if (\$auto$verilog_backend.cc:2083:dump_module$1 ) begin end
-    \clkcount$next  = \$6 [63:0];
+    \clkcount$next  = \$2 [63:0];
     (* src = "/home/ali/amaranth/amaranth/hdl/xfrm.py:503" *)
     casez (rst)
       1'h1:
@@ -212,13 +290,7 @@ module top(readsig, d_wem, dec_addout, d_memmask, wrt_sel, dmem_en, time_en, tim
   end
   always @* begin
     if (\$auto$verilog_backend.cc:2083:dump_module$1 ) begin end
-    \mtime$next  = mtime;
-    (* src = "/home/ali/rv-thunder/src/rv-thunder.py:68" *)
-    casez (\$8 )
-      /* src = "/home/ali/rv-thunder/src/rv-thunder.py:68" */
-      1'h1:
-          \mtime$next  = \$12 ;
-    endcase
+    \mtime$next  = \$6 ;
     (* src = "/home/ali/amaranth/amaranth/hdl/xfrm.py:503" *)
     casez (rst)
       1'h1:
@@ -228,15 +300,15 @@ module top(readsig, d_wem, dec_addout, d_memmask, wrt_sel, dmem_en, time_en, tim
   always @* begin
     if (\$auto$verilog_backend.cc:2083:dump_module$1 ) begin end
     \mtimecmp$next  = mtimecmp;
-    (* src = "/home/ali/rv-thunder/src/rv-thunder.py:71" *)
-    casez (\$16 )
-      /* src = "/home/ali/rv-thunder/src/rv-thunder.py:71" */
+    (* src = "/home/ali/rv-thunder/src/rv-thunder.py:93" *)
+    casez (\$10 )
+      /* src = "/home/ali/rv-thunder/src/rv-thunder.py:93" */
       1'h1:
-          (* src = "/home/ali/rv-thunder/src/rv-thunder.py:72" *)
-          casez (\$18 )
-            /* src = "/home/ali/rv-thunder/src/rv-thunder.py:72" */
-            1'h1:
-                \mtimecmp$next  = \$20 ;
+          (* src = "/home/ali/rv-thunder/src/rv-thunder.py:94" *)
+          casez ({ \$14 , \$12  })
+            /* src = "/home/ali/rv-thunder/src/rv-thunder.py:94" */
+            2'b?1:
+                \mtimecmp$next  = \$16 ;
           endcase
     endcase
     (* src = "/home/ali/amaranth/amaranth/hdl/xfrm.py:503" *)
@@ -247,85 +319,183 @@ module top(readsig, d_wem, dec_addout, d_memmask, wrt_sel, dmem_en, time_en, tim
   end
   always @* begin
     if (\$auto$verilog_backend.cc:2083:dump_module$1 ) begin end
-    \wrt_sel$next  = wrt_sel;
-    (* src = "/home/ali/rv-thunder/src/rv-thunder.py:75" *)
-    casez ({ \$26 , \$24 , \$22  })
-      /* src = "/home/ali/rv-thunder/src/rv-thunder.py:75" */
-      3'b??1:
-          \wrt_sel$next  = 1'h0;
-      /* src = "/home/ali/rv-thunder/src/rv-thunder.py:79" */
-      3'b?1?:
-          \wrt_sel$next  = 1'h0;
-      /* src = "/home/ali/rv-thunder/src/rv-thunder.py:83" */
-      3'b1??:
-          \wrt_sel$next  = 1'h1;
+    \uart_data$next  = uart_data;
+    (* src = "/home/ali/rv-thunder/src/rv-thunder.py:93" *)
+    casez (\$18 )
+      /* src = "/home/ali/rv-thunder/src/rv-thunder.py:93" */
+      1'h1:
+          (* src = "/home/ali/rv-thunder/src/rv-thunder.py:94" *)
+          casez ({ \$22 , \$20  })
+            /* src = "/home/ali/rv-thunder/src/rv-thunder.py:94" */
+            2'b?1:
+                /* empty */;
+            /* src = "/home/ali/rv-thunder/src/rv-thunder.py:97" */
+            2'b1?:
+                \uart_data$next  = data[7:0];
+          endcase
     endcase
     (* src = "/home/ali/amaranth/amaranth/hdl/xfrm.py:503" *)
     casez (rst)
       1'h1:
-          \wrt_sel$next  = 1'h0;
+          \uart_data$next  = 8'h00;
+    endcase
+  end
+  always @* begin
+    if (\$auto$verilog_backend.cc:2083:dump_module$1 ) begin end
+    \uart_data_tx$next  = uart_data_tx;
+    (* src = "/home/ali/rv-thunder/src/rv-thunder.py:93" *)
+    casez (\$24 )
+      /* src = "/home/ali/rv-thunder/src/rv-thunder.py:93" */
+      1'h1:
+          (* src = "/home/ali/rv-thunder/src/rv-thunder.py:103" *)
+          casez (\$26 )
+            /* src = "/home/ali/rv-thunder/src/rv-thunder.py:103" */
+            1'h1:
+                \uart_data_tx$next  = uart_data;
+          endcase
+    endcase
+    (* src = "/home/ali/amaranth/amaranth/hdl/xfrm.py:503" *)
+    casez (rst)
+      1'h1:
+          \uart_data_tx$next  = 8'h00;
+    endcase
+  end
+  always @* begin
+    if (\$auto$verilog_backend.cc:2083:dump_module$1 ) begin end
+    \tx_valid$next  = tx_valid;
+    (* src = "/home/ali/rv-thunder/src/rv-thunder.py:93" *)
+    casez (\$28 )
+      /* src = "/home/ali/rv-thunder/src/rv-thunder.py:93" */
+      1'h1:
+          (* src = "/home/ali/rv-thunder/src/rv-thunder.py:106" *)
+          casez (\$30 )
+            /* src = "/home/ali/rv-thunder/src/rv-thunder.py:106" */
+            1'h1:
+                \tx_valid$next  = data[0];
+          endcase
+    endcase
+    (* src = "/home/ali/amaranth/amaranth/hdl/xfrm.py:503" *)
+    casez (rst)
+      1'h1:
+          \tx_valid$next  = 1'h0;
+    endcase
+  end
+  always @* begin
+    if (\$auto$verilog_backend.cc:2083:dump_module$1 ) begin end
+    wrt_sel = 2'h0;
+    (* src = "/home/ali/rv-thunder/src/rv-thunder.py:109" *)
+    casez (\$32 )
+      /* src = "/home/ali/rv-thunder/src/rv-thunder.py:109" */
+      1'h1:
+          (* src = "/home/ali/rv-thunder/src/rv-thunder.py:110" *)
+          casez ({ \$40 , \$38 , \$36 , \$34  })
+            /* src = "/home/ali/rv-thunder/src/rv-thunder.py:110" */
+            4'b???1:
+                wrt_sel = 2'h0;
+            /* src = "/home/ali/rv-thunder/src/rv-thunder.py:114" */
+            4'b??1?:
+                wrt_sel = 2'h0;
+            /* src = "/home/ali/rv-thunder/src/rv-thunder.py:118" */
+            4'b?1??:
+                wrt_sel = 2'h1;
+            /* src = "/home/ali/rv-thunder/src/rv-thunder.py:121" */
+            4'b1???:
+                wrt_sel = 2'h2;
+          endcase
     endcase
   end
   always @* begin
     if (\$auto$verilog_backend.cc:2083:dump_module$1 ) begin end
     data_time = 32'd0;
-    (* src = "/home/ali/rv-thunder/src/rv-thunder.py:75" *)
-    casez ({ \$32 , \$30 , \$28  })
-      /* src = "/home/ali/rv-thunder/src/rv-thunder.py:75" */
-      3'b??1:
-          data_time = mtime[31:0];
-      /* src = "/home/ali/rv-thunder/src/rv-thunder.py:79" */
-      3'b?1?:
-          data_time = mtimecmp[31:0];
+    (* src = "/home/ali/rv-thunder/src/rv-thunder.py:109" *)
+    casez (\$42 )
+      /* src = "/home/ali/rv-thunder/src/rv-thunder.py:109" */
+      1'h1:
+          (* src = "/home/ali/rv-thunder/src/rv-thunder.py:110" *)
+          casez ({ \$50 , \$48 , \$46 , \$44  })
+            /* src = "/home/ali/rv-thunder/src/rv-thunder.py:110" */
+            4'b???1:
+                data_time = mtime[31:0];
+            /* src = "/home/ali/rv-thunder/src/rv-thunder.py:114" */
+            4'b??1?:
+                data_time = mtimecmp[31:0];
+          endcase
     endcase
   end
   always @* begin
     if (\$auto$verilog_backend.cc:2083:dump_module$1 ) begin end
-    dataout = data_memory_unit_dmem_dout;
-    (* src = "/home/ali/rv-thunder/src/rv-thunder.py:86" *)
-    casez ({ \$3 , \$1  })
-      /* src = "/home/ali/rv-thunder/src/rv-thunder.py:86" */
-      2'b?1:
-          dataout = data_time;
-      /* src = "/home/ali/rv-thunder/src/rv-thunder.py:89" */
-      2'b1?:
-          dataout = dout;
+    dataout = 32'd0;
+    (* src = "/home/ali/rv-thunder/src/rv-thunder.py:109" *)
+    casez (\$52 )
+      /* src = "/home/ali/rv-thunder/src/rv-thunder.py:109" */
+      1'h1:
+          (* src = "/home/ali/rv-thunder/src/rv-thunder.py:124" *)
+          casez ({ \$58 , \$56 , \$54  })
+            /* src = "/home/ali/rv-thunder/src/rv-thunder.py:124" */
+            3'b??1:
+                dataout = data_time;
+            /* src = "/home/ali/rv-thunder/src/rv-thunder.py:127" */
+            3'b?1?:
+                dataout = dout;
+            /* src = "/home/ali/rv-thunder/src/rv-thunder.py:130" */
+            3'b1??:
+                dataout = \$60 ;
+          endcase
     endcase
   end
-  assign \$5  = \$6 ;
-  assign mmio_unit_rd = top_unit_readsig;
+  assign \$1  = \$2 ;
+  assign uart_tx_unit_valid = tx_valid;
+  assign uart_ready = uart_tx_unit_ready;
+  assign uart_tx_unit_btn1 = btn;
+  assign uart_tx_unit_tx_data_in = uart_data_tx;
+  assign uar_tx = uart_tx_unit_uart_tx;
+  assign mmio_unit_u_ready = uart_ready;
+  assign top_unit_dmem_en = dmem_en;
   assign mmio_unit_wrt = top_unit_data_mem_we;
   assign mmio_unit_address = top_unit_data_mem_adr;
   assign top_unit_data_mem_invadd = data_memory_unit_inv_add;
-  assign data_memory_unit_dmem_we = top_unit_data_mem_we;
+  assign data_memory_unit_dmem_we = d_wem;
   assign data_memory_unit_dmem_din = top_unit_data_mem_in;
   assign data_memory_unit_adr = dec_addout;
   assign top_unit_inst_dat_r = inst_memory_unit_dat_r;
   assign top_unit_inst_inval_add = inst_memory_unit_inval_add;
   assign inst_memory_unit_adr = top_unit_inst_mem_adr;
-  assign top_unit_data_mem_out = data_memory_unit_dmem_dout;
-  assign readsig = top_unit_readsig;
-  assign dout = top_unit_writedata;
+  assign uart_en = mmio_unit_uart_en;
+  assign mmio_unit_rd = top_unit_readsig;
+  assign readsig = mmio_unit_rd;
+  assign dout = data_memory_unit_dmem_dout;
   assign dmem_en = mmio_unit_dmem_en;
   assign timecmp_en = mmio_unit_timecmp_en;
   assign time_en = mmio_unit_time_en;
   assign dec_addout = mmio_unit_add_out;
-  assign data = top_unit_data_mem_in;
-  assign d_wem = top_unit_data_mem_we;
-  assign address = top_unit_data_mem_adr;
+  assign top_unit_data_mem_out = dataout;
+  assign data = top_unit_dmem_data;
+  assign d_wem = mmio_unit_wrt;
+  assign address = mmio_unit_address;
   assign d_memmask = top_unit_data_mem_mask;
-  assign \$3  = wrt_sel;
-  assign \$8  = time_en;
-  assign \$13  = 1'h0;
-  assign \$12  = \$10 ;
-  assign \$16  = d_wem;
-  assign \$18  = timecmp_en;
-  assign \$22  = time_en;
-  assign \$24  = timecmp_en;
-  assign \$26  = dmem_en;
-  assign \$28  = time_en;
-  assign \$30  = timecmp_en;
-  assign \$32  = dmem_en;
+  assign \$7  = 1'h0;
+  assign \$6  = \$4 ;
+  assign \$10  = d_wem;
+  assign \$12  = timecmp_en;
+  assign \$14  = uart_en;
+  assign \$18  = d_wem;
+  assign \$20  = timecmp_en;
+  assign \$22  = uart_en;
+  assign \$24  = d_wem;
+  assign \$26  = mmio_unit_uart_ready_en;
+  assign \$28  = d_wem;
+  assign \$30  = mmio_unit_uart_tx_valid;
+  assign \$32  = readsig;
+  assign \$34  = time_en;
+  assign \$36  = timecmp_en;
+  assign \$38  = dmem_en;
+  assign \$40  = mmio_unit_uart_ready_wrt;
+  assign \$42  = readsig;
+  assign \$44  = time_en;
+  assign \$46  = timecmp_en;
+  assign \$48  = dmem_en;
+  assign \$50  = mmio_unit_uart_ready_wrt;
+  assign \$52  = readsig;
 endmodule
 
 (* generator = "Amaranth" *)
@@ -8612,20 +8782,20 @@ module \top.inst_memory_unit (inval_add, dat_r, adr);
   wire [31:0] mem_r_data;
   reg [31:0] rdport [8191:0];
   initial begin
-    rdport[0] = 32'd1049235;
-    rdport[1] = 32'd11731731;
-    rdport[2] = 32'd31625875;
-    rdport[3] = 32'd12784403;
-    rdport[4] = 32'd5465011;
-    rdport[5] = 32'd6529571;
-    rdport[6] = 32'd4432899;
-    rdport[7] = 32'd0;
-    rdport[8] = 32'd0;
-    rdport[9] = 32'd0;
-    rdport[10] = 32'd0;
-    rdport[11] = 32'd0;
-    rdport[12] = 32'd0;
-    rdport[13] = 32'd0;
+    rdport[0] = 32'd1879049143;
+    rdport[1] = 32'd8618899;
+    rdport[2] = 32'd1879048887;
+    rdport[3] = 32'd1879049015;
+    rdport[4] = 32'd4391699;
+    rdport[5] = 32'd1048723;
+    rdport[6] = 32'd19;
+    rdport[7] = 32'd229411;
+    rdport[8] = 32'd200195;
+    rdport[9] = 32'd4293790435;
+    rdport[10] = 32'd109052179;
+    rdport[11] = 32'd2261027;
+    rdport[12] = 32'd1277987;
+    rdport[13] = 32'd4267700335;
     rdport[14] = 32'd0;
     rdport[15] = 32'd0;
     rdport[16] = 32'd0;
@@ -16824,159 +16994,371 @@ module \top.inst_memory_unit (inval_add, dat_r, adr);
 endmodule
 
 (* generator = "Amaranth" *)
-module \top.mmio_unit (time_en, timecmp_en, dmem_en, address, wrt, rd, add_out);
+module \top.mmio_unit (wrt, add_out, time_en, timecmp_en, dmem_en, rd, uart_en, u_ready, uart_ready_en, uart_tx_valid, uart_ready_wrt, rst, clk, address);
   reg \$auto$verilog_backend.cc:2083:dump_module$4  = 0;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:16" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:21" *)
   wire \$1 ;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:32" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:52" *)
   wire \$101 ;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:32" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:52" *)
   wire \$103 ;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:32" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:21" *)
   wire \$105 ;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:32" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:51" *)
   wire \$107 ;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:32" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:22" *)
   wire \$109 ;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:17" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:22" *)
   wire \$11 ;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:32" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:22" *)
   wire \$111 ;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:32" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:22" *)
   wire \$113 ;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:16" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:22" *)
   wire \$115 ;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:31" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:22" *)
   wire \$117 ;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:17" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:29" *)
   wire \$119 ;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:17" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:29" *)
   wire \$121 ;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:17" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:29" *)
   wire \$123 ;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:17" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:29" *)
   wire \$125 ;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:17" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:29" *)
   wire \$127 ;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:24" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:36" *)
   wire \$129 ;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:17" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:22" *)
   wire \$13 ;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:24" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:36" *)
   wire \$131 ;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:24" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:36" *)
   wire \$133 ;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:24" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:41" *)
   wire \$135 ;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:24" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:47" *)
   wire \$137 ;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:32" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:47" *)
   wire \$139 ;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:32" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:47" *)
   wire \$141 ;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:32" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:52" *)
   wire \$143 ;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:32" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:52" *)
   wire \$145 ;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:32" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:52" *)
   wire \$147 ;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:32" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:52" *)
   wire \$149 ;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:24" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:29" *)
   wire \$15 ;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:32" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:52" *)
   wire \$151 ;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:24" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:52" *)
+  wire \$153 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:52" *)
+  wire \$155 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:21" *)
+  wire \$157 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:51" *)
+  wire \$159 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:22" *)
+  wire \$161 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:22" *)
+  wire \$163 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:22" *)
+  wire \$165 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:22" *)
+  wire \$167 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:22" *)
+  wire \$169 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:29" *)
   wire \$17 ;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:24" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:29" *)
+  wire \$171 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:29" *)
+  wire \$173 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:29" *)
+  wire \$175 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:29" *)
+  wire \$177 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:29" *)
+  wire \$179 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:36" *)
+  wire \$181 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:36" *)
+  wire \$183 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:36" *)
+  wire \$185 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:41" *)
+  wire \$187 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:47" *)
+  wire \$189 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:29" *)
   wire \$19 ;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:24" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:47" *)
+  wire \$191 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:47" *)
+  wire \$193 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:52" *)
+  wire \$195 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:52" *)
+  wire \$197 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:52" *)
+  wire \$199 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:52" *)
+  wire \$201 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:52" *)
+  wire \$203 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:52" *)
+  wire \$205 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:52" *)
+  wire \$207 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:21" *)
+  wire \$209 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:29" *)
   wire \$21 ;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:24" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:51" *)
+  wire \$211 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:22" *)
+  wire \$213 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:22" *)
+  wire \$215 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:22" *)
+  wire \$217 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:22" *)
+  wire \$219 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:22" *)
+  wire \$221 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:29" *)
+  wire \$223 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:29" *)
+  wire \$225 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:29" *)
+  wire \$227 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:29" *)
+  wire \$229 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:29" *)
   wire \$23 ;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:32" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:29" *)
+  wire \$231 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:36" *)
+  wire \$233 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:36" *)
+  wire \$235 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:36" *)
+  wire \$237 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:41" *)
+  wire \$239 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:47" *)
+  wire \$241 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:47" *)
+  wire \$243 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:47" *)
+  wire \$245 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:21" *)
+  wire \$247 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:51" *)
+  wire \$249 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:36" *)
   wire \$25 ;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:32" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:22" *)
+  wire \$251 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:22" *)
+  wire \$253 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:22" *)
+  wire \$255 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:22" *)
+  wire \$257 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:22" *)
+  wire \$259 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:29" *)
+  wire \$261 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:29" *)
+  wire \$263 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:29" *)
+  wire \$265 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:29" *)
+  wire \$267 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:29" *)
+  wire \$269 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:36" *)
   wire \$27 ;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:32" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:36" *)
+  wire \$271 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:36" *)
+  wire \$273 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:36" *)
+  wire \$275 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:41" *)
+  wire \$277 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:47" *)
+  wire \$279 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:47" *)
+  wire \$281 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:47" *)
+  wire \$283 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:42" *)
+  wire \$285 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:21" *)
+  wire \$287 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:51" *)
+  wire \$289 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:36" *)
   wire \$29 ;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:31" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:22" *)
+  wire \$291 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:22" *)
+  wire \$293 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:22" *)
+  wire \$295 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:22" *)
+  wire \$297 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:22" *)
+  wire \$299 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:51" *)
   wire \$3 ;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:32" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:29" *)
+  wire \$301 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:29" *)
+  wire \$303 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:29" *)
+  wire \$305 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:29" *)
+  wire \$307 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:29" *)
+  wire \$309 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:41" *)
   wire \$31 ;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:32" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:36" *)
+  wire \$311 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:36" *)
+  wire \$313 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:36" *)
+  wire \$315 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:41" *)
+  wire \$317 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:47" *)
+  wire \$319 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:47" *)
+  wire \$321 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:47" *)
+  wire \$323 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:44" *)
+  wire \$325 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:21" *)
+  wire \$327 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:51" *)
+  wire \$329 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:47" *)
   wire \$33 ;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:32" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:22" *)
+  wire \$331 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:22" *)
+  wire \$333 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:22" *)
+  wire \$335 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:22" *)
+  wire \$337 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:22" *)
+  wire \$339 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:29" *)
+  wire \$341 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:29" *)
+  wire \$343 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:29" *)
+  wire \$345 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:29" *)
+  wire \$347 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:29" *)
+  wire \$349 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:47" *)
   wire \$35 ;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:32" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:36" *)
+  wire \$351 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:36" *)
+  wire \$353 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:36" *)
+  wire \$355 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:41" *)
+  wire \$357 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:47" *)
+  wire \$359 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:47" *)
+  wire \$361 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:47" *)
+  wire \$363 ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:47" *)
   wire \$37 ;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:16" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:52" *)
   wire \$39 ;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:31" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:52" *)
   wire \$41 ;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:17" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:52" *)
   wire \$43 ;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:17" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:52" *)
   wire \$45 ;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:17" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:52" *)
   wire \$47 ;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:17" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:52" *)
   wire \$49 ;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:17" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:22" *)
   wire \$5 ;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:17" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:52" *)
   wire \$51 ;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:24" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:21" *)
   wire \$53 ;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:24" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:51" *)
   wire \$55 ;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:24" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:22" *)
   wire \$57 ;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:24" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:22" *)
   wire \$59 ;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:24" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:22" *)
   wire \$61 ;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:32" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:22" *)
   wire \$63 ;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:32" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:22" *)
   wire \$65 ;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:32" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:29" *)
   wire \$67 ;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:32" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:29" *)
   wire \$69 ;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:17" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:22" *)
   wire \$7 ;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:32" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:29" *)
   wire \$71 ;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:32" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:29" *)
   wire \$73 ;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:32" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:29" *)
   wire \$75 ;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:16" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:36" *)
   wire \$77 ;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:31" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:36" *)
   wire \$79 ;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:17" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:36" *)
   wire \$81 ;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:17" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:41" *)
   wire \$83 ;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:17" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:47" *)
   wire \$85 ;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:17" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:47" *)
   wire \$87 ;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:17" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:47" *)
   wire \$89 ;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:17" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:22" *)
   wire \$9 ;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:24" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:52" *)
   wire \$91 ;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:24" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:52" *)
   wire \$93 ;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:24" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:52" *)
   wire \$95 ;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:24" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:52" *)
   wire \$97 ;
-  (* src = "/home/ali/rv-thunder/src/mmio.py:24" *)
+  (* src = "/home/ali/rv-thunder/src/mmio.py:52" *)
   wire \$99 ;
   (* src = "/home/ali/rv-thunder/src/mmio.py:12" *)
   output [31:0] add_out;
@@ -16984,90 +17366,183 @@ module \top.mmio_unit (time_en, timecmp_en, dmem_en, address, wrt, rd, add_out);
   (* src = "/home/ali/rv-thunder/src/mmio.py:6" *)
   input [31:0] address;
   wire [31:0] address;
+  (* src = "/home/ali/amaranth/amaranth/hdl/ir.py:508" *)
+  input clk;
+  wire clk;
   (* src = "/home/ali/rv-thunder/src/mmio.py:11" *)
   output dmem_en;
   reg dmem_en;
   (* src = "/home/ali/rv-thunder/src/mmio.py:8" *)
   input rd;
   wire rd;
+  (* src = "/home/ali/amaranth/amaranth/hdl/ir.py:508" *)
+  input rst;
+  wire rst;
   (* src = "/home/ali/rv-thunder/src/mmio.py:9" *)
   output time_en;
   reg time_en;
   (* src = "/home/ali/rv-thunder/src/mmio.py:10" *)
   output timecmp_en;
   reg timecmp_en;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:14" *)
+  input u_ready;
+  wire u_ready;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:13" *)
+  output uart_en;
+  reg uart_en;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:15" *)
+  output uart_ready_en;
+  reg uart_ready_en = 1'h0;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:15" *)
+  reg \uart_ready_en$next ;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:16" *)
+  output uart_ready_wrt;
+  reg uart_ready_wrt;
+  (* src = "/home/ali/rv-thunder/src/mmio.py:17" *)
+  output uart_tx_valid;
+  reg uart_tx_valid;
   (* src = "/home/ali/rv-thunder/src/mmio.py:7" *)
   input wrt;
   wire wrt;
-  assign \$9  = \$5  & (* src = "/home/ali/rv-thunder/src/mmio.py:17" *) \$7 ;
-  assign \$99  = \$95  | (* src = "/home/ali/rv-thunder/src/mmio.py:24" *) \$97 ;
-  assign \$101  = address[14:2] >= (* src = "/home/ali/rv-thunder/src/mmio.py:32" *) 1'h0;
-  assign \$103  = address[14:2] <= (* src = "/home/ali/rv-thunder/src/mmio.py:32" *) 13'h1fff;
-  assign \$105  = \$101  & (* src = "/home/ali/rv-thunder/src/mmio.py:32" *) \$103 ;
-  assign \$109  = \$105  & (* src = "/home/ali/rv-thunder/src/mmio.py:32" *) \$107 ;
-  assign \$113  = \$109  | (* src = "/home/ali/rv-thunder/src/mmio.py:32" *) \$111 ;
-  assign \$117  = ~ (* src = "/home/ali/rv-thunder/src/mmio.py:31" *) address[30];
-  assign \$119  = address == (* src = "/home/ali/rv-thunder/src/mmio.py:17" *) 31'h4000b000;
-  assign \$123  = \$119  & (* src = "/home/ali/rv-thunder/src/mmio.py:17" *) \$121 ;
-  assign \$127  = \$123  | (* src = "/home/ali/rv-thunder/src/mmio.py:17" *) \$125 ;
-  assign \$129  = address == (* src = "/home/ali/rv-thunder/src/mmio.py:24" *) 31'h4000b004;
-  assign \$133  = \$129  & (* src = "/home/ali/rv-thunder/src/mmio.py:24" *) \$131 ;
-  assign \$137  = \$133  | (* src = "/home/ali/rv-thunder/src/mmio.py:24" *) \$135 ;
-  assign \$13  = \$9  | (* src = "/home/ali/rv-thunder/src/mmio.py:17" *) \$11 ;
-  assign \$139  = address[14:2] >= (* src = "/home/ali/rv-thunder/src/mmio.py:32" *) 1'h0;
-  assign \$141  = address[14:2] <= (* src = "/home/ali/rv-thunder/src/mmio.py:32" *) 13'h1fff;
-  assign \$143  = \$139  & (* src = "/home/ali/rv-thunder/src/mmio.py:32" *) \$141 ;
-  assign \$147  = \$143  & (* src = "/home/ali/rv-thunder/src/mmio.py:32" *) \$145 ;
-  assign \$151  = \$147  | (* src = "/home/ali/rv-thunder/src/mmio.py:32" *) \$149 ;
-  assign \$15  = address == (* src = "/home/ali/rv-thunder/src/mmio.py:24" *) 31'h4000b004;
-  assign \$19  = \$15  & (* src = "/home/ali/rv-thunder/src/mmio.py:24" *) \$17 ;
-  assign \$23  = \$19  | (* src = "/home/ali/rv-thunder/src/mmio.py:24" *) \$21 ;
-  assign \$25  = address[14:2] >= (* src = "/home/ali/rv-thunder/src/mmio.py:32" *) 1'h0;
-  assign \$27  = address[14:2] <= (* src = "/home/ali/rv-thunder/src/mmio.py:32" *) 13'h1fff;
-  assign \$29  = \$25  & (* src = "/home/ali/rv-thunder/src/mmio.py:32" *) \$27 ;
-  assign \$33  = \$29  & (* src = "/home/ali/rv-thunder/src/mmio.py:32" *) \$31 ;
-  assign \$37  = \$33  | (* src = "/home/ali/rv-thunder/src/mmio.py:32" *) \$35 ;
-  assign \$3  = ~ (* src = "/home/ali/rv-thunder/src/mmio.py:31" *) address[30];
-  assign \$41  = ~ (* src = "/home/ali/rv-thunder/src/mmio.py:31" *) address[30];
-  assign \$43  = address == (* src = "/home/ali/rv-thunder/src/mmio.py:17" *) 31'h4000b000;
-  assign \$47  = \$43  & (* src = "/home/ali/rv-thunder/src/mmio.py:17" *) \$45 ;
-  assign \$51  = \$47  | (* src = "/home/ali/rv-thunder/src/mmio.py:17" *) \$49 ;
-  assign \$53  = address == (* src = "/home/ali/rv-thunder/src/mmio.py:24" *) 31'h4000b004;
-  assign \$57  = \$53  & (* src = "/home/ali/rv-thunder/src/mmio.py:24" *) \$55 ;
-  assign \$5  = address == (* src = "/home/ali/rv-thunder/src/mmio.py:17" *) 31'h4000b000;
-  assign \$61  = \$57  | (* src = "/home/ali/rv-thunder/src/mmio.py:24" *) \$59 ;
-  assign \$63  = address[14:2] >= (* src = "/home/ali/rv-thunder/src/mmio.py:32" *) 1'h0;
-  assign \$65  = address[14:2] <= (* src = "/home/ali/rv-thunder/src/mmio.py:32" *) 13'h1fff;
-  assign \$67  = \$63  & (* src = "/home/ali/rv-thunder/src/mmio.py:32" *) \$65 ;
-  assign \$71  = \$67  & (* src = "/home/ali/rv-thunder/src/mmio.py:32" *) \$69 ;
-  assign \$75  = \$71  | (* src = "/home/ali/rv-thunder/src/mmio.py:32" *) \$73 ;
-  assign \$79  = ~ (* src = "/home/ali/rv-thunder/src/mmio.py:31" *) address[30];
-  assign \$81  = address == (* src = "/home/ali/rv-thunder/src/mmio.py:17" *) 31'h4000b000;
-  assign \$85  = \$81  & (* src = "/home/ali/rv-thunder/src/mmio.py:17" *) \$83 ;
-  assign \$89  = \$85  | (* src = "/home/ali/rv-thunder/src/mmio.py:17" *) \$87 ;
-  assign \$91  = address == (* src = "/home/ali/rv-thunder/src/mmio.py:24" *) 31'h4000b004;
-  assign \$95  = \$91  & (* src = "/home/ali/rv-thunder/src/mmio.py:24" *) \$93 ;
+  assign \$101  = \$97  | (* src = "/home/ali/rv-thunder/src/mmio.py:52" *) \$99 ;
+  assign \$103  = \$95  & (* src = "/home/ali/rv-thunder/src/mmio.py:52" *) \$101 ;
+  assign \$107  = ~ (* src = "/home/ali/rv-thunder/src/mmio.py:51" *) address[30];
+  assign \$109  = address == (* src = "/home/ali/rv-thunder/src/mmio.py:22" *) 31'h4000b000;
+  assign \$115  = \$111  | (* src = "/home/ali/rv-thunder/src/mmio.py:22" *) \$113 ;
+  assign \$117  = \$109  & (* src = "/home/ali/rv-thunder/src/mmio.py:22" *) \$115 ;
+  assign \$11  = \$7  | (* src = "/home/ali/rv-thunder/src/mmio.py:22" *) \$9 ;
+  assign \$119  = address == (* src = "/home/ali/rv-thunder/src/mmio.py:29" *) 31'h4000b004;
+  assign \$125  = \$121  | (* src = "/home/ali/rv-thunder/src/mmio.py:29" *) \$123 ;
+  assign \$127  = \$119  & (* src = "/home/ali/rv-thunder/src/mmio.py:29" *) \$125 ;
+  assign \$129  = address == (* src = "/home/ali/rv-thunder/src/mmio.py:36" *) 31'h70000000;
+  assign \$133  = \$129  & (* src = "/home/ali/rv-thunder/src/mmio.py:36" *) \$131 ;
+  assign \$135  = address == (* src = "/home/ali/rv-thunder/src/mmio.py:41" *) 31'h70000004;
+  assign \$137  = address == (* src = "/home/ali/rv-thunder/src/mmio.py:47" *) 31'h70000008;
+  assign \$13  = \$5  & (* src = "/home/ali/rv-thunder/src/mmio.py:22" *) \$11 ;
+  assign \$141  = \$137  & (* src = "/home/ali/rv-thunder/src/mmio.py:47" *) \$139 ;
+  assign \$143  = address[14:2] >= (* src = "/home/ali/rv-thunder/src/mmio.py:52" *) 1'h0;
+  assign \$145  = address[14:2] <= (* src = "/home/ali/rv-thunder/src/mmio.py:52" *) 13'h1fff;
+  assign \$147  = \$143  & (* src = "/home/ali/rv-thunder/src/mmio.py:52" *) \$145 ;
+  assign \$153  = \$149  | (* src = "/home/ali/rv-thunder/src/mmio.py:52" *) \$151 ;
+  assign \$155  = \$147  & (* src = "/home/ali/rv-thunder/src/mmio.py:52" *) \$153 ;
+  assign \$15  = address == (* src = "/home/ali/rv-thunder/src/mmio.py:29" *) 31'h4000b004;
+  assign \$159  = ~ (* src = "/home/ali/rv-thunder/src/mmio.py:51" *) address[30];
+  assign \$161  = address == (* src = "/home/ali/rv-thunder/src/mmio.py:22" *) 31'h4000b000;
+  assign \$167  = \$163  | (* src = "/home/ali/rv-thunder/src/mmio.py:22" *) \$165 ;
+  assign \$169  = \$161  & (* src = "/home/ali/rv-thunder/src/mmio.py:22" *) \$167 ;
+  assign \$171  = address == (* src = "/home/ali/rv-thunder/src/mmio.py:29" *) 31'h4000b004;
+  assign \$177  = \$173  | (* src = "/home/ali/rv-thunder/src/mmio.py:29" *) \$175 ;
+  assign \$179  = \$171  & (* src = "/home/ali/rv-thunder/src/mmio.py:29" *) \$177 ;
+  assign \$181  = address == (* src = "/home/ali/rv-thunder/src/mmio.py:36" *) 31'h70000000;
+  assign \$185  = \$181  & (* src = "/home/ali/rv-thunder/src/mmio.py:36" *) \$183 ;
+  assign \$187  = address == (* src = "/home/ali/rv-thunder/src/mmio.py:41" *) 31'h70000004;
+  assign \$189  = address == (* src = "/home/ali/rv-thunder/src/mmio.py:47" *) 31'h70000008;
+  assign \$193  = \$189  & (* src = "/home/ali/rv-thunder/src/mmio.py:47" *) \$191 ;
+  assign \$195  = address[14:2] >= (* src = "/home/ali/rv-thunder/src/mmio.py:52" *) 1'h0;
+  assign \$197  = address[14:2] <= (* src = "/home/ali/rv-thunder/src/mmio.py:52" *) 13'h1fff;
+  assign \$199  = \$195  & (* src = "/home/ali/rv-thunder/src/mmio.py:52" *) \$197 ;
+  assign \$205  = \$201  | (* src = "/home/ali/rv-thunder/src/mmio.py:52" *) \$203 ;
+  assign \$207  = \$199  & (* src = "/home/ali/rv-thunder/src/mmio.py:52" *) \$205 ;
+  assign \$211  = ~ (* src = "/home/ali/rv-thunder/src/mmio.py:51" *) address[30];
+  assign \$213  = address == (* src = "/home/ali/rv-thunder/src/mmio.py:22" *) 31'h4000b000;
+  assign \$21  = \$17  | (* src = "/home/ali/rv-thunder/src/mmio.py:29" *) \$19 ;
+  assign \$219  = \$215  | (* src = "/home/ali/rv-thunder/src/mmio.py:22" *) \$217 ;
+  assign \$221  = \$213  & (* src = "/home/ali/rv-thunder/src/mmio.py:22" *) \$219 ;
+  assign \$223  = address == (* src = "/home/ali/rv-thunder/src/mmio.py:29" *) 31'h4000b004;
+  assign \$229  = \$225  | (* src = "/home/ali/rv-thunder/src/mmio.py:29" *) \$227 ;
+  assign \$231  = \$223  & (* src = "/home/ali/rv-thunder/src/mmio.py:29" *) \$229 ;
+  assign \$233  = address == (* src = "/home/ali/rv-thunder/src/mmio.py:36" *) 31'h70000000;
+  assign \$237  = \$233  & (* src = "/home/ali/rv-thunder/src/mmio.py:36" *) \$235 ;
+  assign \$23  = \$15  & (* src = "/home/ali/rv-thunder/src/mmio.py:29" *) \$21 ;
+  assign \$239  = address == (* src = "/home/ali/rv-thunder/src/mmio.py:41" *) 31'h70000004;
+  assign \$241  = address == (* src = "/home/ali/rv-thunder/src/mmio.py:47" *) 31'h70000008;
+  assign \$245  = \$241  & (* src = "/home/ali/rv-thunder/src/mmio.py:47" *) \$243 ;
+  assign \$249  = ~ (* src = "/home/ali/rv-thunder/src/mmio.py:51" *) address[30];
+  assign \$251  = address == (* src = "/home/ali/rv-thunder/src/mmio.py:22" *) 31'h4000b000;
+  assign \$257  = \$253  | (* src = "/home/ali/rv-thunder/src/mmio.py:22" *) \$255 ;
+  assign \$25  = address == (* src = "/home/ali/rv-thunder/src/mmio.py:36" *) 31'h70000000;
+  assign \$259  = \$251  & (* src = "/home/ali/rv-thunder/src/mmio.py:22" *) \$257 ;
+  assign \$261  = address == (* src = "/home/ali/rv-thunder/src/mmio.py:29" *) 31'h4000b004;
+  assign \$267  = \$263  | (* src = "/home/ali/rv-thunder/src/mmio.py:29" *) \$265 ;
+  assign \$269  = \$261  & (* src = "/home/ali/rv-thunder/src/mmio.py:29" *) \$267 ;
+  assign \$271  = address == (* src = "/home/ali/rv-thunder/src/mmio.py:36" *) 31'h70000000;
+  assign \$275  = \$271  & (* src = "/home/ali/rv-thunder/src/mmio.py:36" *) \$273 ;
+  assign \$277  = address == (* src = "/home/ali/rv-thunder/src/mmio.py:41" *) 31'h70000004;
+  assign \$279  = address == (* src = "/home/ali/rv-thunder/src/mmio.py:47" *) 31'h70000008;
+  assign \$283  = \$279  & (* src = "/home/ali/rv-thunder/src/mmio.py:47" *) \$281 ;
+  assign \$289  = ~ (* src = "/home/ali/rv-thunder/src/mmio.py:51" *) address[30];
+  assign \$291  = address == (* src = "/home/ali/rv-thunder/src/mmio.py:22" *) 31'h4000b000;
+  assign \$297  = \$293  | (* src = "/home/ali/rv-thunder/src/mmio.py:22" *) \$295 ;
+  assign \$29  = \$25  & (* src = "/home/ali/rv-thunder/src/mmio.py:36" *) \$27 ;
+  assign \$299  = \$291  & (* src = "/home/ali/rv-thunder/src/mmio.py:22" *) \$297 ;
+  assign \$301  = address == (* src = "/home/ali/rv-thunder/src/mmio.py:29" *) 31'h4000b004;
+  assign \$307  = \$303  | (* src = "/home/ali/rv-thunder/src/mmio.py:29" *) \$305 ;
+  assign \$309  = \$301  & (* src = "/home/ali/rv-thunder/src/mmio.py:29" *) \$307 ;
+  assign \$311  = address == (* src = "/home/ali/rv-thunder/src/mmio.py:36" *) 31'h70000000;
+  assign \$315  = \$311  & (* src = "/home/ali/rv-thunder/src/mmio.py:36" *) \$313 ;
+  assign \$317  = address == (* src = "/home/ali/rv-thunder/src/mmio.py:41" *) 31'h70000004;
+  assign \$31  = address == (* src = "/home/ali/rv-thunder/src/mmio.py:41" *) 31'h70000004;
+  assign \$319  = address == (* src = "/home/ali/rv-thunder/src/mmio.py:47" *) 31'h70000008;
+  assign \$323  = \$319  & (* src = "/home/ali/rv-thunder/src/mmio.py:47" *) \$321 ;
+  assign \$329  = ~ (* src = "/home/ali/rv-thunder/src/mmio.py:51" *) address[30];
+  assign \$331  = address == (* src = "/home/ali/rv-thunder/src/mmio.py:22" *) 31'h4000b000;
+  assign \$337  = \$333  | (* src = "/home/ali/rv-thunder/src/mmio.py:22" *) \$335 ;
+  assign \$33  = address == (* src = "/home/ali/rv-thunder/src/mmio.py:47" *) 31'h70000008;
+  assign \$339  = \$331  & (* src = "/home/ali/rv-thunder/src/mmio.py:22" *) \$337 ;
+  assign \$341  = address == (* src = "/home/ali/rv-thunder/src/mmio.py:29" *) 31'h4000b004;
+  assign \$347  = \$343  | (* src = "/home/ali/rv-thunder/src/mmio.py:29" *) \$345 ;
+  assign \$349  = \$341  & (* src = "/home/ali/rv-thunder/src/mmio.py:29" *) \$347 ;
+  assign \$351  = address == (* src = "/home/ali/rv-thunder/src/mmio.py:36" *) 31'h70000000;
+  assign \$355  = \$351  & (* src = "/home/ali/rv-thunder/src/mmio.py:36" *) \$353 ;
+  assign \$357  = address == (* src = "/home/ali/rv-thunder/src/mmio.py:41" *) 31'h70000004;
+  assign \$359  = address == (* src = "/home/ali/rv-thunder/src/mmio.py:47" *) 31'h70000008;
+  assign \$363  = \$359  & (* src = "/home/ali/rv-thunder/src/mmio.py:47" *) \$361 ;
+  always @(posedge clk)
+    uart_ready_en <= \uart_ready_en$next ;
+  assign \$37  = \$33  & (* src = "/home/ali/rv-thunder/src/mmio.py:47" *) \$35 ;
+  assign \$3  = ~ (* src = "/home/ali/rv-thunder/src/mmio.py:51" *) address[30];
+  assign \$39  = address[14:2] >= (* src = "/home/ali/rv-thunder/src/mmio.py:52" *) 1'h0;
+  assign \$41  = address[14:2] <= (* src = "/home/ali/rv-thunder/src/mmio.py:52" *) 13'h1fff;
+  assign \$43  = \$39  & (* src = "/home/ali/rv-thunder/src/mmio.py:52" *) \$41 ;
+  assign \$49  = \$45  | (* src = "/home/ali/rv-thunder/src/mmio.py:52" *) \$47 ;
+  assign \$51  = \$43  & (* src = "/home/ali/rv-thunder/src/mmio.py:52" *) \$49 ;
+  assign \$55  = ~ (* src = "/home/ali/rv-thunder/src/mmio.py:51" *) address[30];
+  assign \$57  = address == (* src = "/home/ali/rv-thunder/src/mmio.py:22" *) 31'h4000b000;
+  assign \$5  = address == (* src = "/home/ali/rv-thunder/src/mmio.py:22" *) 31'h4000b000;
+  assign \$63  = \$59  | (* src = "/home/ali/rv-thunder/src/mmio.py:22" *) \$61 ;
+  assign \$65  = \$57  & (* src = "/home/ali/rv-thunder/src/mmio.py:22" *) \$63 ;
+  assign \$67  = address == (* src = "/home/ali/rv-thunder/src/mmio.py:29" *) 31'h4000b004;
+  assign \$73  = \$69  | (* src = "/home/ali/rv-thunder/src/mmio.py:29" *) \$71 ;
+  assign \$75  = \$67  & (* src = "/home/ali/rv-thunder/src/mmio.py:29" *) \$73 ;
+  assign \$77  = address == (* src = "/home/ali/rv-thunder/src/mmio.py:36" *) 31'h70000000;
+  assign \$81  = \$77  & (* src = "/home/ali/rv-thunder/src/mmio.py:36" *) \$79 ;
+  assign \$83  = address == (* src = "/home/ali/rv-thunder/src/mmio.py:41" *) 31'h70000004;
+  assign \$85  = address == (* src = "/home/ali/rv-thunder/src/mmio.py:47" *) 31'h70000008;
+  assign \$89  = \$85  & (* src = "/home/ali/rv-thunder/src/mmio.py:47" *) \$87 ;
+  assign \$91  = address[14:2] >= (* src = "/home/ali/rv-thunder/src/mmio.py:52" *) 1'h0;
+  assign \$93  = address[14:2] <= (* src = "/home/ali/rv-thunder/src/mmio.py:52" *) 13'h1fff;
+  assign \$95  = \$91  & (* src = "/home/ali/rv-thunder/src/mmio.py:52" *) \$93 ;
   always @* begin
     if (\$auto$verilog_backend.cc:2083:dump_module$4 ) begin end
     dmem_en = 1'h0;
-    (* src = "/home/ali/rv-thunder/src/mmio.py:16" *)
+    (* src = "/home/ali/rv-thunder/src/mmio.py:21" *)
     casez ({ \$3 , \$1  })
-      /* src = "/home/ali/rv-thunder/src/mmio.py:16" */
+      /* src = "/home/ali/rv-thunder/src/mmio.py:21" */
       2'b?1:
-          (* src = "/home/ali/rv-thunder/src/mmio.py:17" *)
-          casez ({ \$23 , \$13  })
-            /* src = "/home/ali/rv-thunder/src/mmio.py:17" */
-            2'b?1:
+          (* src = "/home/ali/rv-thunder/src/mmio.py:22" *)
+          casez ({ \$37 , \$31 , \$29 , \$23 , \$13  })
+            /* src = "/home/ali/rv-thunder/src/mmio.py:22" */
+            5'b????1:
                 dmem_en = 1'h0;
-            /* src = "/home/ali/rv-thunder/src/mmio.py:24" */
-            2'b1?:
+            /* src = "/home/ali/rv-thunder/src/mmio.py:29" */
+            5'b???1?:
                 dmem_en = 1'h0;
           endcase
-      /* src = "/home/ali/rv-thunder/src/mmio.py:31" */
+      /* src = "/home/ali/rv-thunder/src/mmio.py:51" */
       2'b1?:
-          (* src = "/home/ali/rv-thunder/src/mmio.py:32" *)
-          casez (\$37 )
-            /* src = "/home/ali/rv-thunder/src/mmio.py:32" */
+          (* src = "/home/ali/rv-thunder/src/mmio.py:52" *)
+          casez (\$51 )
+            /* src = "/home/ali/rv-thunder/src/mmio.py:52" */
             1'h1:
                 dmem_en = 1'h1;
           endcase
@@ -17076,24 +17551,24 @@ module \top.mmio_unit (time_en, timecmp_en, dmem_en, address, wrt, rd, add_out);
   always @* begin
     if (\$auto$verilog_backend.cc:2083:dump_module$4 ) begin end
     timecmp_en = 1'h0;
-    (* src = "/home/ali/rv-thunder/src/mmio.py:16" *)
-    casez ({ \$41 , \$39  })
-      /* src = "/home/ali/rv-thunder/src/mmio.py:16" */
+    (* src = "/home/ali/rv-thunder/src/mmio.py:21" *)
+    casez ({ \$55 , \$53  })
+      /* src = "/home/ali/rv-thunder/src/mmio.py:21" */
       2'b?1:
-          (* src = "/home/ali/rv-thunder/src/mmio.py:17" *)
-          casez ({ \$61 , \$51  })
-            /* src = "/home/ali/rv-thunder/src/mmio.py:17" */
-            2'b?1:
+          (* src = "/home/ali/rv-thunder/src/mmio.py:22" *)
+          casez ({ \$89 , \$83 , \$81 , \$75 , \$65  })
+            /* src = "/home/ali/rv-thunder/src/mmio.py:22" */
+            5'b????1:
                 timecmp_en = 1'h0;
-            /* src = "/home/ali/rv-thunder/src/mmio.py:24" */
-            2'b1?:
+            /* src = "/home/ali/rv-thunder/src/mmio.py:29" */
+            5'b???1?:
                 timecmp_en = 1'h1;
           endcase
-      /* src = "/home/ali/rv-thunder/src/mmio.py:31" */
+      /* src = "/home/ali/rv-thunder/src/mmio.py:51" */
       2'b1?:
-          (* src = "/home/ali/rv-thunder/src/mmio.py:32" *)
-          casez (\$75 )
-            /* src = "/home/ali/rv-thunder/src/mmio.py:32" */
+          (* src = "/home/ali/rv-thunder/src/mmio.py:52" *)
+          casez (\$103 )
+            /* src = "/home/ali/rv-thunder/src/mmio.py:52" */
             1'h1:
                 timecmp_en = 1'h0;
           endcase
@@ -17102,24 +17577,24 @@ module \top.mmio_unit (time_en, timecmp_en, dmem_en, address, wrt, rd, add_out);
   always @* begin
     if (\$auto$verilog_backend.cc:2083:dump_module$4 ) begin end
     time_en = 1'h0;
-    (* src = "/home/ali/rv-thunder/src/mmio.py:16" *)
-    casez ({ \$79 , \$77  })
-      /* src = "/home/ali/rv-thunder/src/mmio.py:16" */
+    (* src = "/home/ali/rv-thunder/src/mmio.py:21" *)
+    casez ({ \$107 , \$105  })
+      /* src = "/home/ali/rv-thunder/src/mmio.py:21" */
       2'b?1:
-          (* src = "/home/ali/rv-thunder/src/mmio.py:17" *)
-          casez ({ \$99 , \$89  })
-            /* src = "/home/ali/rv-thunder/src/mmio.py:17" */
-            2'b?1:
+          (* src = "/home/ali/rv-thunder/src/mmio.py:22" *)
+          casez ({ \$141 , \$135 , \$133 , \$127 , \$117  })
+            /* src = "/home/ali/rv-thunder/src/mmio.py:22" */
+            5'b????1:
                 time_en = 1'h1;
-            /* src = "/home/ali/rv-thunder/src/mmio.py:24" */
-            2'b1?:
+            /* src = "/home/ali/rv-thunder/src/mmio.py:29" */
+            5'b???1?:
                 time_en = 1'h0;
           endcase
-      /* src = "/home/ali/rv-thunder/src/mmio.py:31" */
+      /* src = "/home/ali/rv-thunder/src/mmio.py:51" */
       2'b1?:
-          (* src = "/home/ali/rv-thunder/src/mmio.py:32" *)
-          casez (\$113 )
-            /* src = "/home/ali/rv-thunder/src/mmio.py:32" */
+          (* src = "/home/ali/rv-thunder/src/mmio.py:52" *)
+          casez (\$155 )
+            /* src = "/home/ali/rv-thunder/src/mmio.py:52" */
             1'h1:
                 time_en = 1'h0;
           endcase
@@ -17128,145 +17603,296 @@ module \top.mmio_unit (time_en, timecmp_en, dmem_en, address, wrt, rd, add_out);
   always @* begin
     if (\$auto$verilog_backend.cc:2083:dump_module$4 ) begin end
     add_out = 32'd0;
-    (* src = "/home/ali/rv-thunder/src/mmio.py:16" *)
-    casez ({ \$117 , \$115  })
-      /* src = "/home/ali/rv-thunder/src/mmio.py:16" */
+    (* src = "/home/ali/rv-thunder/src/mmio.py:21" *)
+    casez ({ \$159 , \$157  })
+      /* src = "/home/ali/rv-thunder/src/mmio.py:21" */
       2'b?1:
-          (* src = "/home/ali/rv-thunder/src/mmio.py:17" *)
-          casez ({ \$137 , \$127  })
-            /* src = "/home/ali/rv-thunder/src/mmio.py:17" */
-            2'b?1:
+          (* src = "/home/ali/rv-thunder/src/mmio.py:22" *)
+          casez ({ \$193 , \$187 , \$185 , \$179 , \$169  })
+            /* src = "/home/ali/rv-thunder/src/mmio.py:22" */
+            5'b????1:
                 add_out = address;
-            /* src = "/home/ali/rv-thunder/src/mmio.py:24" */
-            2'b1?:
+            /* src = "/home/ali/rv-thunder/src/mmio.py:29" */
+            5'b???1?:
                 add_out = address;
           endcase
-      /* src = "/home/ali/rv-thunder/src/mmio.py:31" */
+      /* src = "/home/ali/rv-thunder/src/mmio.py:51" */
       2'b1?:
-          (* src = "/home/ali/rv-thunder/src/mmio.py:32" *)
-          casez (\$151 )
-            /* src = "/home/ali/rv-thunder/src/mmio.py:32" */
+          (* src = "/home/ali/rv-thunder/src/mmio.py:52" *)
+          casez (\$207 )
+            /* src = "/home/ali/rv-thunder/src/mmio.py:52" */
             1'h1:
                 add_out = address;
           endcase
     endcase
   end
+  always @* begin
+    if (\$auto$verilog_backend.cc:2083:dump_module$4 ) begin end
+    uart_en = 1'h0;
+    (* src = "/home/ali/rv-thunder/src/mmio.py:21" *)
+    casez ({ \$211 , \$209  })
+      /* src = "/home/ali/rv-thunder/src/mmio.py:21" */
+      2'b?1:
+          (* src = "/home/ali/rv-thunder/src/mmio.py:22" *)
+          casez ({ \$245 , \$239 , \$237 , \$231 , \$221  })
+            /* src = "/home/ali/rv-thunder/src/mmio.py:22" */
+            5'b????1:
+                /* empty */;
+            /* src = "/home/ali/rv-thunder/src/mmio.py:29" */
+            5'b???1?:
+                /* empty */;
+            /* src = "/home/ali/rv-thunder/src/mmio.py:36" */
+            5'b??1??:
+                uart_en = 1'h1;
+          endcase
+    endcase
+  end
+  always @* begin
+    if (\$auto$verilog_backend.cc:2083:dump_module$4 ) begin end
+    \uart_ready_en$next  = uart_ready_en;
+    (* src = "/home/ali/rv-thunder/src/mmio.py:21" *)
+    casez ({ \$249 , \$247  })
+      /* src = "/home/ali/rv-thunder/src/mmio.py:21" */
+      2'b?1:
+          (* src = "/home/ali/rv-thunder/src/mmio.py:22" *)
+          casez ({ \$283 , \$277 , \$275 , \$269 , \$259  })
+            /* src = "/home/ali/rv-thunder/src/mmio.py:22" */
+            5'b????1:
+                /* empty */;
+            /* src = "/home/ali/rv-thunder/src/mmio.py:29" */
+            5'b???1?:
+                /* empty */;
+            /* src = "/home/ali/rv-thunder/src/mmio.py:36" */
+            5'b??1??:
+                /* empty */;
+            /* src = "/home/ali/rv-thunder/src/mmio.py:41" */
+            5'b?1???:
+                (* src = "/home/ali/rv-thunder/src/mmio.py:42" *)
+                casez (\$285 )
+                  /* src = "/home/ali/rv-thunder/src/mmio.py:42" */
+                  1'h1:
+                      \uart_ready_en$next  = 1'h1;
+                endcase
+          endcase
+    endcase
+    (* src = "/home/ali/amaranth/amaranth/hdl/xfrm.py:503" *)
+    casez (rst)
+      1'h1:
+          \uart_ready_en$next  = 1'h0;
+    endcase
+  end
+  always @* begin
+    if (\$auto$verilog_backend.cc:2083:dump_module$4 ) begin end
+    uart_ready_wrt = 1'h0;
+    (* src = "/home/ali/rv-thunder/src/mmio.py:21" *)
+    casez ({ \$289 , \$287  })
+      /* src = "/home/ali/rv-thunder/src/mmio.py:21" */
+      2'b?1:
+          (* src = "/home/ali/rv-thunder/src/mmio.py:22" *)
+          casez ({ \$323 , \$317 , \$315 , \$309 , \$299  })
+            /* src = "/home/ali/rv-thunder/src/mmio.py:22" */
+            5'b????1:
+                /* empty */;
+            /* src = "/home/ali/rv-thunder/src/mmio.py:29" */
+            5'b???1?:
+                /* empty */;
+            /* src = "/home/ali/rv-thunder/src/mmio.py:36" */
+            5'b??1??:
+                /* empty */;
+            /* src = "/home/ali/rv-thunder/src/mmio.py:41" */
+            5'b?1???:
+                (* src = "/home/ali/rv-thunder/src/mmio.py:44" *)
+                casez (\$325 )
+                  /* src = "/home/ali/rv-thunder/src/mmio.py:44" */
+                  1'h1:
+                      uart_ready_wrt = 1'h1;
+                endcase
+          endcase
+    endcase
+  end
+  always @* begin
+    if (\$auto$verilog_backend.cc:2083:dump_module$4 ) begin end
+    uart_tx_valid = 1'h0;
+    (* src = "/home/ali/rv-thunder/src/mmio.py:21" *)
+    casez ({ \$329 , \$327  })
+      /* src = "/home/ali/rv-thunder/src/mmio.py:21" */
+      2'b?1:
+          (* src = "/home/ali/rv-thunder/src/mmio.py:22" *)
+          casez ({ \$363 , \$357 , \$355 , \$349 , \$339  })
+            /* src = "/home/ali/rv-thunder/src/mmio.py:22" */
+            5'b????1:
+                /* empty */;
+            /* src = "/home/ali/rv-thunder/src/mmio.py:29" */
+            5'b???1?:
+                /* empty */;
+            /* src = "/home/ali/rv-thunder/src/mmio.py:36" */
+            5'b??1??:
+                /* empty */;
+            /* src = "/home/ali/rv-thunder/src/mmio.py:41" */
+            5'b?1???:
+                /* empty */;
+            /* src = "/home/ali/rv-thunder/src/mmio.py:47" */
+            5'h1?:
+                uart_tx_valid = 1'h1;
+          endcase
+    endcase
+  end
   assign \$1  = address[30];
   assign \$7  = wrt;
-  assign \$11  = rd;
+  assign \$9  = rd;
   assign \$17  = wrt;
-  assign \$21  = rd;
-  assign \$31  = wrt;
-  assign \$35  = rd;
-  assign \$39  = address[30];
+  assign \$19  = rd;
+  assign \$27  = wrt;
+  assign \$35  = wrt;
   assign \$45  = wrt;
-  assign \$49  = rd;
-  assign \$55  = wrt;
-  assign \$59  = rd;
+  assign \$47  = rd;
+  assign \$53  = address[30];
+  assign \$59  = wrt;
+  assign \$61  = rd;
   assign \$69  = wrt;
-  assign \$73  = rd;
-  assign \$77  = address[30];
-  assign \$83  = wrt;
-  assign \$87  = rd;
-  assign \$93  = wrt;
-  assign \$97  = rd;
-  assign \$107  = wrt;
-  assign \$111  = rd;
-  assign \$115  = address[30];
+  assign \$71  = rd;
+  assign \$79  = wrt;
+  assign \$87  = wrt;
+  assign \$97  = wrt;
+  assign \$99  = rd;
+  assign \$105  = address[30];
+  assign \$111  = wrt;
+  assign \$113  = rd;
   assign \$121  = wrt;
-  assign \$125  = rd;
+  assign \$123  = rd;
   assign \$131  = wrt;
-  assign \$135  = rd;
-  assign \$145  = wrt;
-  assign \$149  = rd;
+  assign \$139  = wrt;
+  assign \$149  = wrt;
+  assign \$151  = rd;
+  assign \$157  = address[30];
+  assign \$163  = wrt;
+  assign \$165  = rd;
+  assign \$173  = wrt;
+  assign \$175  = rd;
+  assign \$183  = wrt;
+  assign \$191  = wrt;
+  assign \$201  = wrt;
+  assign \$203  = rd;
+  assign \$209  = address[30];
+  assign \$215  = wrt;
+  assign \$217  = rd;
+  assign \$225  = wrt;
+  assign \$227  = rd;
+  assign \$235  = wrt;
+  assign \$243  = wrt;
+  assign \$247  = address[30];
+  assign \$253  = wrt;
+  assign \$255  = rd;
+  assign \$263  = wrt;
+  assign \$265  = rd;
+  assign \$273  = wrt;
+  assign \$281  = wrt;
+  assign \$285  = u_ready;
+  assign \$287  = address[30];
+  assign \$293  = wrt;
+  assign \$295  = rd;
+  assign \$303  = wrt;
+  assign \$305  = rd;
+  assign \$313  = wrt;
+  assign \$321  = wrt;
+  assign \$325  = rd;
+  assign \$327  = address[30];
+  assign \$333  = wrt;
+  assign \$335  = rd;
+  assign \$343  = wrt;
+  assign \$345  = rd;
+  assign \$353  = wrt;
+  assign \$361  = wrt;
 endmodule
 
 (* generator = "Amaranth" *)
-module \top.top_unit (data_mem_adr, data_mem_we, data_mem_in, writedata, readsig, data_mem_out, inst_mem_adr, inst_inval_add, inst_dat_r, data_mem_invadd, rst, clk, data_mem_mask);
+module \top.top_unit (dmem_data, data_mem_out, readsig, inst_mem_adr, inst_inval_add, inst_dat_r, data_mem_in, data_mem_invadd, data_mem_adr, data_mem_we, dmem_en, rst, clk, data_mem_mask);
   reg \$auto$verilog_backend.cc:2083:dump_module$5  = 0;
-  (* src = "/home/ali/rv-thunder/src/Top.py:204" *)
+  (* src = "/home/ali/rv-thunder/src/Top.py:206" *)
   wire \$1 ;
-  (* src = "/home/ali/rv-thunder/src/Top.py:114" *)
+  (* src = "/home/ali/rv-thunder/src/Top.py:115" *)
   wire [31:0] \$11 ;
-  (* src = "/home/ali/rv-thunder/src/Top.py:122" *)
+  (* src = "/home/ali/rv-thunder/src/Top.py:123" *)
   wire \$13 ;
-  (* src = "/home/ali/rv-thunder/src/Top.py:127" *)
+  (* src = "/home/ali/rv-thunder/src/Top.py:128" *)
   wire \$15 ;
-  (* src = "/home/ali/rv-thunder/src/Top.py:133" *)
+  (* src = "/home/ali/rv-thunder/src/Top.py:134" *)
   wire \$17 ;
-  (* src = "/home/ali/rv-thunder/src/Top.py:124" *)
+  (* src = "/home/ali/rv-thunder/src/Top.py:125" *)
   wire \$19 ;
-  (* src = "/home/ali/rv-thunder/src/Top.py:122" *)
+  (* src = "/home/ali/rv-thunder/src/Top.py:123" *)
   wire \$21 ;
-  (* src = "/home/ali/rv-thunder/src/Top.py:127" *)
+  (* src = "/home/ali/rv-thunder/src/Top.py:128" *)
   wire \$23 ;
-  (* src = "/home/ali/rv-thunder/src/Top.py:133" *)
+  (* src = "/home/ali/rv-thunder/src/Top.py:134" *)
   wire \$25 ;
-  (* src = "/home/ali/rv-thunder/src/Top.py:140" *)
+  (* src = "/home/ali/rv-thunder/src/Top.py:141" *)
   wire \$27 ;
-  (* src = "/home/ali/rv-thunder/src/Top.py:142" *)
-  wire \$29 ;
-  (* src = "/home/ali/rv-thunder/src/Top.py:105" *)
-  wire \$3 ;
   (* src = "/home/ali/rv-thunder/src/Top.py:143" *)
+  wire \$29 ;
+  (* src = "/home/ali/rv-thunder/src/Top.py:106" *)
+  wire \$3 ;
+  (* src = "/home/ali/rv-thunder/src/Top.py:144" *)
   wire \$31 ;
-  (* src = "/home/ali/rv-thunder/src/Top.py:147" *)
-  wire \$33 ;
   (* src = "/home/ali/rv-thunder/src/Top.py:148" *)
+  wire \$33 ;
+  (* src = "/home/ali/rv-thunder/src/Top.py:149" *)
   wire \$35 ;
-  (* src = "/home/ali/rv-thunder/src/Top.py:152" *)
-  wire \$37 ;
   (* src = "/home/ali/rv-thunder/src/Top.py:153" *)
+  wire \$37 ;
+  (* src = "/home/ali/rv-thunder/src/Top.py:154" *)
   wire \$39 ;
-  (* src = "/home/ali/rv-thunder/src/Top.py:155" *)
+  (* src = "/home/ali/rv-thunder/src/Top.py:156" *)
   wire [31:0] \$41 ;
-  (* src = "/home/ali/rv-thunder/src/Top.py:158" *)
+  (* src = "/home/ali/rv-thunder/src/Top.py:159" *)
   wire \$43 ;
-  (* src = "/home/ali/rv-thunder/src/Top.py:163" *)
-  wire \$45 ;
   (* src = "/home/ali/rv-thunder/src/Top.py:164" *)
+  wire \$45 ;
+  (* src = "/home/ali/rv-thunder/src/Top.py:165" *)
   wire \$47 ;
-  (* src = "/home/ali/rv-thunder/src/Top.py:166" *)
-  wire [31:0] \$49 ;
-  (* src = "/home/ali/rv-thunder/src/Top.py:111" *)
-  wire \$5 ;
   (* src = "/home/ali/rv-thunder/src/Top.py:167" *)
-  wire \$51 ;
+  wire [31:0] \$49 ;
+  (* src = "/home/ali/rv-thunder/src/Top.py:112" *)
+  wire \$5 ;
   (* src = "/home/ali/rv-thunder/src/Top.py:168" *)
+  wire \$51 ;
+  (* src = "/home/ali/rv-thunder/src/Top.py:169" *)
   wire \$53 ;
-  (* src = "/home/ali/rv-thunder/src/Top.py:170" *)
+  (* src = "/home/ali/rv-thunder/src/Top.py:171" *)
   wire [31:0] \$55 ;
-  (* src = "/home/ali/rv-thunder/src/Top.py:172" *)
+  (* src = "/home/ali/rv-thunder/src/Top.py:173" *)
   wire \$57 ;
-  (* src = "/home/ali/rv-thunder/src/Top.py:176" *)
-  wire \$59 ;
   (* src = "/home/ali/rv-thunder/src/Top.py:177" *)
+  wire \$59 ;
+  (* src = "/home/ali/rv-thunder/src/Top.py:178" *)
   wire \$61 ;
-  (* src = "/home/ali/rv-thunder/src/Top.py:179" *)
+  (* src = "/home/ali/rv-thunder/src/Top.py:180" *)
   wire [31:0] \$63 ;
-  (* src = "/home/ali/rv-thunder/src/Top.py:182" *)
+  (* src = "/home/ali/rv-thunder/src/Top.py:183" *)
   wire \$65 ;
-  (* src = "/home/ali/rv-thunder/src/Top.py:183" *)
+  (* src = "/home/ali/rv-thunder/src/Top.py:184" *)
   wire [32:0] \$67 ;
-  (* src = "/home/ali/rv-thunder/src/Top.py:183" *)
+  (* src = "/home/ali/rv-thunder/src/Top.py:184" *)
   wire [32:0] \$68 ;
-  (* src = "/home/ali/rv-thunder/src/Top.py:113" *)
+  (* src = "/home/ali/rv-thunder/src/Top.py:114" *)
   wire \$7 ;
-  (* src = "/home/ali/rv-thunder/src/Top.py:189" *)
-  wire \$70 ;
   (* src = "/home/ali/rv-thunder/src/Top.py:190" *)
+  wire \$70 ;
+  (* src = "/home/ali/rv-thunder/src/Top.py:191" *)
   wire \$72 ;
-  (* src = "/home/ali/rv-thunder/src/Top.py:193" *)
+  (* src = "/home/ali/rv-thunder/src/Top.py:192" *)
   wire \$74 ;
-  (* src = "/home/ali/rv-thunder/src/Top.py:196" *)
-  wire \$76 ;
   (* src = "/home/ali/rv-thunder/src/Top.py:195" *)
-  wire [31:0] \$78 ;
+  wire \$76 ;
   (* src = "/home/ali/rv-thunder/src/Top.py:198" *)
+  wire \$78 ;
+  (* src = "/home/ali/rv-thunder/src/Top.py:197" *)
   wire [31:0] \$80 ;
   (* src = "/home/ali/rv-thunder/src/Top.py:200" *)
-  wire \$82 ;
-  (* src = "/home/ali/rv-thunder/src/Top.py:115" *)
+  wire [31:0] \$82 ;
+  (* src = "/home/ali/rv-thunder/src/Top.py:202" *)
+  wire \$84 ;
+  (* src = "/home/ali/rv-thunder/src/Top.py:116" *)
   wire \$9 ;
   (* src = "/home/ali/rv-thunder/src/alu.py:10" *)
   wire [31:0] alu_alu_out;
@@ -17367,6 +17993,12 @@ module \top.top_unit (data_mem_adr, data_mem_we, data_mem_in, writedata, readsig
   (* src = "/home/ali/rv-thunder/src/Top.py:19" *)
   output data_mem_we;
   wire data_mem_we;
+  (* src = "/home/ali/rv-thunder/src/Top.py:29" *)
+  output [31:0] dmem_data;
+  wire [31:0] dmem_data;
+  (* src = "/home/ali/rv-thunder/src/Top.py:28" *)
+  input dmem_en;
+  wire dmem_en;
   (* src = "/home/ali/rv-thunder/src/fetch.py:5" *)
   reg fetch_unit_branch;
   (* src = "/home/ali/rv-thunder/src/fetch.py:6" *)
@@ -17381,13 +18013,13 @@ module \top.top_unit (data_mem_adr, data_mem_we, data_mem_in, writedata, readsig
   wire [31:0] i1;
   (* src = "/home/ali/rv-thunder/src/control.py:53" *)
   wire [31:0] i2;
-  (* src = "/home/ali/rv-thunder/src/Top.py:27" *)
+  (* src = "/home/ali/rv-thunder/src/Top.py:26" *)
   input [31:0] inst_dat_r;
   wire [31:0] inst_dat_r;
-  (* src = "/home/ali/rv-thunder/src/Top.py:28" *)
+  (* src = "/home/ali/rv-thunder/src/Top.py:27" *)
   input inst_inval_add;
   wire inst_inval_add;
-  (* src = "/home/ali/rv-thunder/src/Top.py:26" *)
+  (* src = "/home/ali/rv-thunder/src/Top.py:25" *)
   output [12:0] inst_mem_adr;
   wire [12:0] inst_mem_adr;
   (* src = "/home/ali/rv-thunder/src/inv_or.py:5" *)
@@ -17416,45 +18048,42 @@ module \top.top_unit (data_mem_adr, data_mem_we, data_mem_in, writedata, readsig
   (* src = "/home/ali/amaranth/amaranth/hdl/ir.py:508" *)
   input rst;
   wire rst;
-  (* src = "/home/ali/rv-thunder/src/Top.py:25" *)
-  output [31:0] writedata;
-  wire [31:0] writedata;
-  assign \$9  = control_unit_op_a_sel == (* src = "/home/ali/rv-thunder/src/Top.py:115" *) 2'h2;
-  assign \$11  = + (* src = "/home/ali/rv-thunder/src/Top.py:114" *) fetch_unit_pc[11:0];
-  assign \$13  = control_unit_op == (* src = "/home/ali/rv-thunder/src/Top.py:122" *) 7'h63;
-  assign \$15  = control_unit_op == (* src = "/home/ali/rv-thunder/src/Top.py:127" *) 7'h67;
-  assign \$17  = control_unit_op == (* src = "/home/ali/rv-thunder/src/Top.py:133" *) 7'h6f;
-  assign \$1  = ~ (* src = "/home/ali/rv-thunder/src/Top.py:204" *) control_unit_mux3sel;
-  assign \$19  = control_unit_br & (* src = "/home/ali/rv-thunder/src/Top.py:124" *) branch_unit_br_out;
-  assign \$21  = control_unit_op == (* src = "/home/ali/rv-thunder/src/Top.py:122" *) 7'h63;
-  assign \$23  = control_unit_op == (* src = "/home/ali/rv-thunder/src/Top.py:127" *) 7'h67;
-  assign \$25  = control_unit_op == (* src = "/home/ali/rv-thunder/src/Top.py:133" *) 7'h6f;
-  assign \$27  = ~ (* src = "/home/ali/rv-thunder/src/Top.py:140" *) control_unit_ld_wd;
-  assign \$29  = data_mem_mask == (* src = "/home/ali/rv-thunder/src/Top.py:142" *) 2'h3;
-  assign \$31  = control_unit_funct3 == (* src = "/home/ali/rv-thunder/src/Top.py:143" *) 2'h2;
-  assign \$33  = data_mem_mask == (* src = "/home/ali/rv-thunder/src/Top.py:147" *) 2'h3;
-  assign \$35  = control_unit_funct3 == (* src = "/home/ali/rv-thunder/src/Top.py:148" *) 3'h6;
-  assign \$37  = data_mem_mask == (* src = "/home/ali/rv-thunder/src/Top.py:152" *) 2'h2;
-  assign \$39  = control_unit_funct3 == (* src = "/home/ali/rv-thunder/src/Top.py:153" *) 1'h1;
-  assign \$41  = + (* src = "/home/ali/rv-thunder/src/Top.py:155" *) data_mem_out[15:0];
-  assign \$45  = data_mem_mask == (* src = "/home/ali/rv-thunder/src/Top.py:163" *) 2'h2;
-  assign \$47  = control_unit_funct3 == (* src = "/home/ali/rv-thunder/src/Top.py:164" *) 3'h5;
-  assign \$49  = + (* src = "/home/ali/rv-thunder/src/Top.py:166" *) data_mem_out[15:0];
-  assign \$51  = data_mem_mask == (* src = "/home/ali/rv-thunder/src/Top.py:167" *) 1'h1;
-  assign \$53  = ! (* src = "/home/ali/rv-thunder/src/Top.py:168" *) control_unit_funct3;
-  assign \$55  = + (* src = "/home/ali/rv-thunder/src/Top.py:170" *) data_mem_out[7:0];
-  assign \$5  = ! (* src = "/home/ali/rv-thunder/src/Top.py:111" *) control_unit_op_a_sel;
-  assign \$59  = data_mem_mask == (* src = "/home/ali/rv-thunder/src/Top.py:176" *) 1'h1;
-  assign \$61  = control_unit_funct3 == (* src = "/home/ali/rv-thunder/src/Top.py:177" *) 3'h4;
-  assign \$63  = + (* src = "/home/ali/rv-thunder/src/Top.py:179" *) data_mem_out[7:0];
-  assign \$68  = fetch_unit_pc + (* src = "/home/ali/rv-thunder/src/Top.py:183" *) 3'h4;
-  assign \$72  = data_mem_mask == (* src = "/home/ali/rv-thunder/src/Top.py:190" *) 2'h3;
-  assign \$74  = data_mem_mask == (* src = "/home/ali/rv-thunder/src/Top.py:193" *) 2'h2;
-  assign \$76  = data_mem_mask == (* src = "/home/ali/rv-thunder/src/Top.py:196" *) 1'h1;
-  assign \$78  = + (* src = "/home/ali/rv-thunder/src/Top.py:195" *) reg_file_rf_out2[15:0];
-  assign \$7  = control_unit_op_a_sel == (* src = "/home/ali/rv-thunder/src/Top.py:113" *) 1'h1;
-  assign \$80  = + (* src = "/home/ali/rv-thunder/src/Top.py:198" *) reg_file_rf_out2[7:0];
-  assign \$82  = control_unit_op == (* src = "/home/ali/rv-thunder/src/Top.py:200" *) 7'h73;
+  assign \$9  = control_unit_op_a_sel == (* src = "/home/ali/rv-thunder/src/Top.py:116" *) 2'h2;
+  assign \$11  = + (* src = "/home/ali/rv-thunder/src/Top.py:115" *) fetch_unit_pc[11:0];
+  assign \$13  = control_unit_op == (* src = "/home/ali/rv-thunder/src/Top.py:123" *) 7'h63;
+  assign \$15  = control_unit_op == (* src = "/home/ali/rv-thunder/src/Top.py:128" *) 7'h67;
+  assign \$17  = control_unit_op == (* src = "/home/ali/rv-thunder/src/Top.py:134" *) 7'h6f;
+  assign \$1  = ~ (* src = "/home/ali/rv-thunder/src/Top.py:206" *) control_unit_mux3sel;
+  assign \$19  = control_unit_br & (* src = "/home/ali/rv-thunder/src/Top.py:125" *) branch_unit_br_out;
+  assign \$21  = control_unit_op == (* src = "/home/ali/rv-thunder/src/Top.py:123" *) 7'h63;
+  assign \$23  = control_unit_op == (* src = "/home/ali/rv-thunder/src/Top.py:128" *) 7'h67;
+  assign \$25  = control_unit_op == (* src = "/home/ali/rv-thunder/src/Top.py:134" *) 7'h6f;
+  assign \$27  = ~ (* src = "/home/ali/rv-thunder/src/Top.py:141" *) control_unit_ld_wd;
+  assign \$29  = data_mem_mask == (* src = "/home/ali/rv-thunder/src/Top.py:143" *) 2'h3;
+  assign \$31  = control_unit_funct3 == (* src = "/home/ali/rv-thunder/src/Top.py:144" *) 2'h2;
+  assign \$33  = data_mem_mask == (* src = "/home/ali/rv-thunder/src/Top.py:148" *) 2'h3;
+  assign \$35  = control_unit_funct3 == (* src = "/home/ali/rv-thunder/src/Top.py:149" *) 3'h6;
+  assign \$37  = data_mem_mask == (* src = "/home/ali/rv-thunder/src/Top.py:153" *) 2'h2;
+  assign \$39  = control_unit_funct3 == (* src = "/home/ali/rv-thunder/src/Top.py:154" *) 1'h1;
+  assign \$41  = + (* src = "/home/ali/rv-thunder/src/Top.py:156" *) data_mem_out[15:0];
+  assign \$45  = data_mem_mask == (* src = "/home/ali/rv-thunder/src/Top.py:164" *) 2'h2;
+  assign \$47  = control_unit_funct3 == (* src = "/home/ali/rv-thunder/src/Top.py:165" *) 3'h5;
+  assign \$49  = + (* src = "/home/ali/rv-thunder/src/Top.py:167" *) data_mem_out[15:0];
+  assign \$51  = data_mem_mask == (* src = "/home/ali/rv-thunder/src/Top.py:168" *) 1'h1;
+  assign \$53  = ! (* src = "/home/ali/rv-thunder/src/Top.py:169" *) control_unit_funct3;
+  assign \$55  = + (* src = "/home/ali/rv-thunder/src/Top.py:171" *) data_mem_out[7:0];
+  assign \$5  = ! (* src = "/home/ali/rv-thunder/src/Top.py:112" *) control_unit_op_a_sel;
+  assign \$59  = data_mem_mask == (* src = "/home/ali/rv-thunder/src/Top.py:177" *) 1'h1;
+  assign \$61  = control_unit_funct3 == (* src = "/home/ali/rv-thunder/src/Top.py:178" *) 3'h4;
+  assign \$63  = + (* src = "/home/ali/rv-thunder/src/Top.py:180" *) data_mem_out[7:0];
+  assign \$68  = fetch_unit_pc + (* src = "/home/ali/rv-thunder/src/Top.py:184" *) 3'h4;
+  assign \$74  = data_mem_mask == (* src = "/home/ali/rv-thunder/src/Top.py:192" *) 2'h3;
+  assign \$76  = data_mem_mask == (* src = "/home/ali/rv-thunder/src/Top.py:195" *) 2'h2;
+  assign \$78  = data_mem_mask == (* src = "/home/ali/rv-thunder/src/Top.py:198" *) 1'h1;
+  assign \$7  = control_unit_op_a_sel == (* src = "/home/ali/rv-thunder/src/Top.py:114" *) 1'h1;
+  assign \$80  = + (* src = "/home/ali/rv-thunder/src/Top.py:197" *) reg_file_rf_out2[15:0];
+  assign \$82  = + (* src = "/home/ali/rv-thunder/src/Top.py:200" *) reg_file_rf_out2[7:0];
+  assign \$84  = control_unit_op == (* src = "/home/ali/rv-thunder/src/Top.py:202" *) 7'h73;
   \top.top_unit.alu  alu (
     .alu_out(alu_alu_out),
     .aluop(alu_aluop),
@@ -17531,12 +18160,12 @@ module \top.top_unit (data_mem_adr, data_mem_we, data_mem_in, writedata, readsig
   always @* begin
     if (\$auto$verilog_backend.cc:2083:dump_module$5 ) begin end
     (* full_case = 32'd1 *)
-    (* src = "/home/ali/rv-thunder/src/Top.py:204" *)
+    (* src = "/home/ali/rv-thunder/src/Top.py:206" *)
     casez (\$1 )
-      /* src = "/home/ali/rv-thunder/src/Top.py:204" */
+      /* src = "/home/ali/rv-thunder/src/Top.py:206" */
       1'h1:
           muxout = i1;
-      /* src = "/home/ali/rv-thunder/src/Top.py:207" */
+      /* src = "/home/ali/rv-thunder/src/Top.py:209" */
       default:
           muxout = i2;
     endcase
@@ -17544,12 +18173,12 @@ module \top.top_unit (data_mem_adr, data_mem_we, data_mem_in, writedata, readsig
   always @* begin
     if (\$auto$verilog_backend.cc:2083:dump_module$5 ) begin end
     (* full_case = 32'd1 *)
-    (* src = "/home/ali/rv-thunder/src/Top.py:105" *)
+    (* src = "/home/ali/rv-thunder/src/Top.py:106" *)
     casez (\$3 )
-      /* src = "/home/ali/rv-thunder/src/Top.py:105" */
+      /* src = "/home/ali/rv-thunder/src/Top.py:106" */
       1'h1:
           alu_inp2 = control_unit_imm;
-      /* src = "/home/ali/rv-thunder/src/Top.py:107" */
+      /* src = "/home/ali/rv-thunder/src/Top.py:108" */
       default:
           alu_inp2 = reg_file_rf_out2;
     endcase
@@ -17557,18 +18186,18 @@ module \top.top_unit (data_mem_adr, data_mem_we, data_mem_in, writedata, readsig
   always @* begin
     if (\$auto$verilog_backend.cc:2083:dump_module$5 ) begin end
     (* full_case = 32'd1 *)
-    (* src = "/home/ali/rv-thunder/src/Top.py:111" *)
+    (* src = "/home/ali/rv-thunder/src/Top.py:112" *)
     casez ({ \$9 , \$7 , \$5  })
-      /* src = "/home/ali/rv-thunder/src/Top.py:111" */
+      /* src = "/home/ali/rv-thunder/src/Top.py:112" */
       3'b??1:
           alu_inp1 = reg_file_rf_out1;
-      /* src = "/home/ali/rv-thunder/src/Top.py:113" */
+      /* src = "/home/ali/rv-thunder/src/Top.py:114" */
       3'b?1?:
           alu_inp1 = \$11 ;
-      /* src = "/home/ali/rv-thunder/src/Top.py:115" */
+      /* src = "/home/ali/rv-thunder/src/Top.py:116" */
       3'b1??:
           alu_inp1 = fetch_unit_pc;
-      /* src = "/home/ali/rv-thunder/src/Top.py:117" */
+      /* src = "/home/ali/rv-thunder/src/Top.py:118" */
       default:
           alu_inp1 = 32'd0;
     endcase
@@ -17576,15 +18205,15 @@ module \top.top_unit (data_mem_adr, data_mem_we, data_mem_in, writedata, readsig
   always @* begin
     if (\$auto$verilog_backend.cc:2083:dump_module$5 ) begin end
     fetch_unit_branch = 1'h0;
-    (* src = "/home/ali/rv-thunder/src/Top.py:122" *)
+    (* src = "/home/ali/rv-thunder/src/Top.py:123" *)
     casez ({ \$17 , \$15 , \$13  })
-      /* src = "/home/ali/rv-thunder/src/Top.py:122" */
+      /* src = "/home/ali/rv-thunder/src/Top.py:123" */
       3'b??1:
           fetch_unit_branch = \$19 ;
-      /* src = "/home/ali/rv-thunder/src/Top.py:127" */
+      /* src = "/home/ali/rv-thunder/src/Top.py:128" */
       3'b?1?:
           fetch_unit_branch = 1'h1;
-      /* src = "/home/ali/rv-thunder/src/Top.py:133" */
+      /* src = "/home/ali/rv-thunder/src/Top.py:134" */
       3'b1??:
           fetch_unit_branch = 1'h1;
     endcase
@@ -17592,15 +18221,15 @@ module \top.top_unit (data_mem_adr, data_mem_we, data_mem_in, writedata, readsig
   always @* begin
     if (\$auto$verilog_backend.cc:2083:dump_module$5 ) begin end
     fetch_unit_branch_tar = 32'd0;
-    (* src = "/home/ali/rv-thunder/src/Top.py:122" *)
+    (* src = "/home/ali/rv-thunder/src/Top.py:123" *)
     casez ({ \$25 , \$23 , \$21  })
-      /* src = "/home/ali/rv-thunder/src/Top.py:122" */
+      /* src = "/home/ali/rv-thunder/src/Top.py:123" */
       3'b??1:
           fetch_unit_branch_tar = alu_alu_out;
-      /* src = "/home/ali/rv-thunder/src/Top.py:127" */
+      /* src = "/home/ali/rv-thunder/src/Top.py:128" */
       3'b?1?:
           fetch_unit_branch_tar = alu_alu_out;
-      /* src = "/home/ali/rv-thunder/src/Top.py:133" */
+      /* src = "/home/ali/rv-thunder/src/Top.py:134" */
       3'b1??:
           fetch_unit_branch_tar = alu_alu_out;
     endcase
@@ -17609,111 +18238,111 @@ module \top.top_unit (data_mem_adr, data_mem_we, data_mem_in, writedata, readsig
     if (\$auto$verilog_backend.cc:2083:dump_module$5 ) begin end
     reg_file_wb_data = 32'd0;
     (* full_case = 32'd1 *)
-    (* src = "/home/ali/rv-thunder/src/Top.py:140" *)
+    (* src = "/home/ali/rv-thunder/src/Top.py:141" *)
     casez (\$27 )
-      /* src = "/home/ali/rv-thunder/src/Top.py:140" */
+      /* src = "/home/ali/rv-thunder/src/Top.py:141" */
       1'h1:
         begin
-          (* src = "/home/ali/rv-thunder/src/Top.py:142" *)
+          (* src = "/home/ali/rv-thunder/src/Top.py:143" *)
           casez (\$29 )
-            /* src = "/home/ali/rv-thunder/src/Top.py:142" */
+            /* src = "/home/ali/rv-thunder/src/Top.py:143" */
             1'h1:
-                (* src = "/home/ali/rv-thunder/src/Top.py:143" *)
+                (* src = "/home/ali/rv-thunder/src/Top.py:144" *)
                 casez (\$31 )
-                  /* src = "/home/ali/rv-thunder/src/Top.py:143" */
+                  /* src = "/home/ali/rv-thunder/src/Top.py:144" */
                   1'h1:
                       reg_file_wb_data = data_mem_out;
                 endcase
           endcase
-          (* src = "/home/ali/rv-thunder/src/Top.py:147" *)
+          (* src = "/home/ali/rv-thunder/src/Top.py:148" *)
           casez (\$33 )
-            /* src = "/home/ali/rv-thunder/src/Top.py:147" */
+            /* src = "/home/ali/rv-thunder/src/Top.py:148" */
             1'h1:
-                (* src = "/home/ali/rv-thunder/src/Top.py:148" *)
+                (* src = "/home/ali/rv-thunder/src/Top.py:149" *)
                 casez (\$35 )
-                  /* src = "/home/ali/rv-thunder/src/Top.py:148" */
+                  /* src = "/home/ali/rv-thunder/src/Top.py:149" */
                   1'h1:
                       reg_file_wb_data = data_mem_out;
                 endcase
           endcase
-          (* src = "/home/ali/rv-thunder/src/Top.py:152" *)
+          (* src = "/home/ali/rv-thunder/src/Top.py:153" *)
           casez (\$37 )
-            /* src = "/home/ali/rv-thunder/src/Top.py:152" */
+            /* src = "/home/ali/rv-thunder/src/Top.py:153" */
             1'h1:
-                (* src = "/home/ali/rv-thunder/src/Top.py:153" *)
+                (* src = "/home/ali/rv-thunder/src/Top.py:154" *)
                 casez (\$39 )
-                  /* src = "/home/ali/rv-thunder/src/Top.py:153" */
+                  /* src = "/home/ali/rv-thunder/src/Top.py:154" */
                   1'h1:
                     begin
                       reg_file_wb_data[15:0] = \$41 [15:0];
                       (* full_case = 32'd1 *)
-                      (* src = "/home/ali/rv-thunder/src/Top.py:158" *)
+                      (* src = "/home/ali/rv-thunder/src/Top.py:159" *)
                       casez (\$43 )
-                        /* src = "/home/ali/rv-thunder/src/Top.py:158" */
+                        /* src = "/home/ali/rv-thunder/src/Top.py:159" */
                         1'h1:
                             reg_file_wb_data[31:16] = 16'hffff;
-                        /* src = "/home/ali/rv-thunder/src/Top.py:161" */
+                        /* src = "/home/ali/rv-thunder/src/Top.py:162" */
                         default:
                             reg_file_wb_data[31:16] = 16'h0000;
                       endcase
                     end
                 endcase
           endcase
-          (* src = "/home/ali/rv-thunder/src/Top.py:163" *)
+          (* src = "/home/ali/rv-thunder/src/Top.py:164" *)
           casez (\$45 )
-            /* src = "/home/ali/rv-thunder/src/Top.py:163" */
+            /* src = "/home/ali/rv-thunder/src/Top.py:164" */
             1'h1:
-                (* src = "/home/ali/rv-thunder/src/Top.py:164" *)
+                (* src = "/home/ali/rv-thunder/src/Top.py:165" *)
                 casez (\$47 )
-                  /* src = "/home/ali/rv-thunder/src/Top.py:164" */
+                  /* src = "/home/ali/rv-thunder/src/Top.py:165" */
                   1'h1:
                       reg_file_wb_data = \$49 ;
                 endcase
           endcase
-          (* src = "/home/ali/rv-thunder/src/Top.py:167" *)
+          (* src = "/home/ali/rv-thunder/src/Top.py:168" *)
           casez (\$51 )
-            /* src = "/home/ali/rv-thunder/src/Top.py:167" */
+            /* src = "/home/ali/rv-thunder/src/Top.py:168" */
             1'h1:
-                (* src = "/home/ali/rv-thunder/src/Top.py:168" *)
+                (* src = "/home/ali/rv-thunder/src/Top.py:169" *)
                 casez (\$53 )
-                  /* src = "/home/ali/rv-thunder/src/Top.py:168" */
+                  /* src = "/home/ali/rv-thunder/src/Top.py:169" */
                   1'h1:
                     begin
                       reg_file_wb_data[7:0] = \$55 [7:0];
                       (* full_case = 32'd1 *)
-                      (* src = "/home/ali/rv-thunder/src/Top.py:172" *)
+                      (* src = "/home/ali/rv-thunder/src/Top.py:173" *)
                       casez (\$57 )
-                        /* src = "/home/ali/rv-thunder/src/Top.py:172" */
+                        /* src = "/home/ali/rv-thunder/src/Top.py:173" */
                         1'h1:
                             reg_file_wb_data[31:8] = 24'hffffff;
-                        /* src = "/home/ali/rv-thunder/src/Top.py:174" */
+                        /* src = "/home/ali/rv-thunder/src/Top.py:175" */
                         default:
                             reg_file_wb_data[31:8] = 24'h000000;
                       endcase
                     end
                 endcase
           endcase
-          (* src = "/home/ali/rv-thunder/src/Top.py:176" *)
+          (* src = "/home/ali/rv-thunder/src/Top.py:177" *)
           casez (\$59 )
-            /* src = "/home/ali/rv-thunder/src/Top.py:176" */
+            /* src = "/home/ali/rv-thunder/src/Top.py:177" */
             1'h1:
-                (* src = "/home/ali/rv-thunder/src/Top.py:177" *)
+                (* src = "/home/ali/rv-thunder/src/Top.py:178" *)
                 casez (\$61 )
-                  /* src = "/home/ali/rv-thunder/src/Top.py:177" */
+                  /* src = "/home/ali/rv-thunder/src/Top.py:178" */
                   1'h1:
                       reg_file_wb_data = \$63 ;
                 endcase
           endcase
         end
-      /* src = "/home/ali/rv-thunder/src/Top.py:181" */
+      /* src = "/home/ali/rv-thunder/src/Top.py:182" */
       default:
           (* full_case = 32'd1 *)
-          (* src = "/home/ali/rv-thunder/src/Top.py:182" *)
+          (* src = "/home/ali/rv-thunder/src/Top.py:183" *)
           casez (\$65 )
-            /* src = "/home/ali/rv-thunder/src/Top.py:182" */
+            /* src = "/home/ali/rv-thunder/src/Top.py:183" */
             1'h1:
                 reg_file_wb_data = \$68 [31:0];
-            /* src = "/home/ali/rv-thunder/src/Top.py:185" */
+            /* src = "/home/ali/rv-thunder/src/Top.py:186" */
             default:
                 reg_file_wb_data = alu_alu_out;
           endcase
@@ -17722,30 +18351,35 @@ module \top.top_unit (data_mem_adr, data_mem_we, data_mem_in, writedata, readsig
   always @* begin
     if (\$auto$verilog_backend.cc:2083:dump_module$5 ) begin end
     data_mem_in = 32'd0;
-    (* src = "/home/ali/rv-thunder/src/Top.py:189" *)
+    (* src = "/home/ali/rv-thunder/src/Top.py:190" *)
     casez (\$70 )
-      /* src = "/home/ali/rv-thunder/src/Top.py:189" */
+      /* src = "/home/ali/rv-thunder/src/Top.py:190" */
       1'h1:
-          (* src = "/home/ali/rv-thunder/src/Top.py:190" *)
-          casez ({ \$76 , \$74 , \$72  })
-            /* src = "/home/ali/rv-thunder/src/Top.py:190" */
-            3'b??1:
-                data_mem_in = reg_file_rf_out2;
-            /* src = "/home/ali/rv-thunder/src/Top.py:193" */
-            3'b?1?:
-                data_mem_in = \$78 ;
-            /* src = "/home/ali/rv-thunder/src/Top.py:196" */
-            3'b1??:
-                data_mem_in = \$80 ;
+          (* src = "/home/ali/rv-thunder/src/Top.py:191" *)
+          casez (\$72 )
+            /* src = "/home/ali/rv-thunder/src/Top.py:191" */
+            1'h1:
+                (* src = "/home/ali/rv-thunder/src/Top.py:192" *)
+                casez ({ \$78 , \$76 , \$74  })
+                  /* src = "/home/ali/rv-thunder/src/Top.py:192" */
+                  3'b??1:
+                      data_mem_in = reg_file_rf_out2;
+                  /* src = "/home/ali/rv-thunder/src/Top.py:195" */
+                  3'b?1?:
+                      data_mem_in = \$80 ;
+                  /* src = "/home/ali/rv-thunder/src/Top.py:198" */
+                  3'b1??:
+                      data_mem_in = \$82 ;
+                endcase
           endcase
     endcase
   end
   always @* begin
     if (\$auto$verilog_backend.cc:2083:dump_module$5 ) begin end
     csr_unit_csr_val = 12'h000;
-    (* src = "/home/ali/rv-thunder/src/Top.py:200" *)
-    casez (\$82 )
-      /* src = "/home/ali/rv-thunder/src/Top.py:200" */
+    (* src = "/home/ali/rv-thunder/src/Top.py:202" *)
+    casez (\$84 )
+      /* src = "/home/ali/rv-thunder/src/Top.py:202" */
       1'h1:
           csr_unit_csr_val = inst_dat_r[31:20];
     endcase
@@ -17764,8 +18398,8 @@ module \top.top_unit (data_mem_adr, data_mem_we, data_mem_in, writedata, readsig
   assign csr_unit_func3 = control_unit_funct3;
   assign csr_unit_csr_sig = control_unit_csr_sig;
   assign i1 = reg_file_wb_data;
+  assign dmem_data = reg_file_rf_out2;
   assign readsig = control_unit_readsig;
-  assign writedata = reg_file_wb_data;
   assign data_mem_adr = alu_alu_out;
   assign data_mem_mask = control_unit_mem_mask;
   assign data_mem_we = control_unit_dmem_we;
@@ -17783,7 +18417,8 @@ module \top.top_unit (data_mem_adr, data_mem_we, data_mem_in, writedata, readsig
   assign \$43  = data_mem_out[16];
   assign \$57  = data_mem_out[8];
   assign \$65  = control_unit_ld_adr;
-  assign \$70  = data_mem_we;
+  assign \$70  = dmem_en;
+  assign \$72  = data_mem_we;
 endmodule
 
 (* generator = "Amaranth" *)
@@ -21644,7 +22279,7 @@ module \top.top_unit.fetch_unit (clk, pc, csr_pcsel, csr_in, branch, branch_tar,
       /* src = "/home/ali/rv-thunder/src/fetch.py:16" */
       2'b1?:
           \pc$next  = csr_in;
-      /* src = "/home/ali/rv-thunder/src/fetch.py:18" */
+      /* src = "/home/ali/rv-thunder/src/fetch.py:19" */
       default:
           \pc$next  = \$4 [31:0];
     endcase
@@ -21677,7 +22312,7 @@ endmodule
 (* generator = "Amaranth" *)
 module \top.top_unit.reg_file (clk, rs1, rs2, rd, we, rf_out1, rf_out2, wb_data, rst);
   reg \$auto$verilog_backend.cc:2083:dump_module$11  = 0;
-  (* src = "/home/ali/rv-thunder/src/regfile.py:19" *)
+  (* src = "/home/ali/rv-thunder/src/regfile.py:18" *)
   wire \$1 ;
   (* src = "/home/ali/amaranth/amaranth/hdl/ir.py:508" *)
   input clk;
@@ -22074,9 +22709,9 @@ module \top.top_unit.reg_file (clk, rs1, rs2, rd, we, rf_out1, rf_out2, wb_data,
     \memory(29)$next  = \memory(29) ;
     \memory(30)$next  = \memory(30) ;
     \memory(31)$next  = \memory(31) ;
-    (* src = "/home/ali/rv-thunder/src/regfile.py:19" *)
+    (* src = "/home/ali/rv-thunder/src/regfile.py:18" *)
     casez (\$1 )
-      /* src = "/home/ali/rv-thunder/src/regfile.py:19" */
+      /* src = "/home/ali/rv-thunder/src/regfile.py:18" */
       1'h1:
           (* full_case = 32'd1 *)
           (* src = "/home/ali/amaranth/amaranth/hdl/mem.py:119" *)
@@ -22187,4 +22822,550 @@ module \top.top_unit.reg_file (clk, rs1, rs2, rd, we, rf_out1, rf_out2, wb_data,
     endcase
   end
   assign \$1  = we;
+endmodule
+
+(* generator = "Amaranth" *)
+module \top.uart_tx_unit (tx_data_in, btn1, ready, valid, rst, clk, uart_tx);
+  reg \$auto$verilog_backend.cc:2083:dump_module$12  = 0;
+  (* src = "/home/ali/rv-thunder/src/uart_tx.py:32" *)
+  wire \$1 ;
+  (* src = "/home/ali/rv-thunder/src/uart_tx.py:58" *)
+  wire [25:0] \$11 ;
+  (* src = "/home/ali/rv-thunder/src/uart_tx.py:58" *)
+  wire \$13 ;
+  (* src = "/home/ali/rv-thunder/src/uart_tx.py:59" *)
+  wire \$15 ;
+  (* src = "/home/ali/rv-thunder/src/uart_tx.py:69" *)
+  wire [25:0] \$17 ;
+  (* src = "/home/ali/rv-thunder/src/uart_tx.py:69" *)
+  wire \$19 ;
+  (* src = "/home/ali/rv-thunder/src/uart_tx.py:75" *)
+  wire \$21 ;
+  (* src = "/home/ali/rv-thunder/src/uart_tx.py:76" *)
+  wire \$23 ;
+  (* src = "/home/ali/rv-thunder/src/uart_tx.py:32" *)
+  wire \$25 ;
+  (* src = "/home/ali/rv-thunder/src/uart_tx.py:32" *)
+  wire \$27 ;
+  (* src = "/home/ali/rv-thunder/src/uart_tx.py:32" *)
+  wire \$29 ;
+  (* src = "/home/ali/rv-thunder/src/uart_tx.py:32" *)
+  wire \$3 ;
+  (* src = "/home/ali/rv-thunder/src/uart_tx.py:32" *)
+  wire \$31 ;
+  (* src = "/home/ali/rv-thunder/src/uart_tx.py:32" *)
+  wire \$33 ;
+  (* src = "/home/ali/rv-thunder/src/uart_tx.py:32" *)
+  wire \$35 ;
+  (* src = "/home/ali/rv-thunder/src/uart_tx.py:43" *)
+  wire [25:0] \$37 ;
+  (* src = "/home/ali/rv-thunder/src/uart_tx.py:43" *)
+  wire \$39 ;
+  (* src = "/home/ali/rv-thunder/src/uart_tx.py:51" *)
+  wire [25:0] \$41 ;
+  (* src = "/home/ali/rv-thunder/src/uart_tx.py:51" *)
+  wire [25:0] \$42 ;
+  (* src = "/home/ali/rv-thunder/src/uart_tx.py:58" *)
+  wire [25:0] \$44 ;
+  (* src = "/home/ali/rv-thunder/src/uart_tx.py:58" *)
+  wire \$46 ;
+  (* src = "/home/ali/rv-thunder/src/uart_tx.py:66" *)
+  wire [25:0] \$48 ;
+  (* src = "/home/ali/rv-thunder/src/uart_tx.py:66" *)
+  wire [25:0] \$49 ;
+  (* src = "/home/ali/rv-thunder/src/uart_tx.py:32" *)
+  wire \$5 ;
+  (* src = "/home/ali/rv-thunder/src/uart_tx.py:69" *)
+  wire [25:0] \$51 ;
+  (* src = "/home/ali/rv-thunder/src/uart_tx.py:69" *)
+  wire \$53 ;
+  (* src = "/home/ali/rv-thunder/src/uart_tx.py:73" *)
+  wire [25:0] \$55 ;
+  (* src = "/home/ali/rv-thunder/src/uart_tx.py:73" *)
+  wire [25:0] \$56 ;
+  (* src = "/home/ali/rv-thunder/src/uart_tx.py:75" *)
+  wire \$58 ;
+  (* src = "/home/ali/rv-thunder/src/uart_tx.py:76" *)
+  wire \$60 ;
+  (* src = "/home/ali/rv-thunder/src/uart_tx.py:82" *)
+  wire [25:0] \$62 ;
+  (* src = "/home/ali/rv-thunder/src/uart_tx.py:82" *)
+  wire [25:0] \$63 ;
+  (* src = "/home/ali/rv-thunder/src/uart_tx.py:32" *)
+  wire \$65 ;
+  (* src = "/home/ali/rv-thunder/src/uart_tx.py:32" *)
+  wire \$67 ;
+  (* src = "/home/ali/rv-thunder/src/uart_tx.py:32" *)
+  wire \$69 ;
+  (* src = "/home/ali/rv-thunder/src/uart_tx.py:43" *)
+  wire [25:0] \$7 ;
+  (* src = "/home/ali/rv-thunder/src/uart_tx.py:43" *)
+  wire [25:0] \$71 ;
+  (* src = "/home/ali/rv-thunder/src/uart_tx.py:43" *)
+  wire \$73 ;
+  (* src = "/home/ali/rv-thunder/src/uart_tx.py:43" *)
+  wire [25:0] \$75 ;
+  (* src = "/home/ali/rv-thunder/src/uart_tx.py:43" *)
+  wire \$77 ;
+  (* src = "/home/ali/rv-thunder/src/uart_tx.py:58" *)
+  wire [25:0] \$79 ;
+  (* src = "/home/ali/rv-thunder/src/uart_tx.py:58" *)
+  wire \$81 ;
+  (* src = "/home/ali/rv-thunder/src/uart_tx.py:59" *)
+  wire \$83 ;
+  (* src = "/home/ali/rv-thunder/src/uart_tx.py:63" *)
+  wire [3:0] \$85 ;
+  (* src = "/home/ali/rv-thunder/src/uart_tx.py:63" *)
+  wire [3:0] \$86 ;
+  (* src = "/home/ali/rv-thunder/src/uart_tx.py:43" *)
+  wire \$9 ;
+  (* src = "/home/ali/rv-thunder/src/uart_tx.py:10" *)
+  input btn1;
+  wire btn1;
+  (* src = "/home/ali/amaranth/amaranth/hdl/ir.py:508" *)
+  input clk;
+  wire clk;
+  (* src = "/home/ali/rv-thunder/src/uart_tx.py:23" *)
+  reg [2:0] fsm_state = 3'h0;
+  (* src = "/home/ali/rv-thunder/src/uart_tx.py:23" *)
+  reg [2:0] \fsm_state$next ;
+  (* src = "/home/ali/rv-thunder/src/uart_tx.py:9" *)
+  output ready;
+  reg ready;
+  (* src = "/home/ali/amaranth/amaranth/hdl/ir.py:508" *)
+  input rst;
+  wire rst;
+  (* src = "/home/ali/rv-thunder/src/uart_tx.py:15" *)
+  reg [7:0] testmemory = 8'h00;
+  (* src = "/home/ali/rv-thunder/src/uart_tx.py:15" *)
+  reg [7:0] \testmemory$next ;
+  (* src = "/home/ali/rv-thunder/src/uart_tx.py:12" *)
+  reg txPinRegister = 1'h0;
+  (* src = "/home/ali/rv-thunder/src/uart_tx.py:12" *)
+  reg \txPinRegister$next ;
+  (* src = "/home/ali/rv-thunder/src/uart_tx.py:11" *)
+  reg [2:0] tx_bit_number = 3'h0;
+  (* src = "/home/ali/rv-thunder/src/uart_tx.py:11" *)
+  reg [2:0] \tx_bit_number$next ;
+  (* src = "/home/ali/rv-thunder/src/uart_tx.py:14" *)
+  reg [24:0] tx_counter = 25'h0000000;
+  (* src = "/home/ali/rv-thunder/src/uart_tx.py:14" *)
+  reg [24:0] \tx_counter$next ;
+  (* src = "/home/ali/rv-thunder/src/uart_tx.py:7" *)
+  input [7:0] tx_data_in;
+  wire [7:0] tx_data_in;
+  (* src = "/home/ali/rv-thunder/src/uart_tx.py:13" *)
+  reg [7:0] tx_data_out = 8'h00;
+  (* src = "/home/ali/rv-thunder/src/uart_tx.py:13" *)
+  reg [7:0] \tx_data_out$next ;
+  (* src = "/home/ali/rv-thunder/src/uart_tx.py:6" *)
+  output uart_tx;
+  wire uart_tx;
+  (* src = "/home/ali/rv-thunder/src/uart_tx.py:8" *)
+  input valid;
+  wire valid;
+  assign \$9  = \$7  == (* src = "/home/ali/rv-thunder/src/uart_tx.py:43" *) 10'h364;
+  assign \$11  = tx_counter + (* src = "/home/ali/rv-thunder/src/uart_tx.py:58" *) 1'h1;
+  assign \$13  = \$11  == (* src = "/home/ali/rv-thunder/src/uart_tx.py:58" *) 10'h364;
+  assign \$15  = tx_bit_number == (* src = "/home/ali/rv-thunder/src/uart_tx.py:59" *) 3'h7;
+  assign \$17  = tx_counter + (* src = "/home/ali/rv-thunder/src/uart_tx.py:69" *) 1'h1;
+  assign \$1  = ~ (* src = "/home/ali/rv-thunder/src/uart_tx.py:32" *) btn1;
+  assign \$19  = \$17  == (* src = "/home/ali/rv-thunder/src/uart_tx.py:69" *) 10'h364;
+  assign \$21  = tx_counter == (* src = "/home/ali/rv-thunder/src/uart_tx.py:75" *) 5'h17;
+  assign \$25  = ~ (* src = "/home/ali/rv-thunder/src/uart_tx.py:32" *) btn1;
+  assign \$29  = \$25  & (* src = "/home/ali/rv-thunder/src/uart_tx.py:32" *) \$27 ;
+  assign \$31  = ~ (* src = "/home/ali/rv-thunder/src/uart_tx.py:32" *) btn1;
+  assign \$35  = \$31  & (* src = "/home/ali/rv-thunder/src/uart_tx.py:32" *) \$33 ;
+  assign \$37  = tx_counter + (* src = "/home/ali/rv-thunder/src/uart_tx.py:43" *) 1'h1;
+  assign \$39  = \$37  == (* src = "/home/ali/rv-thunder/src/uart_tx.py:43" *) 10'h364;
+  assign \$42  = tx_counter + (* src = "/home/ali/rv-thunder/src/uart_tx.py:51" *) 1'h1;
+  assign \$44  = tx_counter + (* src = "/home/ali/rv-thunder/src/uart_tx.py:58" *) 1'h1;
+  assign \$46  = \$44  == (* src = "/home/ali/rv-thunder/src/uart_tx.py:58" *) 10'h364;
+  assign \$49  = tx_counter + (* src = "/home/ali/rv-thunder/src/uart_tx.py:66" *) 1'h1;
+  assign \$51  = tx_counter + (* src = "/home/ali/rv-thunder/src/uart_tx.py:69" *) 1'h1;
+  assign \$53  = \$51  == (* src = "/home/ali/rv-thunder/src/uart_tx.py:69" *) 10'h364;
+  assign \$56  = tx_counter + (* src = "/home/ali/rv-thunder/src/uart_tx.py:73" *) 1'h1;
+  assign \$58  = tx_counter == (* src = "/home/ali/rv-thunder/src/uart_tx.py:75" *) 5'h17;
+  assign \$5  = \$1  & (* src = "/home/ali/rv-thunder/src/uart_tx.py:32" *) \$3 ;
+  assign \$63  = tx_counter + (* src = "/home/ali/rv-thunder/src/uart_tx.py:82" *) 1'h1;
+  assign \$65  = ~ (* src = "/home/ali/rv-thunder/src/uart_tx.py:32" *) btn1;
+  assign \$69  = \$65  & (* src = "/home/ali/rv-thunder/src/uart_tx.py:32" *) \$67 ;
+  assign \$71  = tx_counter + (* src = "/home/ali/rv-thunder/src/uart_tx.py:43" *) 1'h1;
+  assign \$73  = \$71  == (* src = "/home/ali/rv-thunder/src/uart_tx.py:43" *) 10'h364;
+  assign \$75  = tx_counter + (* src = "/home/ali/rv-thunder/src/uart_tx.py:43" *) 1'h1;
+  assign \$77  = \$75  == (* src = "/home/ali/rv-thunder/src/uart_tx.py:43" *) 10'h364;
+  assign \$7  = tx_counter + (* src = "/home/ali/rv-thunder/src/uart_tx.py:43" *) 1'h1;
+  assign \$79  = tx_counter + (* src = "/home/ali/rv-thunder/src/uart_tx.py:58" *) 1'h1;
+  assign \$81  = \$79  == (* src = "/home/ali/rv-thunder/src/uart_tx.py:58" *) 10'h364;
+  assign \$83  = tx_bit_number == (* src = "/home/ali/rv-thunder/src/uart_tx.py:59" *) 3'h7;
+  assign \$86  = tx_bit_number + (* src = "/home/ali/rv-thunder/src/uart_tx.py:63" *) 1'h1;
+  always @(posedge clk)
+    fsm_state <= \fsm_state$next ;
+  always @(posedge clk)
+    txPinRegister <= \txPinRegister$next ;
+  always @(posedge clk)
+    tx_counter <= \tx_counter$next ;
+  always @(posedge clk)
+    testmemory <= \testmemory$next ;
+  always @(posedge clk)
+    tx_data_out <= \tx_data_out$next ;
+  always @(posedge clk)
+    tx_bit_number <= \tx_bit_number$next ;
+  always @* begin
+    if (\$auto$verilog_backend.cc:2083:dump_module$12 ) begin end
+    \fsm_state$next  = fsm_state;
+    (* src = "/home/ali/rv-thunder/src/uart_tx.py:23" *)
+    casez (fsm_state)
+      /* src = "/home/ali/rv-thunder/src/uart_tx.py:24" */
+      /* \amaranth.decoding  = "0/0" */
+      3'h0:
+          \fsm_state$next  = 3'h1;
+      /* src = "/home/ali/rv-thunder/src/uart_tx.py:30" */
+      /* \amaranth.decoding  = "TX_STATE_IDLE/1" */
+      3'h1:
+          (* src = "/home/ali/rv-thunder/src/uart_tx.py:32" *)
+          casez (\$5 )
+            /* src = "/home/ali/rv-thunder/src/uart_tx.py:32" */
+            1'h1:
+                \fsm_state$next  = 3'h2;
+          endcase
+      /* src = "/home/ali/rv-thunder/src/uart_tx.py:40" */
+      /* \amaranth.decoding  = "TX_STATE_START_BIT/2" */
+      3'h2:
+          (* src = "/home/ali/rv-thunder/src/uart_tx.py:43" *)
+          casez (\$9 )
+            /* src = "/home/ali/rv-thunder/src/uart_tx.py:43" */
+            1'h1:
+                \fsm_state$next  = 3'h3;
+          endcase
+      /* src = "/home/ali/rv-thunder/src/uart_tx.py:52" */
+      /* \amaranth.decoding  = "TX_STATE_Write/3" */
+      3'h3:
+          (* src = "/home/ali/rv-thunder/src/uart_tx.py:58" *)
+          casez (\$13 )
+            /* src = "/home/ali/rv-thunder/src/uart_tx.py:58" */
+            1'h1:
+                (* full_case = 32'd1 *)
+                (* src = "/home/ali/rv-thunder/src/uart_tx.py:59" *)
+                casez (\$15 )
+                  /* src = "/home/ali/rv-thunder/src/uart_tx.py:59" */
+                  1'h1:
+                      \fsm_state$next  = 3'h4;
+                  /* src = "/home/ali/rv-thunder/src/uart_tx.py:61" */
+                  default:
+                      \fsm_state$next  = 3'h3;
+                endcase
+          endcase
+      /* src = "/home/ali/rv-thunder/src/uart_tx.py:67" */
+      /* \amaranth.decoding  = "TX_STATE_Stop_Bit/4" */
+      3'h4:
+          (* src = "/home/ali/rv-thunder/src/uart_tx.py:69" *)
+          casez (\$19 )
+            /* src = "/home/ali/rv-thunder/src/uart_tx.py:69" */
+            1'h1:
+                \fsm_state$next  = 3'h5;
+          endcase
+      /* src = "/home/ali/rv-thunder/src/uart_tx.py:74" */
+      /* \amaranth.decoding  = "TX_STATE_Debounce/5" */
+      3'h5:
+          (* src = "/home/ali/rv-thunder/src/uart_tx.py:75" *)
+          casez (\$21 )
+            /* src = "/home/ali/rv-thunder/src/uart_tx.py:75" */
+            1'h1:
+                (* src = "/home/ali/rv-thunder/src/uart_tx.py:76" *)
+                casez (\$23 )
+                  /* src = "/home/ali/rv-thunder/src/uart_tx.py:76" */
+                  1'h1:
+                      \fsm_state$next  = 3'h0;
+                endcase
+          endcase
+    endcase
+    (* src = "/home/ali/amaranth/amaranth/hdl/xfrm.py:503" *)
+    casez (rst)
+      1'h1:
+          \fsm_state$next  = 3'h0;
+    endcase
+  end
+  always @* begin
+    if (\$auto$verilog_backend.cc:2083:dump_module$12 ) begin end
+    \txPinRegister$next  = txPinRegister;
+    (* src = "/home/ali/rv-thunder/src/uart_tx.py:23" *)
+    casez (fsm_state)
+      /* src = "/home/ali/rv-thunder/src/uart_tx.py:24" */
+      /* \amaranth.decoding  = "0/0" */
+      3'h0:
+          \txPinRegister$next  = 1'h1;
+      /* src = "/home/ali/rv-thunder/src/uart_tx.py:30" */
+      /* \amaranth.decoding  = "TX_STATE_IDLE/1" */
+      3'h1:
+          (* full_case = 32'd1 *)
+          (* src = "/home/ali/rv-thunder/src/uart_tx.py:32" *)
+          casez (\$29 )
+            /* src = "/home/ali/rv-thunder/src/uart_tx.py:32" */
+            1'h1:
+                /* empty */;
+            /* src = "/home/ali/rv-thunder/src/uart_tx.py:38" */
+            default:
+                \txPinRegister$next  = 1'h1;
+          endcase
+      /* src = "/home/ali/rv-thunder/src/uart_tx.py:40" */
+      /* \amaranth.decoding  = "TX_STATE_START_BIT/2" */
+      3'h2:
+          \txPinRegister$next  = 1'h0;
+      /* src = "/home/ali/rv-thunder/src/uart_tx.py:52" */
+      /* \amaranth.decoding  = "TX_STATE_Write/3" */
+      3'h3:
+          (* full_case = 32'd1 *)
+          (* src = "/home/ali/rv-thunder/src/uart_tx.py:54" *)
+          casez (tx_bit_number)
+            /* src = "/home/ali/rv-thunder/src/uart_tx.py:56" */
+            3'h0:
+                \txPinRegister$next  = tx_data_out[0];
+            /* src = "/home/ali/rv-thunder/src/uart_tx.py:56" */
+            3'h1:
+                \txPinRegister$next  = tx_data_out[1];
+            /* src = "/home/ali/rv-thunder/src/uart_tx.py:56" */
+            3'h2:
+                \txPinRegister$next  = tx_data_out[2];
+            /* src = "/home/ali/rv-thunder/src/uart_tx.py:56" */
+            3'h3:
+                \txPinRegister$next  = tx_data_out[3];
+            /* src = "/home/ali/rv-thunder/src/uart_tx.py:56" */
+            3'h4:
+                \txPinRegister$next  = tx_data_out[4];
+            /* src = "/home/ali/rv-thunder/src/uart_tx.py:56" */
+            3'h5:
+                \txPinRegister$next  = tx_data_out[5];
+            /* src = "/home/ali/rv-thunder/src/uart_tx.py:56" */
+            3'h6:
+                \txPinRegister$next  = tx_data_out[6];
+            /* src = "/home/ali/rv-thunder/src/uart_tx.py:56" */
+            3'h7:
+                \txPinRegister$next  = tx_data_out[7];
+          endcase
+      /* src = "/home/ali/rv-thunder/src/uart_tx.py:67" */
+      /* \amaranth.decoding  = "TX_STATE_Stop_Bit/4" */
+      3'h4:
+          \txPinRegister$next  = 1'h1;
+    endcase
+    (* src = "/home/ali/amaranth/amaranth/hdl/xfrm.py:503" *)
+    casez (rst)
+      1'h1:
+          \txPinRegister$next  = 1'h0;
+    endcase
+  end
+  always @* begin
+    if (\$auto$verilog_backend.cc:2083:dump_module$12 ) begin end
+    \tx_counter$next  = tx_counter;
+    (* src = "/home/ali/rv-thunder/src/uart_tx.py:23" *)
+    casez (fsm_state)
+      /* src = "/home/ali/rv-thunder/src/uart_tx.py:24" */
+      /* \amaranth.decoding  = "0/0" */
+      3'h0:
+          \tx_counter$next  = 25'h0000000;
+      /* src = "/home/ali/rv-thunder/src/uart_tx.py:30" */
+      /* \amaranth.decoding  = "TX_STATE_IDLE/1" */
+      3'h1:
+          (* src = "/home/ali/rv-thunder/src/uart_tx.py:32" *)
+          casez (\$35 )
+            /* src = "/home/ali/rv-thunder/src/uart_tx.py:32" */
+            1'h1:
+                \tx_counter$next  = 25'h0000000;
+          endcase
+      /* src = "/home/ali/rv-thunder/src/uart_tx.py:40" */
+      /* \amaranth.decoding  = "TX_STATE_START_BIT/2" */
+      3'h2:
+          (* full_case = 32'd1 *)
+          (* src = "/home/ali/rv-thunder/src/uart_tx.py:43" *)
+          casez (\$39 )
+            /* src = "/home/ali/rv-thunder/src/uart_tx.py:43" */
+            1'h1:
+                \tx_counter$next  = 25'h0000000;
+            /* src = "/home/ali/rv-thunder/src/uart_tx.py:50" */
+            default:
+                \tx_counter$next  = \$42 [24:0];
+          endcase
+      /* src = "/home/ali/rv-thunder/src/uart_tx.py:52" */
+      /* \amaranth.decoding  = "TX_STATE_Write/3" */
+      3'h3:
+          (* full_case = 32'd1 *)
+          (* src = "/home/ali/rv-thunder/src/uart_tx.py:58" *)
+          casez (\$46 )
+            /* src = "/home/ali/rv-thunder/src/uart_tx.py:58" */
+            1'h1:
+                \tx_counter$next  = 25'h0000000;
+            /* src = "/home/ali/rv-thunder/src/uart_tx.py:65" */
+            default:
+                \tx_counter$next  = \$49 [24:0];
+          endcase
+      /* src = "/home/ali/rv-thunder/src/uart_tx.py:67" */
+      /* \amaranth.decoding  = "TX_STATE_Stop_Bit/4" */
+      3'h4:
+          (* full_case = 32'd1 *)
+          (* src = "/home/ali/rv-thunder/src/uart_tx.py:69" *)
+          casez (\$53 )
+            /* src = "/home/ali/rv-thunder/src/uart_tx.py:69" */
+            1'h1:
+                \tx_counter$next  = 25'h0000000;
+            /* src = "/home/ali/rv-thunder/src/uart_tx.py:72" */
+            default:
+                \tx_counter$next  = \$56 [24:0];
+          endcase
+      /* src = "/home/ali/rv-thunder/src/uart_tx.py:74" */
+      /* \amaranth.decoding  = "TX_STATE_Debounce/5" */
+      3'h5:
+          (* full_case = 32'd1 *)
+          (* src = "/home/ali/rv-thunder/src/uart_tx.py:75" *)
+          casez (\$58 )
+            /* src = "/home/ali/rv-thunder/src/uart_tx.py:75" */
+            1'h1:
+                (* src = "/home/ali/rv-thunder/src/uart_tx.py:76" *)
+                casez (\$60 )
+                  /* src = "/home/ali/rv-thunder/src/uart_tx.py:76" */
+                  1'h1:
+                      \tx_counter$next  = 25'h0000000;
+                endcase
+            /* src = "/home/ali/rv-thunder/src/uart_tx.py:81" */
+            default:
+                \tx_counter$next  = \$63 [24:0];
+          endcase
+    endcase
+    (* src = "/home/ali/amaranth/amaranth/hdl/xfrm.py:503" *)
+    casez (rst)
+      1'h1:
+          \tx_counter$next  = 25'h0000000;
+    endcase
+  end
+  always @* begin
+    if (\$auto$verilog_backend.cc:2083:dump_module$12 ) begin end
+    ready = 1'h0;
+    (* src = "/home/ali/rv-thunder/src/uart_tx.py:23" *)
+    casez (fsm_state)
+      /* src = "/home/ali/rv-thunder/src/uart_tx.py:24" */
+      /* \amaranth.decoding  = "0/0" */
+      3'h0:
+          /* empty */;
+      /* src = "/home/ali/rv-thunder/src/uart_tx.py:30" */
+      /* \amaranth.decoding  = "TX_STATE_IDLE/1" */
+      3'h1:
+          ready = 1'h1;
+      /* src = "/home/ali/rv-thunder/src/uart_tx.py:40" */
+      /* \amaranth.decoding  = "TX_STATE_START_BIT/2" */
+      3'h2:
+          ready = 1'h0;
+    endcase
+  end
+  always @* begin
+    if (\$auto$verilog_backend.cc:2083:dump_module$12 ) begin end
+    \testmemory$next  = testmemory;
+    (* src = "/home/ali/rv-thunder/src/uart_tx.py:23" *)
+    casez (fsm_state)
+      /* src = "/home/ali/rv-thunder/src/uart_tx.py:24" */
+      /* \amaranth.decoding  = "0/0" */
+      3'h0:
+          /* empty */;
+      /* src = "/home/ali/rv-thunder/src/uart_tx.py:30" */
+      /* \amaranth.decoding  = "TX_STATE_IDLE/1" */
+      3'h1:
+          (* src = "/home/ali/rv-thunder/src/uart_tx.py:32" *)
+          casez (\$69 )
+            /* src = "/home/ali/rv-thunder/src/uart_tx.py:32" */
+            1'h1:
+                \testmemory$next  = tx_data_in;
+          endcase
+    endcase
+    (* src = "/home/ali/amaranth/amaranth/hdl/xfrm.py:503" *)
+    casez (rst)
+      1'h1:
+          \testmemory$next  = 8'h00;
+    endcase
+  end
+  always @* begin
+    if (\$auto$verilog_backend.cc:2083:dump_module$12 ) begin end
+    \tx_data_out$next  = tx_data_out;
+    (* src = "/home/ali/rv-thunder/src/uart_tx.py:23" *)
+    casez (fsm_state)
+      /* src = "/home/ali/rv-thunder/src/uart_tx.py:24" */
+      /* \amaranth.decoding  = "0/0" */
+      3'h0:
+          /* empty */;
+      /* src = "/home/ali/rv-thunder/src/uart_tx.py:30" */
+      /* \amaranth.decoding  = "TX_STATE_IDLE/1" */
+      3'h1:
+          /* empty */;
+      /* src = "/home/ali/rv-thunder/src/uart_tx.py:40" */
+      /* \amaranth.decoding  = "TX_STATE_START_BIT/2" */
+      3'h2:
+          (* src = "/home/ali/rv-thunder/src/uart_tx.py:43" *)
+          casez (\$73 )
+            /* src = "/home/ali/rv-thunder/src/uart_tx.py:43" */
+            1'h1:
+                \tx_data_out$next  = testmemory;
+          endcase
+    endcase
+    (* src = "/home/ali/amaranth/amaranth/hdl/xfrm.py:503" *)
+    casez (rst)
+      1'h1:
+          \tx_data_out$next  = 8'h00;
+    endcase
+  end
+  always @* begin
+    if (\$auto$verilog_backend.cc:2083:dump_module$12 ) begin end
+    \tx_bit_number$next  = tx_bit_number;
+    (* src = "/home/ali/rv-thunder/src/uart_tx.py:23" *)
+    casez (fsm_state)
+      /* src = "/home/ali/rv-thunder/src/uart_tx.py:24" */
+      /* \amaranth.decoding  = "0/0" */
+      3'h0:
+          /* empty */;
+      /* src = "/home/ali/rv-thunder/src/uart_tx.py:30" */
+      /* \amaranth.decoding  = "TX_STATE_IDLE/1" */
+      3'h1:
+          /* empty */;
+      /* src = "/home/ali/rv-thunder/src/uart_tx.py:40" */
+      /* \amaranth.decoding  = "TX_STATE_START_BIT/2" */
+      3'h2:
+          (* src = "/home/ali/rv-thunder/src/uart_tx.py:43" *)
+          casez (\$77 )
+            /* src = "/home/ali/rv-thunder/src/uart_tx.py:43" */
+            1'h1:
+                \tx_bit_number$next  = 3'h0;
+          endcase
+      /* src = "/home/ali/rv-thunder/src/uart_tx.py:52" */
+      /* \amaranth.decoding  = "TX_STATE_Write/3" */
+      3'h3:
+          (* src = "/home/ali/rv-thunder/src/uart_tx.py:58" *)
+          casez (\$81 )
+            /* src = "/home/ali/rv-thunder/src/uart_tx.py:58" */
+            1'h1:
+                (* full_case = 32'd1 *)
+                (* src = "/home/ali/rv-thunder/src/uart_tx.py:59" *)
+                casez (\$83 )
+                  /* src = "/home/ali/rv-thunder/src/uart_tx.py:59" */
+                  1'h1:
+                      /* empty */;
+                  /* src = "/home/ali/rv-thunder/src/uart_tx.py:61" */
+                  default:
+                      \tx_bit_number$next  = \$86 [2:0];
+                endcase
+          endcase
+    endcase
+    (* src = "/home/ali/amaranth/amaranth/hdl/xfrm.py:503" *)
+    casez (rst)
+      1'h1:
+          \tx_bit_number$next  = 3'h0;
+    endcase
+  end
+  assign \$41  = \$42 ;
+  assign \$48  = \$49 ;
+  assign \$55  = \$56 ;
+  assign \$62  = \$63 ;
+  assign \$85  = \$86 ;
+  assign uart_tx = txPinRegister;
+  assign \$3  = valid;
+  assign \$23  = btn1;
+  assign \$27  = valid;
+  assign \$33  = valid;
+  assign \$60  = btn1;
+  assign \$67  = valid;
 endmodule

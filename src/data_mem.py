@@ -7,6 +7,7 @@ class data_mem(Elaboratable):
         self.dmem_dout = Signal(32)
         self.dmem_we = Signal()
         self.inv_add = Signal()
+        self.dm_ack = Signal()
         # Create a memory with the specified depth (replace this with your actual data)
         self.memory = Memory(width=32, depth=8192)
 
@@ -24,9 +25,16 @@ class data_mem(Elaboratable):
             wrport.en.eq(self.dmem_we)  # Enable write operation
             
         ]
+
+        with m.If((wrport.data == self.dmem_din) &  (self.dmem_we == 0b1)):
+            m.d.comb += self.dm_ack.eq(0b1)
+        with m.Else():
+            m.d.comb += self.dm_ack.eq(0b0)
         with m.If((self.adr < 0x0000) & (self.adr > 0x1fff)):
             m.d.comb += self.inv_add.eq(1)
         with m.Else():
             m.d.comb += self.inv_add.eq(0)
+
+
 
         return m

@@ -12,12 +12,12 @@ class regfile(Elaboratable):
           self.we = Signal()
           
      def elaborate(self, platform):
-        
         m = Module()
+
         m.d.comb +=self.rf_out1.eq(self.regfile[self.rs1]),
         m.d.comb +=self.rf_out2.eq(self.regfile[self.rs2])
         with m.If(self.we == 1):
-            m.d.sync += self.regfile[self.rd].eq(self.wb_data)
-
+          with m.If(self.rd != 0):
+               m.d.sync += self.regfile[self.rd].eq(self.wb_data)
         return m
 

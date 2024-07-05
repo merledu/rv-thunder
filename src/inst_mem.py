@@ -19,8 +19,9 @@ class instr_mem(Elaboratable):
         m.submodules.rdport = rdport = self.mem.read_port(domain="comb")
         m.d.comb += [
             rdport.addr.eq(self.adr),
-            self.dat_r.eq(rdport.data)
-        ]
+            self.dat_r.eq(rdport.data),
+            #self.dat_r.eq(rdport.memory[rdport.addr])
+            ]  
         with m.If((self.adr < 0x0000) & (self.adr > 0x1fff)):
             m.d.comb += self.inval_add.eq(1)
 
