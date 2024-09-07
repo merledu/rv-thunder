@@ -11,7 +11,7 @@
  * 32 general purpose registers
  * Test bench (using Amaranth HDL)
 
- ## Block Diagram
+ ## Single Cycle Diagram
  ![Alt text](doc/img/block-diagram.png "RV-Thunder Block Diagram")
  ## Testing
 
