@@ -1,7 +1,8 @@
 #include<systemc.h>
 SC_MODULE(regfile) {
     sc_in_clk clk;
-    sc_in<bool> regwrite;
+   
+    sc_in<bool> regwrite,trigger;
     sc_in<sc_uint<5>>oprs1;
     sc_in<sc_uint<5>>oprs2;
     sc_in<sc_uint<5>> oprd;
@@ -15,16 +16,13 @@ SC_MODULE(regfile) {
     sc_int<32> regFile[32];
 
     SC_CTOR(regfile) {
-        SC_THREAD(register_update);
-        sensitive << writeData<<clk;
+        SC_METHOD(register_update);
+        sensitive <<regwrite<<oprd<<writeData;
 
         SC_METHOD(read_ports);
-        sensitive << oprs1<<oprs2;
-
-        
-        
-
-     
+        sensitive << oprs1<<oprs2 << trigger;
+       
+    
 
     }
     void read_ports() {
@@ -42,8 +40,7 @@ SC_MODULE(regfile) {
 
    
     void register_update() {
-       while (true) {
-            wait(clk.posedge_event());
+      
             if (regwrite == true) {
                 writedatainreg = regFile[oprd.read()];
 
@@ -53,9 +50,9 @@ SC_MODULE(regfile) {
                     regFile[0] = 0;
 
                 }
-                cout << writeData.read() << "at time : " << sc_time_stamp() << endl;
+                
             }
-       }
+       
     }
 
   
