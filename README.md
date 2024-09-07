@@ -1,7 +1,7 @@
 ![Alt text](doc/img/thunder-logo.png "RV-Thunder Logo")
 # RISC-V Thunder Core (Using Amaranth HDL)
 
- RISC-V Thunder Core is a 32-bit CPU core that currenly implements the [RISC-V](https://riscv.org/) RV32I instruction set. Its microarchitecture is described in plain Python code using [Amaranth HDL](https://amaranth-lang.org/docs/amaranth/latest/). There is one main file [rv-thunder.py](src/rv-thunder.py)
+ RISC-V Thunder Core is a 32-bit CPU core that currenly implements the [RISC-V](https://riscv.org/) RV32I instruction set. Its microarchitecture is described in plain Python code using [Amaranth HDL](https://amaranth-lang.org/docs/amaranth/latest/). 
 
  ## Features
 
@@ -10,12 +10,12 @@
  * 8KB Instruction and data memory
  * 32 general purpose registers
  * Test bench (using Amaranth HDL)
-
+   
+## Soc Diagram
+![Alt text]( doc/img/Thunder_SOC.png "RV-Thunder Block Diagram")
  ## Single Cycle Diagram
  ![Alt text](doc/img/block-diagram.png "RV-Thunder Block Diagram")
- ## Testing
 
- A testbench for RISC-V Thunder Core is available [here](https://github.com/merledu/rv-thunder/tree/main/test).
 
  ## About Amaranth HDL
 
