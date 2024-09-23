@@ -1,18 +1,37 @@
-CC = g++
-CFLAGS = -I. -I/usr/local/systemc-2.3.3/include
-LDFLAGS = -L. -L/usr/local/systemc-2.3.3/lib-linux64 -Wl,-rpath=/usr/local/systemc-2.3.3/lib-linux64
+# Makefile for 32-bit RISC-V Simulator
+
+# Compiler
+CXX = g++
+
+# Directories
+INCDIR = /usr/local/systemc-2.3.3/include
+LIBDIR = /usr/local/systemc-2.3.3/lib-linux64
+
+# Compiler Flags
+CXXFLAGS = -I. -I$(INCDIR)
+
+# Linker Flags
+LDFLAGS = -L. -L$(LIBDIR) -Wl,-rpath=$(LIBDIR)
+
+# Libraries
 LIBS = -lsystemc -lm
 
-SRC = ALU.cpp branch.cpp datamemory.cpp decodemodule.cpp fetch.cpp mux.cpp mux2bit.cpp PC.cpp registerfile.cpp Toplevel.cpp
-OBJ = $(SRC:.cpp=.o)
+# Source Files
+SRCS = rv-thunder.cpp 
+
+# Output Executable
 TARGET = out
 
-$(TARGET): $(OBJ)
-	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(LIBS)
+# Build the project
+all: $(TARGET)
 
-%.o: %.cpp
-	$(CC) $(CFLAGS) -c $< -o $@
+# Rule to link the object files and create the executable
+$(TARGET): $(SRCS)
+	$(CXX) $(CXXFLAGS) $(SRCS) -o $(TARGET) $(LDFLAGS) $(LIBS)
 
+# Clean up the build
 clean:
-	rm -f $(OBJ) $(TARGET)
+	rm -f $(TARGET)
 
+# Phony targets
+.PHONY: all clean
